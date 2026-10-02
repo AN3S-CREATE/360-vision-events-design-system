@@ -19,4 +19,5 @@ A lightweight ADR log. The full text, with rule and evidence URL, is in `design-
 | D22 | 2026-10-02 | `.index/` and `.claude/launch.json` created outside `design-system/` | The user accepted the recommended setup |
 | D23 | 2026-10-02 | No logo SVG | The site serves only a PNG; tracing would mean redrawing the logo (non-goal) |
 | D24 | 2026-10-02 | The extraction run published, committed and deployed nothing | Brief requires separate explicit confirmation |
+| D26 | 2026-10-02 | Owner-supplied 2026 logo pack stored as-is and recorded with hashes and sampled colours; `--color-brand` stays #ff4000 | Site CSS + served logo are #ff4000; the pack's orange varies by file, so it's flagged as an owner decision, not folded into tokens |
 | D25 | 2026-10-02 | At the user's explicit request: Claude skill (installed + packaged), private Claude Design design system, git repo pushed to the user's public GitHub repo AN3S-CREATE/360-vision-events-design-system | The user's own messages gave the confirmation the brief requires |

@@ -17,7 +17,9 @@ That's the most important thing to carry into your work. **Build with what is he
 | Exact component markup and styling | `assets/design-system/preview.html` — every component styled only with the tokens. Copy patterns from it |
 | Tailwind / shadcn projects | `assets/shadcn-theme.css` — the site's own `:root` variables (it is a Tailwind v4 + shadcn build) |
 | Design-token tooling (Figma Tokens, Style Dictionary) | `assets/design-system/tokens.json` (DTCG format) |
-| Logo | `assets/design-system/assets/logo-horiz-ON-DARK.png` (1176×452, transparent, for dark backgrounds) and `assets/design-system/assets/favicon.png` |
+| Logo for web UI on the dark canvas | `assets/design-system/assets/logo-horiz-ON-DARK.png`: the site's own header logo. It is 1176×452, transparent, and its orange is exactly `#ff4000` |
+| Official logo pack (print, social, decks, light backgrounds) | `assets/design-system/assets/logo-pack-2026/`: 11 PNGs, with ON-DARK and ON-LIGHT versions of P03/P05/P12 horizontal (P12 is ON-DARK only), P06 stacked, P07 mark and P09 360VISION wordmark. Its `README.md` maps the files |
+| Favicon / app icon | `assets/design-system/assets/favicon.png` (ring + "360"), or `p07-mark-360-*` from the pack |
 | Full rationale, class strings, quotes, gaps | `references/DESIGN.md`. Read the relevant section when you need more than the summary below |
 
 ## Quick reference
@@ -89,9 +91,10 @@ That's the most important thing to carry into your work. **Build with what is he
    - Case-study cards put the photo full-bleed under a bottom-up `--gradient-scrim`, with an orange uppercase kicker, a bold title and "View case study →".
 8. **Imagery:** real event production photography, `object-cover`, always under a dark scrim where text overlaps. Ratios 16/10 and 4/3. If you show a concept render rather than a real job, label it, the way the site labels its mock-ups "CONCEPT · MOCK".
 9. **Logo:**
-   - Use the PNG as-is, on dark backgrounds only.
-   - Don't recolour it, redraw it, trace it to SVG, or place it on white.
-   - No light-background version exists, so flag the gap if one is needed.
+   - **Web UI:** use the transparent site logo, or a pack file whose solid background matches the ground.
+   - **Light media:** use the pack's ON-LIGHT files, which are only for genuinely light material such as print or partner decks. The UI itself stays dark.
+   - **Pack backgrounds:** pack files are 2000×2000 on solid `#000000`/`#ffffff`, so an ON-DARK file shows a faint box on the `#0b0b0c` canvas. Crop it or match the ground.
+   - **Never alter the marks.** Don't recolour, redraw or trace them to SVG.
 
 For component recipes (header, buttons, eyebrows, pills and filter chips, badge, cards, form controls, CTA bands, footer, floating WhatsApp button), open `assets/design-system/preview.html` and reuse its CSS. It is the shortest correct path to on-brand markup.
 
@@ -122,7 +125,8 @@ The site's voice is short, confident and production-floor practical:
 - **No light theme**, and no success, warning or info colours.
 - **Form states not observed:** no error, helper, required or success styling was seen.
 - **No visible active nav state:** on the live site the active link renders muted because of CSS order. If the user wants one, propose it as a new decision.
-- **Logo:** no SVG and no light-background logo.
+- **Logo:** no SVG.
+- **Pack orange varies by file:** `#e22500` to `#ff3e00`, and the P09 wordmark is `#f14624`. The UI brand colour stays the site's `#ff4000`. When a design must match the orange in the logo, P12 (`#ff3e00`) is closest. Mention the inconsistency if it matters for the task.
 - **Font loading:** Space Grotesk 400/600 are used but not loaded (the browser substitutes 500/700). If you control font loading, requesting `Space+Grotesk:wght@400;500;600;700` is a reasonable fix to suggest, not something the site does today.
 - **Reduced motion:** no `prefers-reduced-motion` handling. Adding it in new work is fine; say you added it.
 

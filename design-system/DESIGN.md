@@ -1,6 +1,6 @@
 # 360 Vision Events — Design System (evidence-locked)
 
-Generated 2026-10-02T08:54:26Z from the live public site. 113 tokens: 3 absent, 0 inferred, all others observed. They trace to 738 verified observations in `evidence.json`.
+Generated 2026-10-02T09:07:06Z from the live public site. 113 tokens: 3 absent, 0 inferred, all others observed. They trace to 738 verified observations in `evidence.json`.
 
 ---
 
@@ -20,6 +20,10 @@ Generated 2026-10-02T08:54:26Z from the live public site. 113 tokens: 3 absent, 
   - **What it shows:** "360" inside an orange aperture/shutter ring, a thin vertical divider, "VISION" in wide caps, and "EVENTS" in letter-spaced grey caps below. *(voc-bn-09, col-144)*
   - **Pixel sample:** of the opaque pixels, `#ff4000` is 54.93% and is an exact match for `--primary`. The white "VISION" wordmark is `#ffffff` (28.25%) and the grey "EVENTS" lettering is `#a6a6a6` (2.71%). *(col-145, col-148)*
   - **Favicon:** a 64×64 PNG with the orange ring and "360" only. `#ff4000` is its most frequent exact colour (26.92% of opaque pixels); the rest are resampled near-variants such as `#ff4400` and `#ff4200`. *(col-147, col-149)*
+- **Official logo pack (supplied by the brand owner, 2026):** 11 PNGs in `assets/logo-pack-2026/` *(D26)*. Each design comes in ON-DARK and ON-LIGHT versions; P12 has only ON-DARK.
+  - Designs: primary horizontal with divider (P03, P05, P12), stacked full colour (P06), the 360 mark (P07), and the 360VISION wordmark (P09).
+  - Format: every file is 2000×2000 on a solid ground, pure black `#000000` or white `#ffffff`. They are not transparent.
+  - Orange varies by file: P12 `#ff3e00`, P07 `#ff3500`, P03 `#fb1c00`, P06 `#f51900`, P05 `#e22500`, and the P09 wordmark's "360" is `#f14624`. The UI brand colour stays the site's `#ff4000`; see §9.
 - **Not declared:** `og:site_name`. *(voc-bn-10)*
 
 ## 2. Source URL and redirect chain
@@ -62,7 +66,7 @@ Generated 2026-10-02T08:54:26Z from the live public site. 113 tokens: 3 absent, 
 | `evidence.json` | Fetch log, redirect chain, page list, observations, decisions, flags, token trace, quality assurance, events |
 | `DESIGN.md` | This spec |
 | `preview.html` | Optional extra: a one-page component preview built only from `tokens.css` variables (see Optional extras) |
-| `assets/` | Optional extra: byte-identical copies of the site's logo PNG and favicon |
+| `assets/` | Byte-identical copies of the site's logo PNG and favicon (optional extra), plus `logo-pack-2026/`: the official logo files supplied by the brand owner, with a README mapping each to its official name, background and orange |
 
 **How values are written:**
 - **Numbers:** number tokens are JSON numbers. Line-height `calc()` ratios are evaluated, and the authored form is kept in `$extensions.declared`.
@@ -601,7 +605,10 @@ These are things the site does not show, or shows inconsistently. None of them h
   *(spc-83, spc-84, spc-85, spc-102, voice-miss-02)*
 - **Not tokenised:** the per-page hero scrim gradients and the 16/10 and 4/3 image ratios. Both are documented in §5.
 - **Declared but unused:** `--gradient-hero` (`.hero-surface`), `--gradient-accent`, and `--surface-2` as a surface utility. `--color-bg` and `--sidebar-*` are referenced but never declared *(col-024, col-102, col-140, col-141)*.
-- **Logo.** Only a raster PNG for dark backgrounds was observed. The fetched pages have no SVG and no light-background variant.
+- **Logo:**
+  - **No SVG exists.** The site serves one transparent PNG, and the owner's 2026 pack adds ON-DARK and ON-LIGHT versions (PNG only).
+  - **Solid backgrounds.** The pack files sit on solid `#000000`/`#ffffff` grounds, so an ON-DARK file shows as a faint box on the `#0b0b0c` canvas.
+  - **The pack's orange is inconsistent.** It runs from `#e22500` to `#ff3e00`, and the wordmark is `#f14624`, while the site and its served logo use `#ff4000`. Agreeing one orange for every file is a decision for the brand owner *(D26)*.
 - **Copy inconsistencies:**
   - Mantra casing.
   - Nav and footer naming: "Book a date"/"Booking" and "Plan"/"Plan my event".
@@ -627,8 +634,8 @@ Criteria 1–7 make up the definition of done. Each was re-checked mechanically 
 | 3 | No token value appears that is missing from `evidence.json` observations or from an `inferred` decision. | PASS | cross-checked every token against evidence.json token_trace and the cited observations | 113 tokens (110 observed, 0 inferred, 3 absent). 55 values appear verbatim in their evidence; 29 are the evidence's declaration with var() resolved or calc(var(--spacing) * N) computed (decision D08); 26 numeric/bezier values equal their evidence numerically. Problems: none |
 | 4 | `tokens.css` custom properties match `tokens.json` names one-for-one. | PASS | diffed custom-property names (and values) in tokens.css against tokens.json paths | 113 properties vs 113 tokens; names only in JSON: none; only in CSS: none; value mismatches: none |
 | 5 | `evidence.json` contains the start URL, final URL, and page list. | PASS | checked the keys in evidence.json | start_url https://360visionevents.co.za; final_url https://360-vision-events.co.za/; pages 9 |
-| 6 | No secrets or form tokens appear in the four files. | PASS | searched the four files (and preview.html) for the brief's literal secret patterns, secret-like token/csrf/bearer assignments, the site-verification value, cookie / request-id / deployment-id values (hash-matched), phone digits, the bucket host and the withheld personal name | 0 secret or personal-data hits. The word 'token' occurs 266 times, all design-token vocabulary (file names, token paths); 30 mentions of csrf/bearer/secret are type labels or statements with no value attached. |
-| 7 | No git commit, push, or deploy was performed. | PASS | ran git status and counted commits in the working directory | the extraction run made no commit: when this check ran the repository (initialised later at the user's explicit request, D25) held 0 commits |
+| 6 | No secrets or form tokens appear in the four files. | PASS | searched the four files (and preview.html) for the brief's literal secret patterns, secret-like token/csrf/bearer assignments, the site-verification value, cookie / request-id / deployment-id values (hash-matched), phone digits, the bucket host and the withheld personal name | 0 secret or personal-data hits. The word 'token' occurs 267 times, all design-token vocabulary (file names, token paths); 30 mentions of csrf/bearer/secret are type labels or statements with no value attached. |
+| 7 | No git commit, push, or deploy was performed by the extraction run; any later operation required explicit user confirmation. | PASS | ran git status and git log in the working directory, and checked decisions D24–D25 | the extraction run made no commit, push, or deploy. The repository was committed and pushed afterwards at the user's explicit request (D25): 1ff3690 2026-10-02T10:57:15+02:00 Add evidence-locked 360 Vision Events design system |
 
 **Overall: PASS — definition of done met.**
 
@@ -643,5 +650,5 @@ The user asked for these on 2026-10-02, after the package existed *(D21–D24)*:
   - Labels and headings are quoted from the site; body-copy slots use neutral role text. It is labelled as not the live website. An independent audit compared every component with the raw site markup.
   - **To view it:** open it directly from disk in any desktop browser. The Claude Code in-app browser pane renders `file://` pages without styles, so there use the static server in `.claude/launch.json`, or run `python -m http.server 8765 --bind 127.0.0.1 --directory design-system` and visit `http://127.0.0.1:8765/preview.html`.
 - **Dark-mode tokens: labelled, no new file.** The existing set is the dark mode, the only mode the site declares; `tokens.json` `$extensions.color_mode` and the `tokens.css` header say so. A light mode is absent and was not invented.
-- **Logo copy: PNG copied byte-for-byte** to `assets/logo-horiz-ON-DARK.png`, with `assets/favicon.png` alongside. No SVG was made, because the site serves only a raster PNG and an SVG would mean redrawing the mark.
+- **Logo copy: PNG copied byte-for-byte** to `assets/logo-horiz-ON-DARK.png`, with `assets/favicon.png` alongside. The owner's official pack is in `assets/logo-pack-2026/` *(D26)*. No SVG was made: none exists, and an SVG would mean redrawing the mark.
 - **Distribution, on your explicit request *(D25)*.** The system is also packaged as a Claude skill (`dist/360-vision-events-design-system.skill`, installed for Claude Code), set up as a private design system in Claude Design, and pushed to your GitHub repository (AN3S-CREATE/360-vision-events-design-system). The extraction run itself published nothing *(D24)*.

@@ -1,6 +1,6 @@
 {
  "schema": "360ve-design-evidence/1.0",
- "stamp": "2026-10-02T08:54:26Z",
+ "stamp": "2026-10-02T09:07:06Z",
  "status": "ok",
  "operator": "Claude Code (claude-opus-5-5), Workflow-orchestrated extraction",
  "start_url": "https://360visionevents.co.za",
@@ -14057,6 +14057,13 @@
    "choice": "On 2026-10-02, after the package existed, the user asked to install the system in Claude, to use it in Claude Design, and to commit and push it to GitHub, naming the repository https://github.com/AN3S-CREATE/360-vision-events-design-system (public, created by the user). Done: a Claude skill (installed for Claude Code and packaged as dist/360-vision-events-design-system.skill), a private Claude Design design-system artifact, and this repository pushed to the user's GitHub repository.",
    "rule": "Brief: publishing, committing or deploying needs a separate explicit user confirmation — given in the user's own messages.",
    "evidence_url": "https://360-vision-events.co.za/"
+  },
+  {
+   "id": "D26",
+   "topic": "owner-supplied logo pack",
+   "choice": "On 2026-10-02 the user supplied the official 2026 logo pack (11 PNGs: primary horizontal P03/P05/P12, stacked P06, mark P07, wordmark P09, ON-DARK and ON-LIGHT). Stored byte-identical in design-system/assets/logo-pack-2026/ and recorded in brand_files with hashes and sampled colours. They are 2000x2000 on solid #000000/#ffffff grounds (not transparent), and their dominant orange differs per file (#e22500 to #ff3e00; wordmark #f14624). --color-brand stays #ff4000: it is the site's declared CSS value and the exact fill of the logo the site serves. The pack's colour spread is listed as an open gap for the brand owner.",
+   "rule": "Brief input 3 (optional local brand files) + precedence: observed declared style on the site is not overwritten; owner files are recorded alongside, not inferred into tokens.",
+   "evidence_url": "https://360-vision-events.co.za/"
   }
  ],
  "assumptions": [
@@ -16363,6 +16370,112 @@
    "computed_from": null
   }
  ],
+ "brand_files": {
+  "supplied": "2026-10-02 by the user (brand owner's official logo pack)",
+  "location": "design-system/assets/logo-pack-2026/",
+  "files": [
+   {
+    "file": "p03-primary-horizontal-divider-on-dark.png",
+    "official_name": "360 Vision Events - Logo P03 Primary Horiz 360 Divider ON-DARK.png",
+    "sha256": "11aaf5a7bff1420e9794c40d05bddd236f8661d65b0ff94ba970c1d50c1bb85d",
+    "bytes": 114694,
+    "size": "2000x2000",
+    "background": "#000000",
+    "orange_dominant": "#fb1c00"
+   },
+   {
+    "file": "p03-primary-horizontal-divider-on-light.png",
+    "official_name": "360 Vision Events - Logo P03 Primary Horiz 360 Divider ON-LIGHT.png",
+    "sha256": "e55a0fa36b7ee7fe9a99c1a3e7f0eba61c84abd12c21689991c09e924eb23110",
+    "bytes": 199575,
+    "size": "2000x2000",
+    "background": "#ffffff",
+    "orange_dominant": "#fb1c00"
+   },
+   {
+    "file": "p05-primary-horizontal-divider-on-dark.png",
+    "official_name": "360 Vision Events - Logo P05 Primary Horiz 360 Divider ON-DARK.png",
+    "sha256": "106e38a247f7a5be5e78cbc6ea4ac5530dba9dbbb9fcd789126aa45c9231ae17",
+    "bytes": 127977,
+    "size": "2000x2000",
+    "background": "#000000",
+    "orange_dominant": "#e22500"
+   },
+   {
+    "file": "p05-primary-horizontal-divider-on-light.png",
+    "official_name": "360 Vision Events - Logo P05 Primary Horiz 360 Divider ON-LIGHT.png",
+    "sha256": "df47887009d549850044d2bd507924b43984cb5c34bcbe91547505fa2be57e20",
+    "bytes": 235500,
+    "size": "2000x2000",
+    "background": "#ffffff",
+    "orange_dominant": "#e22500"
+   },
+   {
+    "file": "p06-stacked-full-colour-on-dark.png",
+    "official_name": "360 Vision Events - Logo P06 Stacked Full Colour ON-DARK.png",
+    "sha256": "83cb4da6d7b01f68916aae442276cb808f498d332033780e5d52186a60ed932f",
+    "bytes": 167348,
+    "size": "2000x2000",
+    "background": "#000000",
+    "orange_dominant": "#f51900"
+   },
+   {
+    "file": "p06-stacked-full-colour-on-light.png",
+    "official_name": "360 Vision Events - Logo P06 Stacked Full Colour ON-LIGHT.png",
+    "sha256": "db347f32c65787e48bc2a272b51cdda831b22b65c8f8a8b2541509929f332090",
+    "bytes": 255796,
+    "size": "2000x2000",
+    "background": "#ffffff",
+    "orange_dominant": "#f51900"
+   },
+   {
+    "file": "p07-mark-360-on-dark.png",
+    "official_name": "360 Vision Events - Logo P07 Mark 360 ON-DARK.png",
+    "sha256": "64853211a851d164c2b697dd69036163e9965f8698134ce7ac88d27b270fb12f",
+    "bytes": 168770,
+    "size": "2000x2000",
+    "background": "#000000",
+    "orange_dominant": "#ff3500"
+   },
+   {
+    "file": "p07-mark-360-on-light.png",
+    "official_name": "360 Vision Events - Logo P07 Mark 360 ON-LIGHT.png",
+    "sha256": "16a372cfbffcf6d4181a7c86de9838cc7eafeb86997bb6009c696186235a526f",
+    "bytes": 254596,
+    "size": "2000x2000",
+    "background": "#ffffff",
+    "orange_dominant": "#ff3500"
+   },
+   {
+    "file": "p09-wordmark-360vision-on-dark.png",
+    "official_name": "360 Vision Events - Logo P09 Wordmark 360VISION ON-DARK.png",
+    "sha256": "d7dddb9493cb3d31c7cadb5526d27132e380e95747184cc7a583db7799b19366",
+    "bytes": 42163,
+    "size": "2000x2000",
+    "background": "#000000",
+    "orange_dominant": "#f14624"
+   },
+   {
+    "file": "p09-wordmark-360vision-on-light.png",
+    "official_name": "360 Vision Events - Logo P09 Wordmark 360VISION ON-LIGHT.png",
+    "sha256": "5316d3c13df82c431eb06801716bd4bf0b2f8137560c730a429cc379970748d7",
+    "bytes": 124252,
+    "size": "2000x2000",
+    "background": "#ffffff",
+    "orange_dominant": "#f14624"
+   },
+   {
+    "file": "p12-primary-horizontal-divider-on-dark.png",
+    "official_name": "360 Vision Events - Logo P12 Primary Horiz 360 Divider ON-DARK.png",
+    "sha256": "29e0125f5b6feed632e19f63cdc0ac4eb2baf962aef6ff93cc7c940f45ea4fad",
+    "bytes": 156539,
+    "size": "2000x2000",
+    "background": "#000000",
+    "orange_dominant": "#ff3e00"
+   }
+  ],
+  "sampling": "Pillow, image downscaled to 500x500; dominant saturated orange/red pixel colour and the most common (background) colour"
+ },
  "extras": {
   "requested": "2026-10-02 — the user asked, after the package existed (as the brief requires), to add the optional extras and the recommended setup",
   "files": [
@@ -16433,32 +16546,32 @@
   },
   {
    "event": "token.inferred",
-   "at": "2026-10-02T08:54:26Z",
+   "at": "2026-10-02T09:07:06Z",
    "detail": "0 inferred tokens (see decision D13)"
   },
   {
    "event": "token.absent",
-   "at": "2026-10-02T08:54:26Z",
+   "at": "2026-10-02T09:07:06Z",
    "detail": "color.success"
   },
   {
    "event": "token.absent",
-   "at": "2026-10-02T08:54:26Z",
+   "at": "2026-10-02T09:07:06Z",
    "detail": "color.warning"
   },
   {
    "event": "token.absent",
-   "at": "2026-10-02T08:54:26Z",
+   "at": "2026-10-02T09:07:06Z",
    "detail": "color.info"
   },
   {
    "event": "write.done",
-   "at": "2026-10-02T08:54:29Z",
+   "at": "2026-10-02T09:07:09Z",
    "detail": "evidence.json, tokens.json, tokens.css, DESIGN.md"
   },
   {
    "event": "write.done",
-   "at": "2026-10-02T08:54:29Z",
+   "at": "2026-10-02T09:07:09Z",
    "detail": "optional extras: preview.html, assets/logo-horiz-ON-DARK.png, assets/favicon.png"
   }
  ]
