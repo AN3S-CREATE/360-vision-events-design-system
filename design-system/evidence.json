@@ -1,6 +1,6 @@
 {
  "schema": "360ve-design-evidence/1.0",
- "stamp": "2026-10-02T09:07:06Z",
+ "stamp": "2026-10-02T10:20:51Z",
  "status": "ok",
  "operator": "Claude Code (claude-opus-5-5), Workflow-orchestrated extraction",
  "start_url": "https://360visionevents.co.za",
@@ -16,7 +16,7 @@
    "status": 200
   }
  ],
- "local_brand_files": "none found in the working directory",
+ "local_brand_files": "none found in the working directory at extraction time; the owner's logo pack was supplied later (see brand_files, D26)",
  "pages": [
   {
    "file": "home.html",
@@ -14064,6 +14064,13 @@
    "choice": "On 2026-10-02 the user supplied the official 2026 logo pack (11 PNGs: primary horizontal P03/P05/P12, stacked P06, mark P07, wordmark P09, ON-DARK and ON-LIGHT). Stored byte-identical in design-system/assets/logo-pack-2026/ and recorded in brand_files with hashes and sampled colours. They are 2000x2000 on solid #000000/#ffffff grounds (not transparent), and their dominant orange differs per file (#e22500 to #ff3e00; wordmark #f14624). --color-brand stays #ff4000: it is the site's declared CSS value and the exact fill of the logo the site serves. The pack's colour spread is listed as an open gap for the brand owner.",
    "rule": "Brief input 3 (optional local brand files) + precedence: observed declared style on the site is not overwritten; owner files are recorded alongside, not inferred into tokens.",
    "evidence_url": "https://360-vision-events.co.za/"
+  },
+  {
+   "id": "D27",
+   "topic": "owner-supplied SVG logos",
+   "choice": "On 2026-10-02 the user supplied five ON-LIGHT SVGs (P03, P05, P06, P07, P09), stored byte-identical in design-system/assets/logo-pack-2026/svg/. All are transparent and script-free, and their vector lettering uses #ff4000 exactly. P09 is fully vector; P03/P05/P06/P07 are hybrids whose aperture ring (and divider) is a masked bitmap of 400-850 px coloured about #ff4e23-#ff5636. EVENTS grey is #737373 (P03/P05/P06) vs #828282 (P09). No ON-DARK or P12 SVGs exist. Tokens are unchanged.",
+   "rule": "Brief input 3 (local brand files) and D26: owner files are recorded alongside the observed system, not folded into tokens; inconsistencies are listed as gaps.",
+   "evidence_url": "https://360-vision-events.co.za/"
   }
  ],
  "assumptions": [
@@ -16474,7 +16481,117 @@
     "orange_dominant": "#ff3e00"
    }
   ],
-  "sampling": "Pillow, image downscaled to 500x500; dominant saturated orange/red pixel colour and the most common (background) colour"
+  "sampling": "Pillow, image downscaled to 500x500; dominant saturated orange/red pixel colour and the most common (background) colour",
+  "svg_files": [
+   {
+    "file": "svg/p03-primary-horizontal-divider-on-light.svg",
+    "official_name": "360 Vision Events - Logo P03 Primary Horiz 360 Divider ON-LIGHT.svg",
+    "sha256": "48fdb9974da82ebc1dc1abd281a2b6bcd9351253925b67418f9ad084c5f3dbb8",
+    "bytes": 126496,
+    "viewBox": "0 0 806.25 281.999989",
+    "vector_fills": [
+     "#000000",
+     "#737373",
+     "#ff4000"
+    ],
+    "embedded_bitmaps": [
+     {
+      "size": "407x376",
+      "dominant": "#ff502b",
+      "role": "aperture ring"
+     },
+     {
+      "size": "32x345",
+      "dominant": "#272b29",
+      "role": "divider line"
+     }
+    ],
+    "type": "hybrid: vector lettering + masked bitmap ring/divider",
+    "background": "transparent"
+   },
+   {
+    "file": "svg/p05-primary-horizontal-divider-on-light.svg",
+    "official_name": "360 Vision Events - Logo P05 Primary Horiz 360 Divider ON-LIGHT.svg",
+    "sha256": "43d24a9fe5879ac56067855885b8119561ecaac2cebaa061d25fbba30940bc4f",
+    "bytes": 136888,
+    "viewBox": "0 0 872.88 305.25",
+    "vector_fills": [
+     "#000000",
+     "#737373",
+     "#ff4000"
+    ],
+    "embedded_bitmaps": [
+     {
+      "size": "438x407",
+      "dominant": "#ff5636",
+      "role": "aperture ring"
+     },
+     {
+      "size": "64x345",
+      "dominant": "#24221f",
+      "role": "divider line"
+     }
+    ],
+    "type": "hybrid: vector lettering + masked bitmap ring/divider",
+    "background": "transparent"
+   },
+   {
+    "file": "svg/p06-stacked-full-colour-on-light.svg",
+    "official_name": "360 Vision Events - Logo P06 Stacked Full Colour ON-LIGHT.svg",
+    "sha256": "52b4c58c8f5d253ffffcecb41860247e114caffbaf3692a72dc3fb72fae2ac4a",
+    "bytes": 183860,
+    "viewBox": "0 0 657 699.000001",
+    "vector_fills": [
+     "#000000",
+     "#737373",
+     "#ff4000"
+    ],
+    "embedded_bitmaps": [
+     {
+      "size": "595x594",
+      "dominant": "#ff502b",
+      "role": "aperture ring"
+     }
+    ],
+    "type": "hybrid: vector lettering + masked bitmap ring/divider",
+    "background": "transparent"
+   },
+   {
+    "file": "svg/p07-mark-360-on-light.svg",
+    "official_name": "360 Vision Events - Logo P07 Mark 360 ON-LIGHT.svg",
+    "sha256": "42f42b71180bc7f3a15f4d1d2e9389ad8eb713e729034134ec9363dd247f1b0f",
+    "bytes": 273309,
+    "viewBox": "0 0 633.75 633.750003",
+    "vector_fills": [
+     "#ff4000"
+    ],
+    "embedded_bitmaps": [
+     {
+      "size": "845x845",
+      "dominant": "#ff4e23",
+      "role": "aperture ring"
+     }
+    ],
+    "type": "hybrid: vector lettering + masked bitmap ring/divider",
+    "background": "transparent"
+   },
+   {
+    "file": "svg/p09-wordmark-360vision-on-light.svg",
+    "official_name": "360 Vision Events - Logo P09 Wordmark 360VISION ON-LIGHT.svg",
+    "sha256": "d4b9ab3e07f1fcdd89fff28f3e4a7dc192ec5f9c77236118a53b92f53f9ae13e",
+    "bytes": 12305,
+    "viewBox": "0 0 750 208.499994",
+    "vector_fills": [
+     "#000000",
+     "#828282",
+     "#ff4000"
+    ],
+    "embedded_bitmaps": [],
+    "type": "fully vector",
+    "background": "transparent"
+   }
+  ],
+  "svg_analysis": "fill attributes read from the SVG source; embedded PNG layers decoded and paired (L mask + RGB colour), dominant colour sampled where the mask is opaque"
  },
  "extras": {
   "requested": "2026-10-02 — the user asked, after the package existed (as the brief requires), to add the optional extras and the recommended setup",
@@ -16546,32 +16663,32 @@
   },
   {
    "event": "token.inferred",
-   "at": "2026-10-02T09:07:06Z",
+   "at": "2026-10-02T10:20:51Z",
    "detail": "0 inferred tokens (see decision D13)"
   },
   {
    "event": "token.absent",
-   "at": "2026-10-02T09:07:06Z",
+   "at": "2026-10-02T10:20:51Z",
    "detail": "color.success"
   },
   {
    "event": "token.absent",
-   "at": "2026-10-02T09:07:06Z",
+   "at": "2026-10-02T10:20:51Z",
    "detail": "color.warning"
   },
   {
    "event": "token.absent",
-   "at": "2026-10-02T09:07:06Z",
+   "at": "2026-10-02T10:20:51Z",
    "detail": "color.info"
   },
   {
    "event": "write.done",
-   "at": "2026-10-02T09:07:09Z",
+   "at": "2026-10-02T10:20:58Z",
    "detail": "evidence.json, tokens.json, tokens.css, DESIGN.md"
   },
   {
    "event": "write.done",
-   "at": "2026-10-02T09:07:09Z",
+   "at": "2026-10-02T10:20:58Z",
    "detail": "optional extras: preview.html, assets/logo-horiz-ON-DARK.png, assets/favicon.png"
   }
  ]

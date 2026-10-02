@@ -12,7 +12,7 @@ An evidence-locked design system for **360 Vision Events**, read from the live s
 | [`design-system/preview.html`](design-system/preview.html) | One-page component preview: swatches, type, buttons, cards, form, CTA bands |
 | [`design-system/evidence.json`](design-system/evidence.json) | Audit trail: fetch log, 738 observations, decisions, and the source of every token |
 | [`design-system/assets/`](design-system/assets/) | The site's logo PNG and favicon, unchanged |
-| [`design-system/assets/logo-pack-2026/`](design-system/assets/logo-pack-2026/) | The official 2026 logo pack: 11 PNGs (horizontal, stacked, mark, wordmark; on-dark and on-light), with a README on backgrounds and orange values |
+| [`design-system/assets/logo-pack-2026/`](design-system/assets/logo-pack-2026/) | The official 2026 logo pack: 11 PNGs (horizontal, stacked, mark, wordmark; on-dark and on-light) plus 5 on-light SVGs in `svg/` (P09 wordmark fully vector), with a README on backgrounds, vector vs bitmap parts, and orange values |
 | [`skill/360-vision-events-design-system/`](skill/360-vision-events-design-system/) | Claude skill source: brand rules, voice and the bundled files |
 | [`dist/360-vision-events-design-system.skill`](dist/360-vision-events-design-system.skill) | The packaged skill, ready to upload |
 | [`.index/`](.index/) | Project context index (file inventory, architecture, decisions, tech debt) |
