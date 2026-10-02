@@ -1,0 +1,8 @@
+# Context refresh log
+
+| Date (UTC) | Scope | What changed | By |
+|---|---|---|---|
+| 2026-10-02 ~08:20 | Full (initial creation) | Index created after the design-system package and its optional extras existed. Inventory built from a file listing (14 files in 9 inventory rows: 4 package files, preview, 2 assets, launch config, 6 index files). Architecture and decisions read from `design-system/tokens.json`, `evidence.json` and `DESIGN.md` | Claude Code session (user-approved recommended setup) |
+| 2026-10-02 ~09:05 | Partial (git + distribution) | Added the root `README.md` and the `skill/` source; package rebuilt with decision D25 (distribution on the user's request); git initialised and pushed to the user's GitHub repo. Inventory, decisions and README updated | Claude Code session |
+| 2026-10-02 ~08:45 | Partial (skill install) | At the user's request, packaged the design system as a Claude skill. Installed for Claude Code at `~/.claude/skills/360-vision-events-design-system/` and wrote `dist/360-vision-events-design-system.skill` for claude.ai. Inventory updated | Claude Code session |
+| 2026-10-02 ~08:36 | Partial (package rebuild + audit fixes) | Package rebuilt (evidence stamp 08:35:51Z) after an independent audit of the preview and index. Changes: preview components aligned with the site markup; DESIGN.md now records that the active nav link has no visible state; Optional-extras wording corrected; this index reworded (inventory keys and file count, TD-01 inputs, TD-03 viewing, `--color-bg` note, decision summaries). Inventory re-verified against the rebuilt files | Claude Code session |

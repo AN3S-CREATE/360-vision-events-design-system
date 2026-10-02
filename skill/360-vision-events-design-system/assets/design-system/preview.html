@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>360 Vision Events — Component preview</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<!-- Font request copied verbatim from the live site's <link> (typ-15) -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;700&amp;family=Inter+Tight:wght@400;500;600&amp;display=swap">
+<style>
+/* Component preview for the 360 Vision Events evidence-locked design system.
+   Every colour, type, spacing, radius, shadow and motion value is a tokens.css variable, a calc(var(--space-unit) * N),
+   or a literal noted with the observed Tailwind class. Documentation chrome (1px rules, swatch hatching, table columns)
+   uses plain literals. Not the live website. */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;border:0 solid var(--color-border)}
+html{line-height:var(--font-leading-normal);-webkit-text-size-adjust:100%}
+body{background:var(--color-bg);color:var(--color-text);font-family:var(--font-family-body);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:inherit}
+h1,h2,h3{font-family:var(--font-family-display);letter-spacing:var(--font-tracking-heading)}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:var(--font-size-xs)}
+.muted{color:var(--color-text-muted)}
+.container{max-width:var(--size-container);margin-inline:auto;padding-inline:var(--size-gutter)}
+.icon{width:var(--size-icon);height:var(--size-icon);flex-shrink:0}
+.icon-mr{margin-right:var(--space-2)} /* mr-2 on the leading WhatsApp icon */
+
+/* preview chrome (documentation labels use the observed muted-eyebrow style) */
+.notice{border-bottom:1px solid var(--color-border);background:var(--color-surface)}
+.notice p{padding-block:var(--space-3);font-size:var(--font-size-xs);line-height:var(--font-line-height-xs);color:var(--color-text-muted)}
+.doc{padding-block:var(--space-20);border-top:1px solid var(--color-border)}
+.doc-label{font-size:var(--font-size-xs);line-height:var(--font-line-height-xs);letter-spacing:var(--font-tracking-caps-22);text-transform:uppercase;color:var(--color-text-muted)}
+.doc-title{margin-top:var(--space-3);font-size:var(--font-size-3xl);line-height:var(--font-line-height-3xl);font-weight:var(--font-weight-bold)}
+.doc-note{margin-top:var(--space-3);max-width:42rem;font-size:var(--font-size-sm);line-height:var(--font-line-height-sm);color:var(--color-text-muted)} /* max-w-2xl = --container-2xl 42rem (spc-20) */
+.stack{margin-top:var(--space-10);display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center}
+.grid{margin-top:var(--space-10);display:grid;gap:var(--space-5)}
+@media (width>=40rem){.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (width>=64rem){.grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.swatch{border:1px solid var(--color-border);border-radius:var(--radius-md);overflow:hidden;background:var(--color-surface)}
+.swatch .chip{height:var(--space-16);border-bottom:1px solid var(--color-border)}
+.swatch.absent .chip{background:repeating-linear-gradient(135deg,transparent 0 8px,var(--color-border) 8px 9px)}
+.swatch figcaption,.radius figcaption{display:grid;gap:var(--space-1);padding:var(--space-3);font-size:var(--font-size-xs);line-height:var(--font-line-height-xs);word-break:break-all}
+.type-row,.family{display:grid;gap:var(--space-2);padding-block:var(--space-4);border-bottom:1px solid var(--color-border)}
+.type-meta{font-size:var(--font-size-xs);line-height:var(--font-line-height-xs);color:var(--color-text-muted)}
+.type-sample{font-family:var(--font-family-display);font-weight:var(--font-weight-bold);letter-spacing:var(--font-tracking-heading)}
+.space-row{display:grid;grid-template-columns:7rem 1fr 5rem;gap:var(--space-3);align-items:center;font-size:var(--font-size-xs)}
+.bar{display:block;height:var(--space-2);background:var(--color-brand);border-radius:var(--radius-full)}
+.radius-box{height:var(--space-24);background:var(--color-surface);border:1px solid var(--color-border)}
+.shadow-box{background:var(--color-surface-2)}
+
+/* header + nav (cmp-nav-01..05) */
+.site-header{position:sticky;top:0;z-index:var(--z-header);border-bottom:1px solid var(--color-border);background:var(--color-bg-overlay);backdrop-filter:blur(var(--blur-header))}
+.site-header .row{display:flex;height:var(--size-header-height);align-items:center;justify-content:space-between}
+.logo img{height:calc(var(--space-unit) * 12);width:auto;max-width:calc(var(--space-unit) * 32);object-fit:contain} /* h-12 max-w-32 */
+@media (width>=64rem){.logo img{max-width:calc(var(--space-unit) * 40)}}
+.nav{display:none;align-items:center;gap:var(--space-8)}
+.nav-link{font-size:var(--font-size-sm);line-height:var(--font-line-height-sm);color:var(--color-text-muted);transition:color var(--motion-duration-fast) var(--motion-easing-standard)}
+.header-actions{display:flex;align-items:center;gap:var(--space-2)}
+.menu-toggle{display:inline-flex;width:var(--space-9);height:var(--space-9);align-items:center;justify-content:center;border:1px solid var(--color-border);border-radius:var(--radius-md);background:transparent;color:inherit}
+.site-header .header-cta{display:none} /* hidden sm:inline-flex */
+@media (width>=40rem){.site-header .header-cta{display:inline-flex}}
+@media (width>=48rem){.nav{display:flex}.menu-toggle{display:none}}
+
+/* buttons (cmp-btn-01..10) */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);white-space:nowrap;font-family:inherit;font-size:var(--font-size-sm);line-height:var(--font-line-height-sm);font-weight:var(--font-weight-medium);cursor:pointer;border-radius:var(--radius-md);transition:color var(--motion-duration-fast) var(--motion-easing-standard),background-color var(--motion-duration-fast) var(--motion-easing-standard),border-color var(--motion-duration-fast) var(--motion-easing-standard)}
+.btn:focus-visible{outline:none;box-shadow:var(--shadow-focus-ring),var(--shadow-sm)}
+.btn:disabled{pointer-events:none;opacity:.5;cursor:not-allowed}
+.btn-lg{height:var(--space-10);padding-inline:var(--space-8)}
+.btn-default{height:var(--space-9);padding:var(--space-2) var(--space-4)}
+.btn-sm{height:var(--space-8);padding-inline:var(--space-3);font-size:var(--font-size-xs);line-height:var(--font-line-height-xs)}
+.btn-xl{height:auto;min-height:calc(var(--space-unit) * 12);padding:var(--space-3) var(--space-5)} /* h-auto min-h-12 px-5 py-3 */
+.btn-primary{background:var(--color-brand);color:var(--color-on-brand);box-shadow:var(--shadow-sm)}
+.btn-outline{border:1px solid var(--color-input);background:var(--color-bg);color:var(--color-text);box-shadow:var(--shadow-sm)}
+.btn-glass{height:calc(var(--space-unit) * 12);background:color-mix(in oklab, var(--color-bg) 30%, transparent);backdrop-filter:blur(var(--blur-glass))} /* bg-background/30 (col-048) */
+.btn-secondary{background:var(--color-surface-2);color:var(--color-text);box-shadow:var(--shadow-sm)}
+.btn-date{justify-content:flex-start;text-align:left;font-weight:var(--font-weight-regular);color:var(--color-text-muted)} /* justify-start text-left font-normal text-muted-foreground */
+@media (hover:hover){
+  .nav-link:hover{color:var(--color-text)}
+  .btn-primary:hover{background:var(--color-brand-hover)}
+  .btn-outline:hover{background:var(--color-accent);color:var(--color-on-brand)}
+  .btn-secondary:hover{background:var(--color-surface-2-hover)}
+  .link-hero:hover .icon{transform:translateX(var(--space-1))} /* group-hover:translate-x-1 — hero link only */
+  .chip-filter:hover{color:var(--color-text)}
+  .link-hero:hover{color:var(--color-brand)}
+}
+
+/* eyebrows + headings (cmp-eyebrow-01..07, typ-76..) */
+.eyebrow{font-size:var(--font-size-xs);line-height:var(--font-line-height-xs);text-transform:uppercase;color:var(--color-brand)}
+.eyebrow-display{font-family:var(--font-family-display);letter-spacing:var(--font-tracking-caps-35)}
+.eyebrow-clean{font-family:var(--font-family-clean);font-weight:var(--font-weight-semibold);letter-spacing:var(--font-tracking-caps-25)}
+.eyebrow-muted{letter-spacing:var(--font-tracking-caps-22);color:var(--color-text-muted)}
+.eyebrow-muted-display{font-family:var(--font-family-display);letter-spacing:var(--font-tracking-caps-25)}
+.eyebrow-section{font-weight:var(--font-weight-semibold);letter-spacing:var(--font-tracking-caps-22)}
+.h1-display{margin-top:var(--space-6);max-width:56rem;font-size:var(--font-size-5xl);line-height:var(--font-leading-display);font-weight:var(--font-weight-bold)} /* max-w-4xl */
+.h1-display .accent{color:var(--color-brand)}
+@media (width>=40rem){.h1-display{font-size:var(--font-size-7xl)}}
+.h2-section{margin-top:var(--space-3);font-size:var(--font-size-3xl);line-height:var(--font-line-height-3xl);font-weight:var(--font-weight-bold)}
+@media (width>=40rem){.h2-section{font-size:var(--font-size-4xl);line-height:var(--font-line-height-4xl)}}
+.hero{padding-block:var(--space-24)}
+@media (width>=40rem){.hero{padding-block:var(--space-32)}}
+.lead{margin-top:var(--space-7);max-width:42rem;font-size:var(--font-size-lg);line-height:var(--font-line-height-lg);color:var(--color-text-muted)} /* max-w-2xl */
+
+/* cards (cmp-card-01..08, card-lift) */
+.card{background:var(--color-surface);border:1px solid var(--color-border)}
+.card-lift{transition:transform var(--motion-duration-base) var(--motion-easing-smooth),box-shadow var(--motion-duration-base) var(--motion-easing-smooth),border-color var(--motion-duration-base) var(--motion-easing-smooth)}
+.card-lift:hover{transform:translateY(-6px);box-shadow:var(--shadow-lift);border-color:var(--color-brand-border-hover)} /* not gated by (hover:hover), as observed */
+.case-card{position:relative;display:flex;min-height:calc(var(--space-unit) * 72);flex-direction:column;justify-content:flex-end;overflow:hidden;border-radius:var(--radius-lg)}
+.case-card .body{position:relative;padding:var(--space-6)}
+.kicker{font-size:var(--font-size-xs);line-height:var(--font-line-height-xs);font-weight:var(--font-weight-semibold);letter-spacing:var(--font-tracking-caps-18);text-transform:uppercase;color:var(--color-brand)}
+.case-title{margin-top:var(--space-1);font-size:var(--font-size-2xl);line-height:var(--font-line-height-2xl);font-weight:var(--font-weight-bold)}
+.cta-text{margin-top:var(--space-4);display:inline-block;font-size:var(--font-size-sm);line-height:var(--font-line-height-sm);font-weight:var(--font-weight-semibold);color:var(--color-brand)}
+.teaser{display:block;height:100%;border-radius:var(--radius-xl);padding:var(--space-6)}
+.teaser .kicker-display{font-family:var(--font-family-display);font-size:var(--font-size-xs);line-height:var(--font-line-height-xs);letter-spacing:var(--font-tracking-caps-25);text-transform:uppercase;color:var(--color-brand)}
+.teaser h3{margin-top:var(--space-3);font-size:var(--font-size-xl);line-height:var(--font-line-height-xl);font-weight:var(--font-weight-semibold)}
+.card-body{margin-top:var(--space-3);font-size:var(--font-size-sm);line-height:var(--font-line-height-sm);color:var(--color-text-muted)}
+.link-arrow{margin-top:var(--space-6);display:inline-flex;align-items:center;gap:var(--space-2);font-size:var(--font-size-sm);line-height:var(--font-line-height-sm);font-weight:var(--font-weight-medium);color:var(--color-brand)}
+.link-hero{margin-top:0;color:var(--color-text);transition:color var(--motion-duration-fast) var(--motion-easing-standard)}
+.link-hero .icon{transition:transform var(--motion-duration-fast) var(--motion-easing-standard)}
+.support{height:100%;border-radius:var(--radius-md);padding:var(--space-5)}
+.support h3{font-size:var(--font-size-base);line-height:var(--font-line-height-base);font-weight:var(--font-weight-semibold)}
+.concept{display:flex;height:100%;flex-direction:column;overflow:hidden;border-radius:var(--radius-md)}
+.concept .media{position:relative;aspect-ratio:16/10;background:var(--color-surface-2)}
+.concept .body{padding:var(--space-5)}
+
+/* pills, chips, badge (cmp-chip-01..05, cmp-badge-01) */
+.pills{display:flex;flex-wrap:wrap;gap:var(--space-3);list-style:none}
+.pill{border-radius:var(--radius-full);border:1px solid var(--color-border);background:var(--color-surface);padding:var(--space-2) var(--space-4);font-family:var(--font-family-display);font-size:var(--font-size-sm);line-height:var(--font-line-height-sm);letter-spacing:var(--font-tracking-caps-12);text-transform:uppercase}
+.chip-filter{border-radius:var(--radius-full);border:1px solid var(--color-border);padding:var(--space-1-5) var(--space-4);font-size:var(--font-size-sm);line-height:var(--font-line-height-sm);color:var(--color-text-muted);transition:color var(--motion-duration-fast) var(--motion-easing-standard)}
+.chip-filter.is-active{border-color:var(--color-brand);background:var(--color-brand);font-weight:var(--font-weight-semibold);color:var(--color-on-brand)}
+.badge{position:absolute;top:var(--space-3);left:var(--space-3);border-radius:var(--radius-sm);border:1px solid var(--color-brand);background:color-mix(in oklab, var(--color-bg) 90%, transparent);padding:var(--space-1) var(--space-2-5);font-family:var(--font-family-clean);font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);letter-spacing:var(--font-tracking-caps-16);text-transform:uppercase;color:var(--color-brand)} /* bg-background/90 (col-047) */
+
+/* form (cmp-form-01..16) */
+.form-panel{border-radius:var(--radius-lg);padding:var(--space-5)}
+@media (width>=40rem){.form-panel{padding:var(--space-7)}}
+.form-wrap{margin-top:var(--space-10);max-width:48rem} /* preview chrome: max-w-3xl */
+.form{display:grid;gap:var(--space-5)}
+.field{display:grid;gap:var(--space-2)}
+.row-2{display:grid;gap:var(--space-5)}
+@media (width>=40rem){.row-2{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.label{font-size:var(--font-size-sm);line-height:var(--font-leading-none);font-weight:var(--font-weight-medium)}
+.input,.textarea,.select{width:100%;border:1px solid var(--color-input);border-radius:var(--radius-md);background:transparent;color:inherit;font-family:inherit;box-shadow:var(--shadow-sm)}
+.input{transition:color var(--motion-duration-fast) var(--motion-easing-standard),background-color var(--motion-duration-fast) var(--motion-easing-standard),border-color var(--motion-duration-fast) var(--motion-easing-standard)} /* transition-colors on inputs only */
+.input{display:flex;height:var(--space-9);padding:var(--space-1) var(--space-3);font-size:var(--font-size-base);line-height:var(--font-line-height-base)}
+.textarea{display:flex;min-height:60px;padding:var(--space-2) var(--space-3);font-size:var(--font-size-base);line-height:var(--font-line-height-base);resize:vertical} /* min-h-[60px] */
+@media (width>=48rem){.input,.textarea{font-size:var(--font-size-sm);line-height:var(--font-line-height-sm)}}
+.input::placeholder,.textarea::placeholder{color:var(--color-text-muted);opacity:1}
+.input:focus-visible,.textarea:focus-visible,.select:focus{outline:none;box-shadow:var(--shadow-focus-ring),var(--shadow-sm)}
+.select{display:flex;height:var(--space-9);align-items:center;justify-content:space-between;padding:var(--space-2) var(--space-3);font-size:var(--font-size-sm);line-height:var(--font-line-height-sm);cursor:pointer;text-align:left}
+.select .placeholder{color:var(--color-text-muted)}
+.select .icon{opacity:.5}
+.submit-row{display:flex;flex-direction:column;gap:var(--space-3)}
+@media (width>=40rem){.submit-row{flex-direction:row}}
+
+/* CTA band (cmp-cta-01..02) */
+.cta-band{display:flex;flex-direction:column;gap:var(--space-7);border-radius:var(--radius-lg);border:1px solid var(--color-brand-border);background:var(--color-surface);padding:var(--space-7)}
+.cta-band.tint{background:var(--gradient-cta-tint)}
+@media (width>=40rem){.cta-band{flex-direction:row;align-items:center;justify-content:space-between;padding:var(--space-9)}}
+.cta-band p.body{margin-top:var(--space-2);font-size:var(--font-size-sm);line-height:var(--font-line-height-sm);color:var(--color-text-muted)}
+.cta-band.tint p.body{margin-top:var(--space-3);line-height:var(--font-leading-relaxed)}
+.cta-band.tint .cta-actions{flex-direction:column}
+.h2-band{margin-top:var(--space-3);font-size:var(--font-size-3xl);line-height:var(--font-line-height-3xl);font-weight:var(--font-weight-bold)}
+.cta-actions{display:flex;flex-wrap:wrap;gap:var(--space-3);flex-shrink:0}
+
+/* floating WhatsApp button (cmp-wa-01) */
+.fab{position:fixed;right:var(--space-5);bottom:var(--space-5);z-index:var(--z-floating);display:inline-flex;align-items:center;gap:var(--space-2);border-radius:var(--radius-full);background:var(--color-brand);padding:var(--space-3) var(--space-4);font-weight:var(--font-weight-medium);color:var(--color-on-brand);box-shadow:var(--shadow-lift);transition:transform var(--motion-duration-base) var(--motion-easing-standard)}
+.fab .icon{width:calc(var(--space-unit) * 5);height:calc(var(--space-unit) * 5)} /* size-5 */
+.fab span{display:none;font-size:var(--font-size-sm);line-height:var(--font-line-height-sm)}
+@media (width>=40rem){.fab span{display:inline}}
+@media (hover:hover){.fab:hover{transform:translateY(calc(var(--space-unit) * -1))}}
+.fab:focus-visible{outline:none;box-shadow:0 0 0 2px var(--color-bg),0 0 0 4px var(--color-ring),var(--shadow-lift)} /* ring-2 ring-offset-2 ring-offset-background */
+
+/* footer, compact variant (cmp-ftr-06) */
+.footer{border-top:1px solid var(--color-border)}
+.footer .grid-f{display:grid;gap:var(--space-8);padding-block:var(--space-10);font-size:var(--font-size-xs);line-height:var(--font-leading-relaxed);color:var(--color-text-muted)}
+@media (width>=40rem){.footer .grid-f{grid-template-columns:repeat(2,minmax(0,1fr))}.footer .right{text-align:right}}
+.footer .name{font-weight:var(--font-weight-semibold);color:var(--color-text)}
+.footer .name-legal{color:var(--color-text)}
+@media (hover:hover){.footer .links a:hover{color:var(--color-brand)}}
+</style>
+</head>
+<body>
+<div class="notice"><p class="container">Component preview rendered from <code>tokens.css</code> for the 360 Vision Events evidence-locked design system. Every colour, type, spacing, radius, shadow and motion value comes from a token or an observed Tailwind class; labels and headings are quoted from the live site; grey "slot" text describes a role instead of copying body copy. This is not the live website.</p></div>
+
+<header class="site-header">
+  <div class="container row">
+    <a href="#" class="logo" aria-label="360 Vision Events home"><img src="assets/logo-horiz-ON-DARK.png" alt="360 Vision Events"></a>
+    <nav class="nav" aria-label="Main"><a href="#" class="nav-link" aria-current="page">Work</a><a href="#" class="nav-link">Portfolio</a><a href="#" class="nav-link">Services</a><a href="#" class="nav-link">Insights</a><a href="#" class="nav-link">Book a date</a><a href="#" class="nav-link">Plan</a><a href="#" class="nav-link">About</a><a href="#" class="nav-link">Contact</a></nav>
+    <div class="header-actions">
+      <a href="#" class="btn btn-primary btn-sm header-cta">Send a brief</a>
+      <button type="button" class="menu-toggle" aria-label="Open menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="container hero">
+    <p class="eyebrow eyebrow-display">Corporate &amp; Brand Event Production</p>
+    <h1 class="h1-display">ONE team. ONE Concept. ONE Event. <span class="accent">ONE Invoice.</span></h1>
+    <p class="lead">Lead paragraph slot — text-lg in color.text-muted, max-width 42rem.</p>
+    <div class="stack" style="gap:var(--space-6)">
+      <a href="#" class="btn btn-primary btn-lg">WhatsApp the floor team</a>
+      <a href="#" class="link-arrow link-hero group">Send a brief<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+    </div>
+  </section>
+
+  <section class="doc container">
+    <p class="doc-label">Colour</p>
+    <h2 class="doc-title">Tokens</h2>
+    <p class="doc-note">All color.* tokens from tokens.json. Hatched swatches are absent: the site declares no such colour.</p>
+    <div class="grid grid-2 grid-4"><figure class="swatch"><div class="chip" style="background:var(--color-bg)"></div><figcaption><code>color.bg</code><span>#0b0b0c</span><span class="muted">observed</span></figcaption></figure>
+<figure class="swatch"><div class="chip" style="background:var(--color-surface)"></div><figcaption><code>color.surface</code><span>#1a1a1c</span><span class="muted">observed</span></figcaption></figure>
+<figure class="swatch"><div class="chip" style="background:var(--color-surface-2)"></div><figcaption><code>color.surface-2</code><span>#242426</span><span class="muted">observed</span></figcaption></figure>
+<figure class="swatch"><div class="chip" style="background:var(--color-surface-2-hover)"></div><figcaption><code>color.surface-2-hover</code><span>color-mix(in oklab, #242426 80%, transparent)</span><span class="muted">observed</span></figcaption></figure>
+<figure class="swatch"><div class="chip" style="background:var(--color-text)"></div><figcaption><code>color.text</code><span>#f5f5f4</span><span class="muted">observed</span></figcaption></figure>
+<figure class="swatch"><div class="chip" style="background:var(--color-text-muted)"></div><figcaption><code>color.text-muted</code><span>#8a8a8e</span><span class="muted">observed</span></figcaption></figure>
+<figure class="swatch"><div class="chip" style="background:var(--color-brand)"></div><figcaption><code>color.brand</code><span>#ff4000</span><span class="muted">observed</span></figcaption></figure>
+<figure class="swatch"><div class="chip" style="background:var(--color-brand-hover)"></div><figcaption><code>color.brand-hover</code><span>color-mix(in oklab, #ff4000 90%, transparent)</span><span class="muted">observed</span></figcaption></figure>
+<figure class="swatch"><div class="chip" style="background:var(--color-brand-border)"></div><figcaption><code>color.brand-border</code><span>color-mix(in oklab, #ff4000 35%, transparent)</span><span class="muted">observed</span></figcaption></figure>
+<figure class="swatch"><div class="chip" style="background:var(--color-brand-border-hover)"></div><figcaption><code>color.brand-border-hover</code><span>color-mix(in oklab, #ff4000 45%, transparent)</span><span class="muted">observed</span></figcaption></figure>
+<figure class="swatch"><div class="chip" style="background:var(--color-accent)"></div><figcaption><code>color.accent</code><span>#ff4000</span><span class="muted">observed</span></figcaption></figure>
+<figure class="swatch"><div class="chip" style="background:var(--color-on-brand)"></div><figcaption><code>color.on-brand</code><span>#0b0b0c</span><span class="muted">observed</span></figcaption></figure>
+<figure class="swatch"><div class="chip" style="background:var(--color-bg-overlay)"></div><figcaption><code>color.bg-overlay</code><span>color-mix(in oklab, #0b0b0c 80%, transparent)</span><span class="muted">observed</span></figcaption></figure>
+<figure class="swatch"><div class="chip" style="background:var(--color-border)"></div><figcaption><code>color.border</code><span>oklch(100% 0 0/.12)</span><span class="muted">observed</span></figcaption></figure>
+<figure class="swatch"><div class="chip" style="background:var(--color-input)"></div><figcaption><code>color.input</code><span>oklch(100% 0 0/.16)</span><span class="muted">observed</span></figcaption></figure>
+<figure class="swatch"><div class="chip" style="background:var(--color-ring)"></div><figcaption><code>color.ring</code><span>#ff4000</span><span class="muted">observed</span></figcaption></figure>
+<figure class="swatch"><div class="chip" style="background:var(--color-destructive)"></div><figcaption><code>color.destructive</code><span>oklch(60% .22 25)</span><span class="muted">observed</span></figcaption></figure>
+<figure class="swatch"><div class="chip" style="background:var(--color-on-destructive)"></div><figcaption><code>color.on-destructive</code><span>#fff</span><span class="muted">observed</span></figcaption></figure>
+<figure class="swatch absent"><div class="chip" style="background:transparent"></div><figcaption><code>color.success</code><span>absent</span><span class="muted">absent</span></figcaption></figure>
+<figure class="swatch absent"><div class="chip" style="background:transparent"></div><figcaption><code>color.warning</code><span>absent</span><span class="muted">absent</span></figcaption></figure>
+<figure class="swatch absent"><div class="chip" style="background:transparent"></div><figcaption><code>color.info</code><span>absent</span><span class="muted">absent</span></figcaption></figure></div>
+  </section>
+
+  <section class="doc container">
+    <p class="doc-label">Typography</p>
+    <h2 class="doc-title">Families and scale</h2>
+    <p class="doc-note">Three rendered families; sizes paired with their observed line heights. Sample text is the /contact h1.</p>
+    <div style="margin-top:var(--space-10)"><div class="family"><span class="type-meta"><code>font.family.display</code> &quot;Space Grotesk&quot;, &quot;Helvetica Neue&quot;, sans-serif</span><span style="font-family:var(--font-family-display);font-size:var(--font-size-2xl);line-height:var(--font-line-height-2xl);font-weight:var(--font-weight-bold)">ONE team. ONE Concept. ONE Event. ONE Invoice.</span></div>
+<div class="family"><span class="type-meta"><code>font.family.body</code> &quot;Inter Tight&quot;, system-ui, sans-serif</span><span style="font-family:var(--font-family-body);font-size:var(--font-size-2xl);line-height:var(--font-line-height-2xl);font-weight:var(--font-weight-bold)">ONE team. ONE Concept. ONE Event. ONE Invoice.</span></div>
+<div class="family"><span class="type-meta"><code>font.family.clean</code> Inter,system-ui,sans-serif</span><span style="font-family:var(--font-family-clean);font-size:var(--font-size-2xl);line-height:var(--font-line-height-2xl);font-weight:var(--font-weight-bold)">ONE team. ONE Concept. ONE Event. ONE Invoice.</span></div></div>
+    <div style="margin-top:var(--space-10)"><div class="type-row"><span class="type-meta"><code>font.size.xs</code> .75rem</span><span class="type-sample" style="font-size:var(--font-size-xs);line-height:var(--font-line-height-xs)">Brief the floor team.</span></div>
+<div class="type-row"><span class="type-meta"><code>font.size.sm</code> .875rem</span><span class="type-sample" style="font-size:var(--font-size-sm);line-height:var(--font-line-height-sm)">Brief the floor team.</span></div>
+<div class="type-row"><span class="type-meta"><code>font.size.base</code> 1rem</span><span class="type-sample" style="font-size:var(--font-size-base);line-height:var(--font-line-height-base)">Brief the floor team.</span></div>
+<div class="type-row"><span class="type-meta"><code>font.size.lg</code> 1.125rem</span><span class="type-sample" style="font-size:var(--font-size-lg);line-height:var(--font-line-height-lg)">Brief the floor team.</span></div>
+<div class="type-row"><span class="type-meta"><code>font.size.xl</code> 1.25rem</span><span class="type-sample" style="font-size:var(--font-size-xl);line-height:var(--font-line-height-xl)">Brief the floor team.</span></div>
+<div class="type-row"><span class="type-meta"><code>font.size.2xl</code> 1.5rem</span><span class="type-sample" style="font-size:var(--font-size-2xl);line-height:var(--font-line-height-2xl)">Brief the floor team.</span></div>
+<div class="type-row"><span class="type-meta"><code>font.size.3xl</code> 1.875rem</span><span class="type-sample" style="font-size:var(--font-size-3xl);line-height:var(--font-line-height-3xl)">Brief the floor team.</span></div>
+<div class="type-row"><span class="type-meta"><code>font.size.4xl</code> 2.25rem</span><span class="type-sample" style="font-size:var(--font-size-4xl);line-height:var(--font-line-height-4xl)">Brief the floor team.</span></div>
+<div class="type-row"><span class="type-meta"><code>font.size.5xl</code> 3rem</span><span class="type-sample" style="font-size:var(--font-size-5xl);line-height:var(--font-line-height-5xl)">Brief the floor team.</span></div>
+<div class="type-row"><span class="type-meta"><code>font.size.6xl</code> 3.75rem</span><span class="type-sample" style="font-size:var(--font-size-6xl);line-height:var(--font-line-height-6xl)">Brief the floor team.</span></div>
+<div class="type-row"><span class="type-meta"><code>font.size.7xl</code> 4.5rem</span><span class="type-sample" style="font-size:var(--font-size-7xl);line-height:var(--font-line-height-7xl)">Brief the floor team.</span></div></div>
+  </section>
+
+  <section class="doc container">
+    <p class="doc-label">Spacing, radius and shadow</p>
+    <h2 class="doc-title">Scale</h2>
+    <p class="doc-note">The 18 spacing multipliers used on the site, the radius steps derived from --radius, and the two shadows plus the focus ring.</p>
+    <div class="grid" style="gap:var(--space-2)"><div class="space-row"><code>space.1</code><span class="bar" style="width:var(--space-1)"></span><span class="muted">.25rem</span></div>
+<div class="space-row"><code>space.1-5</code><span class="bar" style="width:var(--space-1-5)"></span><span class="muted">.375rem</span></div>
+<div class="space-row"><code>space.2</code><span class="bar" style="width:var(--space-2)"></span><span class="muted">.5rem</span></div>
+<div class="space-row"><code>space.2-5</code><span class="bar" style="width:var(--space-2-5)"></span><span class="muted">.625rem</span></div>
+<div class="space-row"><code>space.3</code><span class="bar" style="width:var(--space-3)"></span><span class="muted">.75rem</span></div>
+<div class="space-row"><code>space.4</code><span class="bar" style="width:var(--space-4)"></span><span class="muted">1rem</span></div>
+<div class="space-row"><code>space.5</code><span class="bar" style="width:var(--space-5)"></span><span class="muted">1.25rem</span></div>
+<div class="space-row"><code>space.6</code><span class="bar" style="width:var(--space-6)"></span><span class="muted">1.5rem</span></div>
+<div class="space-row"><code>space.7</code><span class="bar" style="width:var(--space-7)"></span><span class="muted">1.75rem</span></div>
+<div class="space-row"><code>space.8</code><span class="bar" style="width:var(--space-8)"></span><span class="muted">2rem</span></div>
+<div class="space-row"><code>space.9</code><span class="bar" style="width:var(--space-9)"></span><span class="muted">2.25rem</span></div>
+<div class="space-row"><code>space.10</code><span class="bar" style="width:var(--space-10)"></span><span class="muted">2.5rem</span></div>
+<div class="space-row"><code>space.14</code><span class="bar" style="width:var(--space-14)"></span><span class="muted">3.5rem</span></div>
+<div class="space-row"><code>space.16</code><span class="bar" style="width:var(--space-16)"></span><span class="muted">4rem</span></div>
+<div class="space-row"><code>space.20</code><span class="bar" style="width:var(--space-20)"></span><span class="muted">5rem</span></div>
+<div class="space-row"><code>space.24</code><span class="bar" style="width:var(--space-24)"></span><span class="muted">6rem</span></div>
+<div class="space-row"><code>space.28</code><span class="bar" style="width:var(--space-28)"></span><span class="muted">7rem</span></div>
+<div class="space-row"><code>space.32</code><span class="bar" style="width:var(--space-32)"></span><span class="muted">8rem</span></div></div>
+    <div class="grid grid-3"><figure class="radius"><div class="radius-box" style="border-radius:var(--radius-base)"></div><figcaption><code>radius.base</code><span class="muted">.5rem</span></figcaption></figure>
+<figure class="radius"><div class="radius-box" style="border-radius:var(--radius-sm)"></div><figcaption><code>radius.sm</code><span class="muted">calc(.5rem - 4px)</span></figcaption></figure>
+<figure class="radius"><div class="radius-box" style="border-radius:var(--radius-md)"></div><figcaption><code>radius.md</code><span class="muted">calc(.5rem - 2px)</span></figcaption></figure>
+<figure class="radius"><div class="radius-box" style="border-radius:var(--radius-lg)"></div><figcaption><code>radius.lg</code><span class="muted">.5rem</span></figcaption></figure>
+<figure class="radius"><div class="radius-box" style="border-radius:var(--radius-xl)"></div><figcaption><code>radius.xl</code><span class="muted">calc(.5rem + 4px)</span></figcaption></figure>
+<figure class="radius"><div class="radius-box" style="border-radius:var(--radius-full)"></div><figcaption><code>radius.full</code><span class="muted">2147483647px</span></figcaption></figure></div>
+    <div class="grid grid-3"><figure class="radius"><div class="radius-box shadow-box" style="box-shadow:var(--shadow-sm)"></div><figcaption><code>shadow.sm</code></figcaption></figure>
+<figure class="radius"><div class="radius-box shadow-box" style="box-shadow:var(--shadow-lift)"></div><figcaption><code>shadow.lift</code></figcaption></figure>
+<figure class="radius"><div class="radius-box shadow-box" style="box-shadow:var(--shadow-focus-ring)"></div><figcaption><code>shadow.focus-ring</code></figcaption></figure></div>
+  </section>
+
+  <section class="doc container">
+    <p class="doc-label">Button</p>
+    <h2 class="doc-title">Variants and sizes</h2>
+    <p class="doc-note">Primary carries the main CTA, outline the alternative, secondary the form submit on /booking and /contact. Tab through to see the 1px orange focus ring.</p>
+    <div class="stack">
+      <a href="#" class="btn btn-primary btn-lg">WhatsApp the floor team →</a>
+      <a href="#" class="btn btn-primary btn-default">Send a brief</a>
+      <a href="#" class="btn btn-primary btn-sm">Send a brief</a>
+      <a href="#" class="btn btn-primary btn-xl"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-mr" aria-hidden="true"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path></svg>WhatsApp the floor team</a>
+    </div>
+    <div class="stack">
+      <a href="#" class="btn btn-outline btn-lg">Plan my event</a>
+      <a href="#" class="btn btn-outline btn-default">Browse all production stills</a>
+      <a href="#" class="btn btn-outline btn-glass" style="padding-inline:var(--space-8)">Or leave a brief<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" aria-hidden="true"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg></a>
+      <button type="button" class="btn btn-secondary btn-lg">Request this date</button>
+      <button type="button" class="btn btn-outline btn-default btn-date"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" aria-hidden="true"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>Pick a date</button>
+      <button type="button" class="btn btn-primary btn-lg" disabled>Send a brief</button>
+    </div>
+  </section>
+
+  <section class="doc container">
+    <p class="doc-label">Eyebrows and headings</p>
+    <h2 class="doc-title">Labels</h2>
+    <div class="grid" style="gap:var(--space-6)">
+      <div><p class="eyebrow eyebrow-display">Clients we have delivered for</p></div>
+      <div><p class="eyebrow eyebrow-clean">Work / proof-led production</p></div>
+      <div><p class="eyebrow eyebrow-section">Selected work</p></div>
+      <div><p class="eyebrow eyebrow-muted">Ready when the brief is real</p></div>
+      <div><p class="kicker">Nedbank</p></div>
+      <ul class="pills"><li class="pill">Africity</li><li class="pill">Sasol</li><li class="pill">Nedbank</li><li class="pill">Orlando Pirates</li><li class="pill">ABSA</li><li class="pill">Toyota</li></ul>
+      <div class="stack" style="margin-top:0;gap:var(--space-2)"><a href="#" class="chip-filter is-active" aria-current="page">All clients</a><a href="#" class="chip-filter">Nedbank</a><a href="#" class="chip-filter">Sasol</a><a href="#" class="chip-filter">Africity</a><a href="#" class="chip-filter">Orlando Pirates</a></div>
+    </div>
+  </section>
+
+  <section class="doc container">
+    <p class="doc-label">Card</p>
+    <h2 class="doc-title">Card types</h2>
+    <p class="doc-note">Hover the lift cards: a 6px rise, the orange glow and a 45% orange border over .3s. Body slots describe the role instead of copying case text.</p>
+    <div class="grid grid-2">
+      <a href="#" class="card card-lift case-card"><div class="body"><p class="kicker">Africity</p><h3 class="case-title">Africity Summit</h3><span class="cta-text">View case study →</span></div></a>
+      <a href="#" class="card card-lift teaser"><p class="kicker-display">Sasol</p><h3>Sasol Leadership</h3><p class="card-body">Card body slot — text-sm, color.text-muted.</p><span class="link-arrow">View work<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span></a>
+      <article class="card support"><h3>Venue selection</h3><p class="card-body" style="margin-top:var(--space-2)">Supporting-service body slot — no hover, radius.md.</p></article>
+      <article class="card concept"><div class="media"><span class="badge">CONCEPT · MOCK</span></div><div class="body"><h3 style="font-family:var(--font-family-clean);font-size:var(--font-size-xl);line-height:var(--font-line-height-xl);font-weight:var(--font-weight-semibold)">Corporate stage + LED</h3><a href="#" class="link-arrow">Talk through this look<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div></article>
+    </div>
+  </section>
+
+  <section class="doc container">
+    <p class="doc-label">Form</p>
+    <h2 class="doc-title">Controls</h2>
+    <p class="doc-note">The /contact pattern: a secondary submit beside a primary WhatsApp link. Error, helper and required states are not shown because the site's markup has none.</p>
+    <div class="card form-panel form-wrap">
+      <form class="form" onsubmit="return false">
+        <div class="row-2">
+          <div class="field"><label class="label" for="f-company">Company</label><input class="input" id="f-company" placeholder="Company name"></div>
+          <div class="field"><label class="label" for="f-email">Email</label><input class="input" id="f-email" type="email" placeholder="you@company.co.za"></div>
+        </div>
+        <div class="field"><label class="label" for="f-need">What do you need?</label><button type="button" id="f-need" class="select" role="combobox" aria-expanded="false"><span class="placeholder"></span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div>
+        <div class="field"><label class="label" for="f-budget">Budget range</label><button type="button" id="f-budget" class="select" role="combobox" aria-expanded="false"><span class="placeholder">Choose a range</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div>
+        <div class="field"><label class="label" for="f-brief">Event brief</label><textarea class="textarea" id="f-brief" rows="6" placeholder="Conference for 400 delegates in Sandton, March, two days, full AV."></textarea></div>
+        <div class="submit-row">
+          <button type="submit" class="btn btn-secondary btn-lg">Send a brief</button>
+          <a href="#" class="btn btn-primary btn-lg">WhatsApp instead<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="doc container">
+    <p class="doc-label">CTA band</p>
+    <h2 class="doc-title">Surface and tint</h2>
+    <div class="grid">
+      <div class="cta-band"><div><p class="eyebrow eyebrow-muted">Ready when the brief is real</p><h2 class="h2-band">Want your floor in this portfolio?</h2><p class="body">Body slot — text-sm, color.text-muted.</p></div>
+        <div class="cta-actions"><a href="#" class="btn btn-primary btn-lg">WhatsApp the floor team →</a><a href="#" class="btn btn-outline btn-lg">Send a brief</a></div></div>
+      <div class="cta-band tint"><div><p class="eyebrow eyebrow-muted eyebrow-muted-display">Ready when the brief is real</p><h2 class="h2-section">Need one crew to take the idea to the floor?</h2><p class="body">Body slot — text-sm, leading-relaxed, color.text-muted.</p></div>
+        <div class="cta-actions"><a href="#" class="btn btn-primary btn-lg">WhatsApp the floor team</a><a href="#" class="btn btn-outline btn-lg">Send a brief</a></div></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container grid-f">
+    <div><p class="name">360 Vision Events</p><p>Address and contact lines withheld in this preview (D16).</p></div>
+    <div class="right links"><p class="name-legal">360 Vision Events (PTY) Ltd trading as 360 Vision Events</p><p style="margin-top:var(--space-4)">Corporate and brand events across South Africa. Based in Gauteng. Working nationwide.</p><a href="#" style="margin-top:var(--space-2);display:inline-block">About</a> · <a href="#">LinkedIn</a> · <a href="#">Press</a> · <a href="#">Privacy</a></div>
+  </div>
+</footer>
+
+<a href="#" class="fab" aria-label="Chat with 360 Vision Events on WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" aria-hidden="true"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path></svg><span>WhatsApp us</span></a>
+</body>
+</html>

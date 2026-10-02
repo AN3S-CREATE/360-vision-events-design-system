@@ -1,0 +1,145 @@
+/*
+ * 360 Vision Events — design tokens (CSS custom properties)
+ * Mirrors tokens.json one-for-one: --<token path with '.' -> '-'>. Generated 2026-10-02T08:54:26Z.
+ * Source: https://360visionevents.co.za (302) -> https://360-vision-events.co.za/ ; stylesheet https://360-vision-events.co.za/assets/styles-BQycqoql.css
+ * Every value is observed on the live site unless marked otherwise; absent tokens are declared
+ * as `initial` (guaranteed-invalid) so the name exists without inventing a value. Audit: evidence.json.
+ * Colour mode: dark — the only mode the site declares; a light mode is absent and is not invented here.
+ */
+:root {
+
+  /* Colour */
+  --color-bg: #0b0b0c; /* observed · col-001, col-033 */
+  --color-surface: #1a1a1c; /* observed · col-003, col-005 */
+  --color-surface-2: #242426; /* observed · col-004, col-011 */
+  --color-surface-2-hover: color-mix(in oklab, #242426 80%, transparent); /* observed · col-086, col-011 */
+  --color-text: #f5f5f4; /* observed · col-002, col-006 */
+  --color-text-muted: #8a8a8e; /* observed · col-014, col-063 */
+  --color-brand: #ff4000; /* observed · col-009, col-064 */
+  --color-brand-hover: color-mix(in oklab, #ff4000 90%, transparent); /* observed · col-085, col-009 */
+  --color-brand-border: color-mix(in oklab, #ff4000 35%, transparent); /* observed · col-075, col-009 */
+  --color-brand-border-hover: color-mix(in oklab, #ff4000 45%, transparent); /* observed · col-101, cmp-card-17 */
+  --color-accent: #ff4000; /* observed · col-015, col-087 */
+  --color-on-brand: #0b0b0c; /* observed · col-010, col-016 */
+  --color-bg-overlay: color-mix(in oklab, #0b0b0c 80%, transparent); /* observed · col-046, col-001 */
+  --color-border: oklch(100% 0 0/.12); /* observed · col-019, col-032 */
+  --color-input: oklch(100% 0 0/.16); /* observed · col-020, col-072 */
+  --color-ring: #ff4000; /* observed · col-021, col-080 */
+  --color-destructive: oklch(60% .22 25); /* observed · col-017, col-059 */
+  --color-on-destructive: #fff; /* observed · col-018 */
+  --color-success: initial; /* absent — not declared or used on the site · col-133 */
+  --color-warning: initial; /* absent — not declared or used on the site · col-134 */
+  --color-info: initial; /* absent — not declared or used on the site · col-135 */
+
+  /* Typography */
+  --font-family-display: "Space Grotesk", "Helvetica Neue", sans-serif; /* observed · typ-02, typ-07 */
+  --font-family-body: "Inter Tight", system-ui, sans-serif; /* observed · typ-01, typ-04 */
+  --font-family-clean: Inter,system-ui,sans-serif; /* observed · typ-09, typ-17 */
+  --font-size-2xs: .68rem; /* observed · typ-34 */
+  --font-size-xs: .75rem; /* observed · typ-23, orc-03 */
+  --font-size-sm: .875rem; /* observed · typ-24, orc-03 */
+  --font-size-base: 1rem; /* observed · typ-25, orc-03 */
+  --font-size-lg: 1.125rem; /* observed · typ-26, orc-03 */
+  --font-size-xl: 1.25rem; /* observed · typ-27, orc-03 */
+  --font-size-2xl: 1.5rem; /* observed · typ-28, orc-03 */
+  --font-size-3xl: 1.875rem; /* observed · typ-29, orc-03 */
+  --font-size-4xl: 2.25rem; /* observed · typ-30, orc-03 */
+  --font-size-5xl: 3rem; /* observed · typ-31, orc-03 */
+  --font-size-6xl: 3.75rem; /* observed · typ-32, orc-03 */
+  --font-size-7xl: 4.5rem; /* observed · typ-33, orc-03 */
+  --font-line-height-xs: 1.333333; /* observed · typ-23 */
+  --font-line-height-sm: 1.428571; /* observed · typ-24 */
+  --font-line-height-base: 1.5; /* observed · typ-25 */
+  --font-line-height-lg: 1.555556; /* observed · typ-26 */
+  --font-line-height-xl: 1.4; /* observed · typ-27 */
+  --font-line-height-2xl: 1.333333; /* observed · typ-28 */
+  --font-line-height-3xl: 1.2; /* observed · typ-29 */
+  --font-line-height-4xl: 1.111111; /* observed · typ-30 */
+  --font-line-height-5xl: 1; /* observed · typ-31 */
+  --font-line-height-6xl: 1; /* observed · typ-32 */
+  --font-line-height-7xl: 1; /* observed · typ-33 */
+  --font-leading-display: 0.95; /* observed · typ-57 */
+  --font-leading-none: 1; /* observed · typ-58 */
+  --font-leading-tight: 1.25; /* observed · typ-59 */
+  --font-leading-snug: 1.375; /* observed · typ-60 */
+  --font-leading-normal: 1.5; /* observed · typ-56 */
+  --font-leading-relaxed: 1.625; /* observed · typ-61 */
+  --font-weight-regular: 400; /* observed · typ-38, typ-38 */
+  --font-weight-medium: 500; /* observed · typ-39, typ-38 */
+  --font-weight-semibold: 600; /* observed · typ-40, typ-38 */
+  --font-weight-bold: 700; /* observed · typ-41, typ-38 */
+  --font-tracking-heading: -.03em; /* observed · typ-45, typ-07 */
+  --font-tracking-caps-12: .12em; /* observed · typ-46 */
+  --font-tracking-caps-16: .16em; /* observed · typ-47 */
+  --font-tracking-caps-18: .18em; /* observed · typ-48 */
+  --font-tracking-caps-20: .2em; /* observed · typ-49 */
+  --font-tracking-caps-22: .22em; /* observed · typ-50 */
+  --font-tracking-caps-25: .25em; /* observed · typ-51 */
+  --font-tracking-caps-35: .35em; /* observed · typ-52 */
+
+  /* Spacing */
+  --space-unit: .25rem; /* observed · spc-01, spc-02 */
+  --space-1: .25rem; /* observed · spc-04, spc-01 */
+  --space-1-5: .375rem; /* observed · spc-04, spc-01 */
+  --space-2: .5rem; /* observed · spc-04, spc-01 */
+  --space-2-5: .625rem; /* observed · spc-04, spc-01 */
+  --space-3: .75rem; /* observed · spc-04, spc-01 */
+  --space-4: 1rem; /* observed · spc-04, spc-01 */
+  --space-5: 1.25rem; /* observed · spc-04, spc-01 */
+  --space-6: 1.5rem; /* observed · spc-04, spc-01 */
+  --space-7: 1.75rem; /* observed · spc-04, spc-01 */
+  --space-8: 2rem; /* observed · spc-04, spc-01 */
+  --space-9: 2.25rem; /* observed · spc-04, spc-01 */
+  --space-10: 2.5rem; /* observed · spc-04, spc-01 */
+  --space-14: 3.5rem; /* observed · spc-04, spc-01 */
+  --space-16: 4rem; /* observed · spc-04, spc-01 */
+  --space-20: 5rem; /* observed · spc-04, spc-01 */
+  --space-24: 6rem; /* observed · spc-04, spc-01 */
+  --space-28: 7rem; /* observed · spc-04, spc-01 */
+  --space-32: 8rem; /* observed · spc-04, spc-01 */
+
+  /* Layout */
+  --size-container: 72rem; /* observed · spc-21, spc-20 */
+  --size-gutter: 1.25rem; /* observed · spc-22 */
+  --size-header-height: 4rem; /* observed · spc-27 */
+  --size-icon: 1rem; /* observed · space-miss-01 */
+
+  /* Breakpoints */
+  --breakpoint-sm: 40rem; /* observed · spc-31 */
+  --breakpoint-md: 48rem; /* observed · spc-32 */
+  --breakpoint-lg: 64rem; /* observed · spc-33 */
+
+  /* Layering */
+  --z-header: 40; /* observed · spc-114 */
+  --z-floating: 50; /* observed · spc-114 */
+
+  /* Blur */
+  --blur-header: 24px; /* observed · spc-110 */
+  --blur-glass: 8px; /* observed · spc-111 */
+
+  /* Radius */
+  --radius-base: .5rem; /* observed · spc-50 */
+  --radius-sm: calc(.5rem - 4px); /* observed · spc-56, spc-50 */
+  --radius-md: calc(.5rem - 2px); /* observed · spc-53, spc-50 */
+  --radius-lg: .5rem; /* observed · spc-54, spc-50 */
+  --radius-xl: calc(.5rem + 4px); /* observed · spc-55, spc-50 */
+  --radius-full: 2147483647px; /* observed · spc-52 */
+
+  /* Shadow and focus */
+  --shadow-sm: 0 1px 3px 0 #0000001a, 0 1px 2px -1px #0000001a; /* observed · spc-64, spc-65 */
+  --shadow-lift: 0 24px 60px -24px color-mix(in oklab, #ff4000 35%, transparent); /* observed · col-026, col-025 */
+  --shadow-focus-ring: 0 0 0 1px #ff4000; /* observed · spc-67, col-080 */
+
+  /* Gradients */
+  --gradient-scrim: linear-gradient(0deg,#0b0b0c,transparent); /* observed · col-105, col-001 */
+  --gradient-cta-tint: linear-gradient(110deg,color-mix(in oklab,#ff4000 14%,#1a1a1c),#1a1a1c 56%); /* observed · col-106, col-009 */
+
+  /* Motion */
+  --motion-duration-fast: .15s; /* observed · spc-80, spc-90 */
+  --motion-duration-base: .3s; /* observed · spc-82, spc-88 */
+  --motion-duration-slow: .5s; /* observed · spc-87 */
+  --motion-duration-reveal: .7s; /* observed · spc-86 */
+  --motion-easing-standard: cubic-bezier(0.4, 0, 0.2, 1); /* observed · spc-80 */
+  --motion-easing-out: cubic-bezier(0, 0, 0.2, 1); /* observed · spc-81, spc-89 */
+  --motion-easing-smooth: cubic-bezier(0.22, 1, 0.36, 1); /* observed · spc-82 */
+}

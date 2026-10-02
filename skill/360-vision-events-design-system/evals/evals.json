@@ -1,0 +1,51 @@
+{
+  "skill_name": "360-vision-events-design-system",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I'm putting together a page for our corporate year-end gala packages at 360 Vision Events. Can you build me a single self-contained HTML file with a hero, three short feature cards (planning, AV, d\u00e9cor) and a closing call-to-action? Keep it on brand.",
+      "expected_output": "index.html on the dark canvas with brand orange CTAs, Space Grotesk/Inter Tight, surface cards with hairline borders, on-brand copy.",
+      "files": [],
+      "assertions": [
+        "Page background is the brand canvas #0b0b0c (directly or via a token)",
+        "Brand orange #ff4000 is used for the primary call-to-action",
+        "Text on orange buttons is dark (#0b0b0c), not white",
+        "Headings use Space Grotesk and body text uses Inter Tight",
+        "No off-palette colours or light theme are introduced (no extra hues such as blue/green/purple, no white page background)",
+        "Feature cards use the surface #1a1a1c with a 1px translucent white border",
+        "CTA labels are sentence-case imperatives and the page contains no exclamation marks",
+        "No invented metrics, testimonials, guest counts, awards or prices"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Write a short LinkedIn post and a matching client email announcing that 360 Vision Events now offers full AV and LED wall packages for product launches in Gauteng. Keep it in our brand voice.",
+      "expected_output": "copy.md with a LinkedIn post and an email in the staccato, floor-focused, WhatsApp-first brand voice.",
+      "files": [],
+      "assertions": [
+        "Uses the brand name '360 Vision Events' exactly",
+        "Contains no exclamation marks",
+        "Uses UK/SA spelling (no US forms such as color, center, organize, program meaning programme)",
+        "Includes a WhatsApp-first or 'Send a brief' style call to action",
+        "Uses short staccato statements ending in full stops in headlines/hooks",
+        "Uses the brand's core vocabulary (e.g. 'floor', 'brief', 'production path' or the ONE team mantra)",
+        "No invented metrics, testimonials, prices or client claims",
+        "Does not include personal phone numbers or street addresses (generic info@ or a marked placeholder only)"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "We're starting a small internal booking dashboard for 360 Vision Events in Next.js with Tailwind v4 and shadcn/ui. Give me the globals.css theme setup so it matches our brand, plus a primary and an outline button example.",
+      "expected_output": "globals.css with the site's :root variables and a Tailwind v4 theme mapping, plus a button example.",
+      "files": [],
+      "assertions": [
+        "--primary is #ff4000 and --primary-foreground is #0b0b0c",
+        "--background is #0b0b0c, --foreground #f5f5f4, --card #1a1a1c and --muted-foreground #8a8a8e",
+        "--radius is .5rem (0.5rem)",
+        "Fonts are Inter Tight for body/sans and Space Grotesk for display/headings",
+        "Does not invent a light-mode brand palette (dark-only, or explicitly flags light mode as not part of the brand)",
+        "Outline button hover uses the brand orange (accent = #ff4000) rather than a grey/neutral accent"
+      ]
+    }
+  ]
+}
