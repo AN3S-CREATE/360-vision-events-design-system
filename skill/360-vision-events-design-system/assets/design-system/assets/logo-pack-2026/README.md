@@ -20,4 +20,24 @@ Every file is a 2000×2000 RGB PNG on a solid background (**not transparent**): 
 
 **Orange varies between files.** The values range from `#e22500` (P05) to `#ff3e00` (P12), and the wordmark "360" is `#f14624` (P09). The website's CSS and its served logo both use `#ff4000`, which stays the UI brand colour (`--color-brand`). P12 (`#ff3e00`) is the closest match. Aligning the pack to one orange is an open decision for the brand owner (see DESIGN.md §9).
 
-For web UI on the dark canvas, the transparent `../logo-horiz-ON-DARK.png` (exactly `#ff4000`) is the safest choice. Use the pack for print, social and partner material, picking ON-DARK or ON-LIGHT to match the ground. Don't recolour, redraw or trace the marks; no SVG exists.
+## SVG versions (`svg/`)
+
+The brand owner supplied five ON-LIGHT SVGs on 2026-10-02. All are transparent (no background) and contain no scripts or external links.
+
+| File | Type | Vector fills | Embedded bitmap |
+|---|---|---|---|
+| `svg/p09-wordmark-360vision-on-light.svg` | **fully vector** | `#ff4000` "360", `#000000` VISION, `#828282` EVENTS | none |
+| `svg/p03-primary-horizontal-divider-on-light.svg` | hybrid | `#ff4000` "360", `#000000` VISION, `#737373` EVENTS | ring 407×376 (≈`#ff502b`), divider 32×345 |
+| `svg/p05-primary-horizontal-divider-on-light.svg` | hybrid | same as P03 | ring 438×407 (≈`#ff5636`), divider 64×345 |
+| `svg/p06-stacked-full-colour-on-light.svg` | hybrid | same as P03 | ring 595×594 (≈`#ff502b`) |
+| `svg/p07-mark-360-on-light.svg` | hybrid | `#ff4000` "360" | ring 845×845 (≈`#ff4e23`) |
+
+What this means:
+- **The SVG lettering matches the site exactly.** The "360" is `#ff4000` in every SVG, which the PNGs are not.
+- **The P09 wordmark is the only fully scalable file.** The other four draw the aperture ring (and the divider) as a masked bitmap of 400–850 px. Those parts won't stay sharp when enlarged, and the ring is slightly lighter than the "360" beside it.
+- **The two greys differ.** "EVENTS" is `#737373` in P03/P05/P06 and `#828282` in P09.
+- **Missing versions.** There are no SVGs for the ON-DARK versions or for P12.
+
+Asking the designer for a fully vector ring in `#ff4000` would make every mark scalable and consistent.
+
+For web UI on the dark canvas, the transparent `../logo-horiz-ON-DARK.png` (exactly `#ff4000`) is the safest choice. Use the pack for print, social and partner material, picking ON-DARK or ON-LIGHT to match the ground. For a scalable file on a light ground, use the SVGs in `svg/`: P09 is fully vector, the others keep a bitmap ring. Don't recolour, redraw or trace the marks.

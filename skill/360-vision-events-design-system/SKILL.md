@@ -7,7 +7,7 @@ description: The 360 Vision Events brand design system. It was read from the liv
 
 This skill holds the 360 Vision Events (South African corporate and brand event production) design system. It was extracted from the live website and records only what the site actually shows. Every value traces to the site's own CSS or markup. Where the site has no answer, the system says so rather than guessing.
 
-That's the most important thing to carry into your work. **Build with what is here, and name gaps instead of inventing brand.** For example, the brand has no light theme, no success/warning colours and no SVG logo. If a task needs one of these, use the closest observed pattern and tell the user it's a gap they may want to decide on.
+That's the most important thing to carry into your work. **Build with what is here, and name gaps instead of inventing brand.** For example, the brand has no light theme, no success/warning colours, and only one fully vector logo (the P09 wordmark, ON-LIGHT); there are no ON-DARK SVGs. If a task needs one of these, use the closest observed pattern and tell the user it's a gap they may want to decide on.
 
 ## What's bundled
 
@@ -19,6 +19,7 @@ That's the most important thing to carry into your work. **Build with what is he
 | Design-token tooling (Figma Tokens, Style Dictionary) | `assets/design-system/tokens.json` (DTCG format) |
 | Logo for web UI on the dark canvas | `assets/design-system/assets/logo-horiz-ON-DARK.png`: the site's own header logo. It is 1176×452, transparent, and its orange is exactly `#ff4000` |
 | Official logo pack (print, social, decks, light backgrounds) | `assets/design-system/assets/logo-pack-2026/`: 11 PNGs, with ON-DARK and ON-LIGHT versions of P03/P05/P12 horizontal (P12 is ON-DARK only), P06 stacked, P07 mark and P09 360VISION wordmark. Its `README.md` maps the files |
+| Scalable / vector logo (light backgrounds) | `assets/design-system/assets/logo-pack-2026/svg/`: transparent SVGs in ON-LIGHT only. `p09-wordmark-360vision-on-light.svg` is fully vector, with "360" exactly `#ff4000`. P03/P05/P06/P07 have vector lettering but a bitmap aperture ring (400–850 px), so keep them at or below roughly that size |
 | Favicon / app icon | `assets/design-system/assets/favicon.png` (ring + "360"), or `p07-mark-360-*` from the pack |
 | Full rationale, class strings, quotes, gaps | `references/DESIGN.md`. Read the relevant section when you need more than the summary below |
 
@@ -125,7 +126,7 @@ The site's voice is short, confident and production-floor practical:
 - **No light theme**, and no success, warning or info colours.
 - **Form states not observed:** no error, helper, required or success styling was seen.
 - **No visible active nav state:** on the live site the active link renders muted because of CSS order. If the user wants one, propose it as a new decision.
-- **Logo:** no SVG.
+- **Logo:** only the P09 wordmark is fully vector. The P03/P05/P06/P07 SVGs use a bitmap ring that is slightly lighter (about `#ff4e23`–`#ff5636`) than their `#ff4000` lettering. "EVENTS" grey is `#737373` in those four and `#828282` in P09. There are no ON-DARK or P12 SVGs.
 - **Pack orange varies by file:** `#e22500` to `#ff3e00`, and the P09 wordmark is `#f14624`. The UI brand colour stays the site's `#ff4000`. When a design must match the orange in the logo, P12 (`#ff3e00`) is closest. Mention the inconsistency if it matters for the task.
 - **Font loading:** Space Grotesk 400/600 are used but not loaded (the browser substitutes 500/700). If you control font loading, requesting `Space+Grotesk:wght@400;500;600;700` is a reasonable fix to suggest, not something the site does today.
 - **Reduced motion:** no `prefers-reduced-motion` handling. Adding it in new work is fine; say you added it.
