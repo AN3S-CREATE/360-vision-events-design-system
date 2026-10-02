@@ -1,6 +1,6 @@
 {
  "schema": "360ve-design-evidence/1.0",
- "stamp": "2026-10-02T10:20:51Z",
+ "stamp": "2026-10-02T11:12:37Z",
  "status": "ok",
  "operator": "Claude Code (claude-opus-5-5), Workflow-orchestrated extraction",
  "start_url": "https://360visionevents.co.za",
@@ -14040,7 +14040,7 @@
   {
    "id": "D23",
    "topic": "logo SVG",
-   "choice": "Not produced. Only logo-horiz-ON-DARK.png is served; an SVG would require tracing or redrawing the mark.",
+   "choice": "Not produced by the extraction run. Only logo-horiz-ON-DARK.png is served; an SVG would require tracing or redrawing the mark. Scope: the site's logo only. The owner's own SVG files, supplied later, are recorded under D27; none was made here.",
    "rule": "Non-goal: do not redesign, rebrand or propose a new logo; do not invent.",
    "evidence_url": "https://360-vision-events.co.za/__l5e/assets-v1/d50c01a9-2e6f-4c29-ba47-e414fb6c8af0/logo-horiz-ON-DARK.png"
   },
@@ -16553,7 +16553,7 @@
       "role": "aperture ring"
      }
     ],
-    "type": "hybrid: vector lettering + masked bitmap ring/divider",
+    "type": "hybrid: vector lettering + masked bitmap ring",
     "background": "transparent"
    },
    {
@@ -16572,7 +16572,7 @@
       "role": "aperture ring"
      }
     ],
-    "type": "hybrid: vector lettering + masked bitmap ring/divider",
+    "type": "hybrid: vector lettering + masked bitmap ring",
     "background": "transparent"
    },
    {
@@ -16622,7 +16622,7 @@
   "not_produced": [
    {
     "item": "logo SVG copy",
-    "reason": "the site serves only a raster PNG; producing an SVG would mean tracing/redrawing the logo, which the brief rules out (D23). The PNG is copied byte-for-byte instead."
+    "reason": "the site serves only a raster PNG; producing an SVG would mean tracing/redrawing the logo, which the brief rules out (D23). The PNG is copied byte-for-byte instead. The owner later supplied their own SVGs (D27)."
    },
    {
     "item": "publishing / sharing link",
@@ -16663,32 +16663,32 @@
   },
   {
    "event": "token.inferred",
-   "at": "2026-10-02T10:20:51Z",
+   "at": "2026-10-02T11:12:37Z",
    "detail": "0 inferred tokens (see decision D13)"
   },
   {
    "event": "token.absent",
-   "at": "2026-10-02T10:20:51Z",
+   "at": "2026-10-02T11:12:37Z",
    "detail": "color.success"
   },
   {
    "event": "token.absent",
-   "at": "2026-10-02T10:20:51Z",
+   "at": "2026-10-02T11:12:37Z",
    "detail": "color.warning"
   },
   {
    "event": "token.absent",
-   "at": "2026-10-02T10:20:51Z",
+   "at": "2026-10-02T11:12:37Z",
    "detail": "color.info"
   },
   {
    "event": "write.done",
-   "at": "2026-10-02T10:20:58Z",
+   "at": "2026-10-02T11:13:00Z",
    "detail": "evidence.json, tokens.json, tokens.css, DESIGN.md"
   },
   {
    "event": "write.done",
-   "at": "2026-10-02T10:20:58Z",
+   "at": "2026-10-02T11:13:00Z",
    "detail": "optional extras: preview.html, assets/logo-horiz-ON-DARK.png, assets/favicon.png"
   }
  ]

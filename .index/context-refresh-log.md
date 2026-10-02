@@ -2,6 +2,7 @@
 
 | Date (UTC) | Scope | What changed | By |
 |---|---|---|---|
+| 2026-10-02 ~11:15 | Partial (PR #3 review fixes) | Addressed six Copilot review comments: D23 now says it covered only the site's logo, with the owner's SVGs under D27. The P06/P07 SVG records are typed "masked bitmap ring" (only P03/P05 have a divider layer). Both logo-pack README copies and the skill's SKILL.md no longer say no SVG exists. Inventory totals refreshed (59 files; skill 26; logo pack 17). Package rebuilt; skill re-bundled, reinstalled and repackaged | Claude Code session (Auto-fix) |
 | 2026-10-02 ~08:20 | Full (initial creation) | Index created after the design-system package and its optional extras existed. Inventory built from a file listing (14 files in 9 inventory rows: 4 package files, preview, 2 assets, launch config, 6 index files). Architecture and decisions read from `design-system/tokens.json`, `evidence.json` and `DESIGN.md` | Claude Code session (user-approved recommended setup) |
 | 2026-10-02 ~10:15 | Partial (logo SVGs) | Added the owner's five ON-LIGHT SVGs under `design-system/assets/logo-pack-2026/svg/` (D27) with a per-file analysis; package rebuilt; skill re-bundled. Inventory, decisions and README updated | Claude Code session |
 | 2026-10-02 ~09:12 | Partial (logo pack) | Added the owner's 11-file logo pack under `design-system/assets/logo-pack-2026/` (D26); package rebuilt; skill re-bundled, reinstalled and repackaged; Claude Design README updated. Inventory, decisions and README updated | Claude Code session |

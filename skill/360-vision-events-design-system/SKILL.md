@@ -7,7 +7,7 @@ description: The 360 Vision Events brand design system. It was read from the liv
 
 This skill holds the 360 Vision Events (South African corporate and brand event production) design system. It was extracted from the live website and records only what the site actually shows. Every value traces to the site's own CSS or markup. Where the site has no answer, the system says so rather than guessing.
 
-That's the most important thing to carry into your work. **Build with what is here, and name gaps instead of inventing brand.** For example, the brand has no light theme, no success/warning colours and no SVG logo. If a task needs one of these, use the closest observed pattern and tell the user it's a gap they may want to decide on.
+That's the most important thing to carry into your work. **Build with what is here, and name gaps instead of inventing brand.** For example, the brand has no light theme, no success/warning colours, and only one fully vector logo (the P09 wordmark, ON-LIGHT); there are no ON-DARK SVGs. If a task needs one of these, use the closest observed pattern and tell the user it's a gap they may want to decide on.
 
 ## What's bundled
 

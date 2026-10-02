@@ -1,6 +1,6 @@
 # File inventory
 
-Last verified: 2026-10-02, against the files on disk after the package rebuild stamped 08:35:51Z. Status values: `Active`, `Generated`, `Experimental`, `Deprecated`, `Dead`.
+Last verified: 2026-10-02, against the files on disk after the package rebuild stamped 11:12:37Z (PR #3 review fixes). Status values: `Active`, `Generated`, `Experimental`, `Deprecated`, `Dead`.
 
 | Path | Purpose | Key symbols / contents | Status |
 |---|---|---|---|
@@ -14,12 +14,12 @@ Last verified: 2026-10-02, against the files on disk after the package rebuild s
 | `design-system/assets/logo-pack-2026/` (11 PNG + README) | Official logo pack supplied by the brand owner (2026-10-02, D26) | P03/P05/P12 horizontal, P06 stacked, P07 mark, P09 wordmark; ON-DARK + ON-LIGHT (P12 dark only). 2000×2000 solid #000/#fff grounds; orange varies per file (#e22500–#ff3e00, wordmark #f14624). README maps files to their official names and sha256 is in evidence.json `brand_files` | Active (owner asset) |
 | `design-system/assets/logo-pack-2026/svg/` (5 SVG) | Owner-supplied ON-LIGHT SVGs (2026-10-02, D27) | P03/P05 horizontal, P06 stacked, P07 mark, P09 wordmark. Transparent, script-free; vector lettering `#ff4000`/`#000000`/grey (`#737373`, P09 `#828282`). P09 fully vector; others embed a masked bitmap ring (400–850 px, ≈#ff4e23–#ff5636). Analysis in evidence.json `brand_files.svg_files` | Active (owner asset) |
 | `README.md` | Repository front page: what the system is, contents, how to use it in CSS, Tailwind/shadcn and Claude | — | Active |
-| `skill/360-vision-events-design-system/` (21 files) | Claude skill source: `SKILL.md` (brand rules, voice, gaps, working method), `assets/design-system/` (copies of tokens, preview, logo, favicon, and the 11-PNG `logo-pack-2026/` with its README), `assets/shadcn-theme.css` (the site's `:root` vars + a Tailwind v4 adapter), `references/DESIGN.md`, `evals/evals.json` (3 test prompts) | Installed copy (without evals) at `~/.claude/skills/360-vision-events-design-system/` | Active |
+| `skill/360-vision-events-design-system/` (26 files) | Claude skill source: `SKILL.md` (brand rules, voice, gaps, working method), `assets/design-system/` (copies of tokens, preview, logo, favicon, and the 17-file `logo-pack-2026/`: 11 PNG, the 5 SVG in `svg/` and the README), `assets/shadcn-theme.css` (the site's `:root` vars + a Tailwind v4 adapter), `references/DESIGN.md`, `evals/evals.json` (3 test prompts) | Installed copy (without evals) at `~/.claude/skills/360-vision-events-design-system/` | Active |
 | `.claude/launch.json` | Dev tooling: static server for the preview | Config `design-system-preview`: `python -m http.server 8765 --bind 127.0.0.1 --directory design-system` (run from the repository root) | Active |
-| `dist/360-vision-events-design-system.skill` | Packaged Claude skill (zip) of the design system, for claude.ai "Save skill" / upload | SKILL.md + assets/design-system (tokens.css, tokens.json, preview.html, logo, favicon) + assets/shadcn-theme.css + references/DESIGN.md. Same content is installed for Claude Code at `~/.claude/skills/360-vision-events-design-system/` | Generated |
+| `dist/360-vision-events-design-system.skill` | Packaged Claude skill (zip) of the design system, for claude.ai "Save skill" / upload | SKILL.md + assets/design-system (tokens.css, tokens.json, preview.html, logo, favicon, logo-pack-2026 with `svg/`) + assets/shadcn-theme.css + references/DESIGN.md. Same content is installed for Claude Code at `~/.claude/skills/360-vision-events-design-system/` | Generated |
 | `.index/*` (6 files) | This context index | README, file-inventory, architecture, key-decisions, dead-code, context-refresh-log | Active |
 
-Plus `README.md`, the logo pack (12 files) and the skill source (21 files, including its own copy of the logo pack): 49 files in all, tracked in git (remote `origin` = https://github.com/AN3S-CREATE/360-vision-events-design-system, public, created by the user).
+Plus `README.md`, the logo pack (17 files: 11 PNG, 5 SVG, README) and the skill source (26 files, including its own 17-file copy of the logo pack): 59 files in all, tracked in git (remote `origin` = https://github.com/AN3S-CREATE/360-vision-events-design-system, public, created by the user).
 
 ## Not in this repository
 

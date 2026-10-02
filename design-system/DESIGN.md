@@ -1,6 +1,6 @@
 # 360 Vision Events — Design System (evidence-locked)
 
-Generated 2026-10-02T10:20:51Z from the live public site. 113 tokens: 3 absent, 0 inferred, all others observed. They trace to 738 verified observations in `evidence.json`.
+Generated 2026-10-02T11:12:37Z from the live public site. 113 tokens: 3 absent, 0 inferred, all others observed. They trace to 738 verified observations in `evidence.json`.
 
 ---
 
@@ -640,7 +640,7 @@ Criteria 1–7 make up the definition of done. Each was re-checked mechanically 
 | 4 | `tokens.css` custom properties match `tokens.json` names one-for-one. | PASS | diffed custom-property names (and values) in tokens.css against tokens.json paths | 113 properties vs 113 tokens; names only in JSON: none; only in CSS: none; value mismatches: none |
 | 5 | `evidence.json` contains the start URL, final URL, and page list. | PASS | checked the keys in evidence.json | start_url https://360visionevents.co.za; final_url https://360-vision-events.co.za/; pages 9 |
 | 6 | No secrets or form tokens appear in the four files. | PASS | searched the four files (and preview.html) for the brief's literal secret patterns, secret-like token/csrf/bearer assignments, the site-verification value, cookie / request-id / deployment-id values (hash-matched), phone digits, the bucket host and the withheld personal name | 0 secret or personal-data hits. The word 'token' occurs 269 times, all design-token vocabulary (file names, token paths); 30 mentions of csrf/bearer/secret are type labels or statements with no value attached. |
-| 7 | No git commit, push, or deploy was performed by the extraction run; any later operation required explicit user confirmation. | PASS | ran git status and git log in the working directory, and checked decisions D24–D25 | the extraction run made no commit, push, or deploy. The repository was committed and pushed afterwards at the user's explicit request (D25): bcf8a21 2026-10-02T11:52:54+02:00 Merge pull request #2 from AN3S-CREATE/fix-decision-log-order; 94a0b48 2026-10-02T11:50:50+02:00 Fix decision log range and order; 85955e2 2026-10-02T11:47:11+02:00 Merge pull request #1 from AN3S-CREATE/add-official-logo-pack-2026; 4487fa3 2026-10-02T09:46:02Z Refresh evidence inventory summary; c131858 2026-10-02T11:44:25+02:00 Update file inventory with logo pack details |
+| 7 | No git commit, push, or deploy was performed by the extraction run; any later operation required explicit user confirmation. | PASS | ran git status and git log in the working directory, and checked decisions D24–D25 | the extraction run made no commit, push, or deploy. The repository was committed and pushed afterwards at the user's explicit request (D25): 1bf0e37 2026-10-02T12:29:05+02:00 Add owner's ON-LIGHT SVG logos and record what they contain; bcf8a21 2026-10-02T11:52:54+02:00 Merge pull request #2 from AN3S-CREATE/fix-decision-log-order; 94a0b48 2026-10-02T11:50:50+02:00 Fix decision log range and order; 85955e2 2026-10-02T11:47:11+02:00 Merge pull request #1 from AN3S-CREATE/add-official-logo-pack-2026; 4487fa3 2026-10-02T09:46:02Z Refresh evidence inventory summary |
 
 **Overall: PASS — definition of done met.**
 

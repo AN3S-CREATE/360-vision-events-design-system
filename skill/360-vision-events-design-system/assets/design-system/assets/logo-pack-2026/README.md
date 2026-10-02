@@ -40,4 +40,4 @@ What this means:
 
 Asking the designer for a fully vector ring in `#ff4000` would make every mark scalable and consistent.
 
-For web UI on the dark canvas, the transparent `../logo-horiz-ON-DARK.png` (exactly `#ff4000`) is the safest choice. Use the pack for print, social and partner material, picking ON-DARK or ON-LIGHT to match the ground. Don't recolour, redraw or trace the marks; no SVG exists.
+For web UI on the dark canvas, the transparent `../logo-horiz-ON-DARK.png` (exactly `#ff4000`) is the safest choice. Use the pack for print, social and partner material, picking ON-DARK or ON-LIGHT to match the ground. For a scalable file on a light ground, use the SVGs in `svg/`: P09 is fully vector, the others keep a bitmap ring. Don't recolour, redraw or trace the marks.
