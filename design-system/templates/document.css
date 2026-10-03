@@ -1,0 +1,667 @@
+/*
+ * 360 Vision Events — commercial document templates (quotation, proforma invoice)
+ * Shared document styles. Load after ../tokens.css.
+ *
+ * Every colour, family, size, space, radius and shadow is a tokens.css custom property.
+ * The few values the site does not have (A4 geometry in mm, print type sizes, the light
+ * "paper" print mode) are declared once in section 1 as --doc-* properties, each with its reason.
+ *
+ * Class prefix: doc-.  Modes: <html class="doc-mode-dark"> (default) or <html class="doc-mode-paper">.
+ */
+
+/* ------------------------------------------------------------------------------------------
+ * 1 · Print-only values the site does not declare (DESIGN.md §5 is screen-only; §9: no light theme)
+ * ------------------------------------------------------------------------------------------ */
+:root {
+  /* A4 page model: the site has no print layout and no mm units */
+  --doc-page-width: 210mm;
+  --doc-page-height: 297mm;
+  --doc-margin-x: 16mm;              /* side margin inside header, body and footer */
+  --doc-margin-top: 12mm;            /* above the running header */
+  --doc-margin-bottom: 12mm;         /* below the running footer */
+  --doc-header-space: 33mm;          /* spacer under the fixed running header, repeated on every printed page */
+  --doc-footer-space: 26mm;          /* spacer above the fixed running footer, repeated on every printed page */
+  --doc-logo-height: 9mm;
+  --doc-accent-bar-width: 24mm;      /* the 2px brand bar under the header, before the hairline */
+  --doc-meta-width: 74mm;            /* title-block meta list column */
+  --doc-label-width: 33mm;           /* key/value label column */
+  --doc-panel-label-width: 27mm;     /* key/value label column inside a panel */
+  --doc-spec-label-width: 46mm;      /* spec and definition row label column */
+  --doc-col-ref: 10mm;               /* line-item table columns */
+  --doc-col-qty: 12mm;
+  --doc-col-money: 28mm;
+
+  /* Print type sizes: the site's scale is for screens; print body sits between
+     --font-size-xs (9pt) and --font-size-sm (10.5pt), captions below both */
+  --doc-font-size-body: 9.5pt;
+  --doc-font-size-caption: 7.5pt;
+
+  /* Small-marker offsets: optical centring of the 2px orange markers on the text's x-height */
+  --doc-marker-offset: .3em;         /* paper-mode eyebrow marker (inline, vertical-align) */
+  --doc-bullet-offset: .72em;        /* bullet-list marker (absolute, from the top of the line box) */
+
+  /* Paper mode: proposals derived from the owner's light documents and ON-LIGHT logos.
+     The site declares no light theme (DESIGN.md §9), so none of these are observed values. */
+  --doc-paper-ground: #ffffff;
+  --doc-paper-muted: #5f5f64;        /* 6.3:1 on #ffffff, 5.8:1 on --color-text (#f5f5f4) */
+  --doc-paper-rule: color-mix(in oklab, var(--color-bg) 14%, transparent);      /* hairline: the bg colour as ink at 14% */
+  --doc-paper-rule-firm: color-mix(in oklab, var(--color-bg) 22%, transparent); /* table-header and subtotal rules: the paper twin of --color-input */
+  --doc-paper-panel: var(--color-text);  /* panel tint: the brand off-white #f5f5f4, aliased so components never read a text token as a fill */
+  --doc-paper-backdrop: color-mix(in oklab, var(--color-text) 86%, var(--color-bg)); /* screen only: grey around the white sheet */
+  /* Screen only: a step darker than the page. #000 is the same black the --shadow-* tokens are
+     built from; it is the one literal colour in this file (listed in README.md). */
+  --doc-dark-backdrop: color-mix(in oklab, var(--color-bg) 65%, #000);
+}
+
+/* Mode aliases. Components read only these, so one class switches the whole document. */
+.doc-mode-dark {
+  --doc-ground: var(--color-bg);
+  --doc-panel: var(--color-surface);
+  --doc-ink: var(--color-text);              /* 18:1 on bg, 15.9:1 on surface */
+  --doc-muted: var(--color-text-muted);      /* 5.7:1 on bg, 5.05:1 on surface */
+  --doc-rule: var(--color-border);
+  --doc-rule-firm: var(--color-input);       /* the site's 16% border: table header and subtotal rules */
+  --doc-rule-strong: var(--color-text-muted); /* signature writing lines only: a print need, not a divider */
+  --doc-accent: var(--color-brand);
+  --doc-accent-text: var(--color-brand);     /* 5.6:1 on bg, 4.95:1 on surface */
+  --doc-accent-border: var(--color-brand-border);
+  --doc-backdrop: var(--doc-dark-backdrop);
+  --doc-sheet-shadow: var(--shadow-lift);
+}
+.doc-mode-paper {
+  --doc-ground: var(--doc-paper-ground);
+  --doc-panel: var(--doc-paper-panel);
+  --doc-ink: var(--color-bg);                /* the brand's bg colour as ink: 19.7:1 on white */
+  --doc-muted: var(--doc-paper-muted);
+  --doc-rule: var(--doc-paper-rule);
+  --doc-rule-firm: var(--doc-paper-rule-firm);
+  --doc-rule-strong: var(--doc-paper-muted);
+  --doc-accent: var(--color-brand);          /* rules, bars and numbers >= 24px only: 3.5:1 on white */
+  --doc-accent-text: var(--color-bg);        /* small orange text would fail 4.5:1, so it goes to ink + an orange marker */
+  --doc-accent-border: var(--color-brand-border);
+  --doc-backdrop: var(--doc-paper-backdrop);
+  --doc-sheet-shadow: var(--shadow-sm);
+}
+
+/* ------------------------------------------------------------------------------------------
+ * 2 · Base
+ * ------------------------------------------------------------------------------------------ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  -webkit-text-size-adjust: 100%;
+  line-height: var(--font-leading-normal);
+  background: var(--doc-ground);
+}
+body {
+  font-family: var(--font-family-body);
+  font-size: var(--doc-font-size-body);
+  line-height: var(--font-leading-normal);
+  color: var(--doc-ink);
+  background: var(--doc-ground);
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3 { font-family: var(--font-family-display); font-weight: var(--font-weight-bold); letter-spacing: var(--font-tracking-heading); }
+img { display: block; }
+table { border-collapse: collapse; border-spacing: 0; }
+p { orphans: 3; widows: 3; }
+strong, b { font-weight: var(--font-weight-semibold); } /* Inter Tight is loaded at 400-600 only */
+.doc-muted { color: var(--doc-muted); }
+.doc-nowrap { white-space: nowrap; } /* keeps "(non-VAT)" whole, so it never breaks at its hyphen */
+.doc-sr-only { /* text for screen readers only */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ------------------------------------------------------------------------------------------
+ * 3 · Page model: sheet, frame table, running header and footer
+ *    The whole document sits in one table. Its thead/tfoot hold empty spacers the height of the
+ *    header and footer, which Chrome/Edge repeat on every printed page; the real header and footer
+ *    are position: fixed in print, so they also print on every page.
+ * ------------------------------------------------------------------------------------------ */
+@page { size: A4; margin: 0; }
+
+.doc-sheet { display: flex; flex-direction: column; background: var(--doc-ground); }
+.doc-frame { width: 100%; flex: 1 0 auto; }
+.doc-frame > tbody > tr > td { vertical-align: top; padding: var(--space-8) var(--doc-margin-x); }
+.doc-header-space { height: var(--doc-header-space); }
+.doc-footer-space { height: var(--doc-footer-space); }
+
+.doc-header { padding: var(--doc-margin-top) var(--doc-margin-x) 0; background: var(--doc-ground); }
+.doc-header-row { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-6); }
+.doc-logo { height: var(--doc-logo-height); width: auto; }
+.doc-mode-dark .doc-logo--paper,
+.doc-mode-paper .doc-logo--dark { display: none; }
+.doc-header-tagline { text-align: right; }
+.doc-header-tagline .doc-eyebrow-display,
+.doc-header-subline { margin-right: calc(-1 * var(--font-tracking-caps-22)); } /* cancel trailing tracking at the right edge */
+.doc-header-tagline .doc-eyebrow-display { margin-right: calc(-1 * var(--font-tracking-caps-35)); }
+.doc-header-subline {
+  margin-top: var(--space-1);
+  font-size: var(--doc-font-size-caption);
+  line-height: var(--font-line-height-xs);
+  letter-spacing: var(--font-tracking-caps-22);
+  text-transform: uppercase;
+  color: var(--doc-muted);
+}
+
+/* 2px brand accent bar, continuing as a hairline to the right edge. Borders, not backgrounds,
+   so the bar prints even when "Background graphics" is off. */
+.doc-accent-rule { display: flex; align-items: flex-end; margin-top: var(--space-3); }
+.doc-accent-rule::before { content: ""; flex: 0 0 var(--doc-accent-bar-width); border-top: 2px solid var(--doc-accent); }
+.doc-accent-rule::after { content: ""; flex: 1 1 auto; border-top: 1px solid var(--doc-rule); }
+
+.doc-footer {
+  margin-top: auto;
+  padding: 0 var(--doc-margin-x) var(--doc-margin-bottom);
+  background: var(--doc-ground);
+}
+.doc-footer-row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-6);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--doc-rule);
+  font-size: var(--doc-font-size-caption);
+  line-height: var(--font-leading-normal);
+  color: var(--doc-muted);
+}
+.doc-footer-row p:last-child { text-align: right; }
+
+/* ------------------------------------------------------------------------------------------
+ * 4 · Type patterns: eyebrows, sample badge, headings
+ * ------------------------------------------------------------------------------------------ */
+.doc-eyebrow { /* also used on h2/h3 block titles, so it resets the heading family */
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-xs);
+  line-height: var(--font-line-height-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--font-tracking-caps-22);
+  text-transform: uppercase;
+  color: var(--doc-accent-text);
+}
+.doc-eyebrow-display {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-xs);
+  line-height: var(--font-line-height-xs);
+  font-weight: var(--font-weight-medium); /* Space Grotesk is loaded at 500/700 */
+  letter-spacing: var(--font-tracking-caps-35);
+  text-transform: uppercase;
+  color: var(--doc-accent-text);
+}
+/* Paper mode: small eyebrow text is ink, led by a short orange marker (hanging, so a wrapped
+   second line aligns with the text, not the marker) */
+.doc-mode-paper .doc-eyebrow,
+.doc-mode-paper .doc-eyebrow-display {
+  padding-left: calc(var(--space-2) + var(--space-1-5));
+  text-indent: calc(-1 * (var(--space-2) + var(--space-1-5)));
+}
+.doc-mode-paper .doc-eyebrow::before,
+.doc-mode-paper .doc-eyebrow-display::before {
+  content: "";
+  display: inline-block;
+  width: var(--space-2);
+  margin-right: var(--space-1-5);
+  border-top: 2px solid var(--doc-accent);
+  vertical-align: var(--doc-marker-offset);
+}
+
+/* "Sample · Template" — the site's CONCEPT · MOCK badge (cmp-badge-01), placed in flow */
+.doc-badge {
+  display: inline-block;
+  border: 1px solid var(--color-brand);
+  border-radius: var(--radius-sm);
+  background: color-mix(in oklab, var(--doc-ground) 90%, transparent);
+  padding: var(--space-1) var(--space-2-5);
+  font-family: var(--font-family-clean);
+  font-size: var(--font-size-2xs);
+  line-height: var(--font-line-height-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--font-tracking-caps-16);
+  text-transform: uppercase;
+  color: var(--doc-accent-text);
+}
+
+/* ------------------------------------------------------------------------------------------
+ * 5 · Title block and meta list
+ * ------------------------------------------------------------------------------------------ */
+.doc-title-block {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--doc-meta-width);
+  gap: var(--space-8);
+  align-items: end;
+  break-inside: avoid;
+}
+.doc-title-block .doc-eyebrow { margin-top: var(--space-5); }
+.doc-title { margin-top: var(--space-2); font-size: var(--font-size-4xl); line-height: var(--font-line-height-4xl); }
+
+.doc-meta { display: grid; }
+.doc-meta-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-block: var(--space-1-5);
+  border-bottom: 1px solid var(--doc-rule);
+}
+.doc-meta-row:first-child { border-top: 1px solid var(--doc-rule); }
+.doc-meta dt {
+  flex: 0 0 auto;
+  font-size: var(--doc-font-size-caption);
+  letter-spacing: var(--font-tracking-caps-18);
+  text-transform: uppercase;
+  color: var(--doc-muted);
+}
+.doc-meta dd { text-align: right; font-weight: var(--font-weight-medium); }
+.doc-meta dd.doc-muted { font-weight: var(--font-weight-regular); }
+
+/* Event title under the title block */
+.doc-event { margin-top: var(--space-8); break-inside: avoid; }
+.doc-event-title { font-size: var(--font-size-2xl); line-height: var(--font-line-height-2xl); }
+.doc-event-subline {
+  margin-top: var(--space-1-5);
+  font-size: var(--doc-font-size-caption);
+  letter-spacing: var(--font-tracking-caps-22);
+  text-transform: uppercase;
+  color: var(--doc-muted);
+}
+.doc-rule { margin-top: var(--space-4); border: 0; border-top: 1px solid var(--doc-rule); }
+
+/* ------------------------------------------------------------------------------------------
+ * 6 · Layout: two columns, panels, parties
+ * ------------------------------------------------------------------------------------------ */
+.doc-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-8);
+  align-items: start;
+}
+.doc-block { margin-top: var(--space-8); }
+.doc-keep { break-inside: avoid; }
+
+.doc-panel {
+  background: var(--doc-panel);
+  border: 1px solid var(--doc-rule);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  break-inside: avoid;
+}
+.doc-party-name { margin-top: var(--space-2); font-weight: var(--font-weight-semibold); }
+.doc-party-lines { margin-top: var(--space-1); color: var(--doc-muted); }
+
+/* ------------------------------------------------------------------------------------------
+ * 7 · Key/value list, amount hero, RE line
+ * ------------------------------------------------------------------------------------------ */
+.doc-kv { display: grid; margin-top: var(--space-3); }
+.doc-kv-row {
+  display: grid;
+  grid-template-columns: var(--doc-label-width) minmax(0, 1fr);
+  gap: var(--space-4);
+  padding-block: var(--space-1-5);
+  border-bottom: 1px solid var(--doc-rule);
+  break-inside: avoid;
+}
+.doc-kv-row:first-child { border-top: 1px solid var(--doc-rule); }
+.doc-kv dt { color: var(--doc-muted); }
+.doc-panel .doc-kv-row { grid-template-columns: var(--doc-panel-label-width) minmax(0, 1fr); }
+.doc-panel .doc-kv-row:last-child { border-bottom: 0; }
+
+/* Amount hero: a surface panel with the CTA-band brand border and a 2px brand top edge */
+.doc-amount {
+  background: var(--doc-panel);
+  border: 1px solid var(--doc-accent-border);
+  border-top: 2px solid var(--doc-accent);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  break-inside: avoid;
+}
+.doc-amount-value {
+  margin-top: var(--space-3);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-4xl);
+  line-height: var(--font-line-height-4xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--font-tracking-heading);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.doc-amount-note { margin-top: var(--space-3); color: var(--doc-muted); }
+
+.doc-re {
+  margin-top: var(--space-8);
+  font-size: var(--font-size-sm);
+  line-height: var(--font-line-height-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ------------------------------------------------------------------------------------------
+ * 8 · Numbered sections, sub-heads, spec rows, bullet list, prose
+ * ------------------------------------------------------------------------------------------ */
+.doc-section { margin-top: var(--space-10); }
+.doc-section-title {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--doc-rule);
+  font-size: var(--font-size-2xl);   /* 24px: large enough for the orange number in paper mode */
+  line-height: var(--font-line-height-2xl);
+  break-after: avoid;
+}
+.doc-section-num { color: var(--doc-accent); font-variant-numeric: tabular-nums; }
+.doc-subhead { margin-top: var(--space-6); margin-bottom: var(--space-2); break-after: avoid; }
+.doc-prose { margin-top: var(--space-4); }
+.doc-prose p + p { margin-top: var(--space-3); }
+.doc-note { color: var(--doc-muted); }
+
+/* Block flow, not a one-column grid: Chrome honours break-before: avoid between block children,
+   but on grid items it pushes the whole list to the next page */
+.doc-spec { display: block; }
+.doc-spec-row {
+  display: grid;
+  grid-template-columns: var(--doc-spec-label-width) minmax(0, 1fr);
+  gap: var(--space-5);
+  padding-block: var(--space-2-5);
+  border-bottom: 1px solid var(--doc-rule);
+  break-inside: avoid;
+}
+.doc-spec-row:first-child { border-top: 1px solid var(--doc-rule); }
+/* No lone row at a page edge: the sub-head keeps two rows, and the last two rows stay together */
+.doc-spec-row:nth-child(2),
+.doc-spec-row:last-child { break-before: avoid; }
+.doc-spec dt { font-weight: var(--font-weight-semibold); }
+.doc-spec dd { color: var(--doc-muted); }
+
+.doc-bullets { list-style: none; padding-top: var(--space-1); }
+.doc-bullets li { position: relative; padding-left: var(--space-5); break-inside: avoid; }
+.doc-bullets li + li { margin-top: var(--space-1-5); }
+.doc-bullets li:nth-child(2),
+.doc-bullets li:last-child { break-before: avoid; }
+.doc-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: var(--doc-bullet-offset);
+  width: var(--space-2);
+  border-top: 2px solid var(--doc-accent);
+}
+
+/* ------------------------------------------------------------------------------------------
+ * 9 · Line-item table: group header row, item row, subtotal row
+ * ------------------------------------------------------------------------------------------ */
+.doc-lines {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate; /* separate, so the transparent gap under a subtotal cannot swallow a neighbouring rule */
+  border-spacing: 0;
+  margin-top: var(--space-4);
+  font-variant-numeric: tabular-nums;
+}
+.doc-lines .doc-col-ref { width: var(--doc-col-ref); }
+.doc-lines .doc-col-qty { width: var(--doc-col-qty); }
+.doc-lines .doc-col-money { width: var(--doc-col-money); }
+.doc-lines thead { display: table-header-group; } /* repeats after a page break */
+.doc-lines tr { break-inside: avoid; }
+.doc-lines thead th {
+  padding: var(--space-2) var(--space-2) var(--space-2) 0;
+  border-bottom: 1px solid var(--doc-rule-firm);
+  font-size: var(--doc-font-size-caption);
+  line-height: var(--font-line-height-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--font-tracking-caps-18);
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--doc-muted);
+}
+.doc-lines td,
+.doc-lines .doc-line-item th { /* the description cell is the row header (th scope="row"), styled as a plain cell */
+  padding: var(--space-2) var(--space-2) var(--space-2) 0;
+  border-bottom: 1px solid var(--doc-rule);
+  vertical-align: top;
+}
+.doc-lines .doc-line-item th { font-weight: inherit; text-align: left; }
+.doc-lines th:last-child,
+.doc-lines td:last-child { padding-right: 0; }
+.doc-lines .doc-num { text-align: right; white-space: nowrap; }
+.doc-lines .doc-qty { padding-right: var(--space-4); }
+.doc-lines .doc-line-ref { color: var(--doc-muted); }
+.doc-lines .doc-line-rate { color: var(--doc-muted); }
+
+/* Group header row: eyebrow on the panel tint, with a 2px brand bar (inset shadow, so it
+   stays inside the padding box) as its marker */
+.doc-line-group-head { break-after: avoid; }
+.doc-line-group-head th {
+  padding: var(--space-2) var(--space-3);
+  background: var(--doc-panel);
+  background-clip: padding-box;
+  box-shadow: inset 2px 0 0 var(--doc-accent);
+  border-bottom: 1px solid var(--doc-rule);
+  text-align: left;
+  font-size: var(--font-size-xs);
+  line-height: var(--font-line-height-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--font-tracking-caps-22);
+  text-transform: uppercase;
+  color: var(--doc-accent-text);
+}
+.doc-line-subtotal { break-before: avoid; }
+.doc-line-subtotal td {
+  padding-top: var(--space-2-5);
+  padding-bottom: var(--space-2-5);
+  border-bottom: 1px solid var(--doc-rule-firm);
+  font-weight: var(--font-weight-semibold);
+  text-align: right;
+}
+/* Air between groups sits under the previous subtotal (a transparent border, with the rule drawn
+   as an inset shadow above it), so a group that opens a continuation page sits flush under the
+   repeated table header, exactly like the first group. */
+.doc-line-group:not(:last-child) .doc-line-subtotal td {
+  border-bottom: var(--space-4) solid transparent;
+  box-shadow: inset 0 -1px 0 var(--doc-rule-firm);
+}
+
+/* ------------------------------------------------------------------------------------------
+ * 10 · Totals box
+ * ------------------------------------------------------------------------------------------ */
+.doc-totals {
+  width: 50%;
+  margin-left: auto;
+  margin-top: var(--space-6);
+  break-inside: avoid;
+  font-variant-numeric: tabular-nums;
+}
+.doc-totals-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-block: var(--space-1-5);
+  border-bottom: 1px solid var(--doc-rule);
+}
+.doc-totals-row dt { color: var(--doc-muted); }
+.doc-totals-row dd { text-align: right; }
+/* Rows marked data-vat-only (the quotation's subtotal) show only when VAT is charged */
+html:not([data-vat]) [data-vat-only],
+html[data-vat="none"] [data-vat-only],
+html[data-vat="0"] [data-vat-only] { display: none; }
+.doc-totals-row--grand {
+  margin-top: var(--space-1);
+  padding-top: var(--space-3);
+  border-top: 2px solid var(--doc-accent);
+  border-bottom: 0;
+}
+.doc-totals-row--grand dt { color: var(--doc-ink); font-weight: var(--font-weight-semibold); }
+.doc-totals-row--grand dd {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-xl);
+  line-height: var(--font-line-height-xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--font-tracking-heading);
+  white-space: nowrap;
+}
+
+/* ------------------------------------------------------------------------------------------
+ * 11 · Acceptance: signature grid; payment and banking panels; closing line
+ * ------------------------------------------------------------------------------------------ */
+.doc-accept { margin-top: var(--space-4); grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); break-inside: avoid; }
+.doc-accept-total { color: var(--doc-muted); }
+.doc-accept-total strong {
+  display: block;
+  margin-top: var(--space-1);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-xl);
+  line-height: var(--font-line-height-xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--font-tracking-heading);
+  color: var(--doc-ink);
+  white-space: nowrap;
+}
+.doc-accept-note { margin-top: var(--space-3); color: var(--doc-muted); }
+.doc-signatures {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: var(--space-6);
+  margin-top: var(--space-2);
+}
+.doc-sign { padding-top: var(--space-10); } /* writing space above each line */
+.doc-sign--full { grid-column: 1 / -1; padding-top: var(--space-14); }
+.doc-sign-label { /* sentence-case caption, untracked: tracked labels are always uppercase (DESIGN.md §4) */
+  display: block;
+  padding-top: var(--space-1-5);
+  border-top: 1px solid var(--doc-rule-strong);
+  font-size: var(--doc-font-size-caption);
+  color: var(--doc-muted);
+}
+.doc-terms { margin-top: var(--space-5); color: var(--doc-muted); }
+.doc-closing { margin-top: var(--space-6); }
+.doc-panel .doc-prose { margin-top: var(--space-3); }
+
+/* ------------------------------------------------------------------------------------------
+ * 12 · On-screen toolbar (hidden in print). Always the site's dark chrome, whatever the mode.
+ *    It never covers the sheet: in the flow above the sheet's right edge by default, and a fixed
+ *    column in the right-hand gutter on screens wide enough to have one (section 13).
+ * ------------------------------------------------------------------------------------------ */
+.doc-toolbar {
+  position: relative;
+  z-index: var(--z-floating);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 0 var(--space-5) auto;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg); /* opaque, so the ground behind it cannot lower the muted text below 5.7:1 */
+  box-shadow: var(--shadow-sm);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-xs);
+  line-height: var(--font-line-height-xs);
+  color: var(--color-text);
+}
+.doc-toolbar-modes { display: flex; gap: var(--space-1); }
+.doc-toolbar button {
+  font: inherit;
+  cursor: pointer;
+  transition: color var(--motion-duration-fast) var(--motion-easing-standard),
+              background-color var(--motion-duration-fast) var(--motion-easing-standard);
+}
+/* An outline, not the 1px orange ring: it contrasts with the orange controls and survives forced colours */
+.doc-toolbar button:focus-visible { outline: 2px solid var(--color-text); outline-offset: 2px; }
+.doc-toolbar-chip {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: transparent;
+  padding: var(--space-1) var(--space-3);
+  color: var(--color-text-muted);
+}
+.doc-toolbar-chip[aria-pressed="true"] {
+  border-color: var(--color-brand);
+  background: var(--color-brand);
+  color: var(--color-on-brand);
+  font-weight: var(--font-weight-semibold);
+}
+.doc-toolbar-print {
+  height: var(--space-8);
+  padding-inline: var(--space-3);
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--color-brand);
+  color: var(--color-on-brand);
+  font-weight: var(--font-weight-medium);
+  box-shadow: var(--shadow-sm);
+}
+.doc-toolbar-note { color: var(--color-text-muted); }
+@media (hover: hover) {
+  .doc-toolbar-chip:hover { color: var(--color-text); }
+  .doc-toolbar-chip[aria-pressed="true"]:hover { color: var(--color-on-brand); }
+  .doc-toolbar-print:hover { background: var(--color-brand-hover); }
+}
+
+/* ------------------------------------------------------------------------------------------
+ * 13 · Screen: an A4-wide sheet on a darker backdrop; header and footer static, spacers hidden
+ * ------------------------------------------------------------------------------------------ */
+@media screen {
+  html, body { background: var(--doc-backdrop); }
+  body { padding: var(--space-5) var(--space-5) var(--space-16); }
+  .doc-toolbar { margin-right: max(0px, calc((100% - var(--doc-page-width)) / 2)); } /* right edge on the sheet's */
+  .doc-sheet {
+    width: var(--doc-page-width);
+    min-height: var(--doc-page-height);
+    margin-inline: auto;
+    border: 1px solid var(--doc-rule);
+    box-shadow: var(--doc-sheet-shadow);
+  }
+  .doc-frame > thead,
+  .doc-frame > tfoot { display: none; }
+}
+/* Wide screens: the toolbar stays in view as a column in the gutter beside the sheet */
+@media screen and (min-width: 82rem) {
+  body { padding-top: var(--space-10); }
+  .doc-toolbar {
+    position: fixed;
+    top: var(--space-10);
+    right: var(--space-5);
+    flex-direction: column;
+    align-items: stretch;
+    width: calc((100vw - var(--doc-page-width)) / 2 - var(--space-10));
+    max-width: 16rem;
+    margin: 0;
+  }
+  .doc-toolbar-modes > * { flex: 1 1 0; }
+}
+/* Phones and narrow windows: one column, slimmer gutters; the line-item table scrolls inside
+   its own wrapper instead of squeezing the description column or widening the page */
+@media screen and (max-width: 48rem) {
+  body { padding-inline: 0; }
+  .doc-toolbar { max-width: calc(100% - var(--space-6)); margin-right: var(--space-3); }
+  .doc-sheet { width: 100%; }
+  .doc-frame { table-layout: fixed; } /* the frame takes the screen's width, not its widest content's */
+  .doc-header, .doc-footer,
+  .doc-frame > tbody > tr > td { padding-inline: var(--space-4); }
+  .doc-title-block, .doc-grid-2 { grid-template-columns: minmax(0, 1fr); }
+  .doc-lines-wrap { overflow-x: auto; }
+  .doc-lines { min-width: 32rem; }
+  .doc-totals { width: 100%; }
+}
+
+/* ------------------------------------------------------------------------------------------
+ * 14 · Print
+ * ------------------------------------------------------------------------------------------ */
+@media print {
+  html, body { background: var(--doc-ground); }
+  .doc-toolbar { display: none !important; }
+  .doc-sheet { display: block; width: auto; }
+  .doc-header { position: fixed; top: 0; left: 0; right: 0; }
+  .doc-footer { position: fixed; bottom: 0; left: 0; right: 0; }
+  .doc-frame > thead { display: table-header-group; }
+  .doc-frame > tfoot { display: table-footer-group; }
+  .doc-frame > tbody > tr > td { padding: 0 var(--doc-margin-x); }
+}

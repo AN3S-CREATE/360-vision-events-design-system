@@ -1,6 +1,6 @@
 {
  "schema": "360ve-design-evidence/1.0",
- "stamp": "2026-10-02T11:12:37Z",
+ "stamp": "2026-10-03T03:58:50Z",
  "status": "ok",
  "operator": "Claude Code (claude-opus-5-5), Workflow-orchestrated extraction",
  "start_url": "https://360visionevents.co.za",
@@ -14071,6 +14071,13 @@
    "choice": "On 2026-10-02 the user supplied five ON-LIGHT SVGs (P03, P05, P06, P07, P09), stored byte-identical in design-system/assets/logo-pack-2026/svg/. All are transparent and script-free, and their vector lettering uses #ff4000 exactly. P09 is fully vector; P03/P05/P06/P07 are hybrids whose aperture ring (and divider) is a masked bitmap of 400-850 px coloured about #ff4e23-#ff5636. EVENTS grey is #737373 (P03/P05/P06) vs #828282 (P09). No ON-DARK or P12 SVGs exist. Tokens are unchanged.",
    "rule": "Brief input 3 (local brand files) and D26: owner files are recorded alongside the observed system, not folded into tokens; inconsistencies are listed as gaps.",
    "evidence_url": "https://360-vision-events.co.za/"
+  },
+  {
+   "id": "D28",
+   "topic": "commercial document templates",
+   "choice": "On 2026-10-02 the user supplied two old commercial documents (a quotation and a proforma invoice) and asked for their layout and structure in the new look. design-system/templates/ holds document.css, quotation.html, proforma-invoice.html and README.md. They rebuild the old structure: running header and footer, title block with a reference list, party panels, an amount hero, numbered sections, a grouped line-item schedule with subtotals and a totals box, and acceptance and payment panels. They use tokens.css, the site's fonts and the ON-DARK logo, on A4. Dark is the default. An optional paper mode for ink-saving print uses the ON-LIGHT P09 SVG and proposed (not observed) light values. Every client, personal, banking and pricing value from the source documents was left out: fields are placeholders and line items are sample content. Tokens are unchanged.",
+   "rule": "D21: extras only on the user's request after the package exists. D16 / POPIA: no names, phone digits, addresses or bank details in the public repository.",
+   "evidence_url": "https://360-vision-events.co.za/"
   }
  ],
  "assumptions": [
@@ -16616,6 +16623,41 @@
     "source": "https://360-vision-events.co.za/favicon.png",
     "bytes": 6997,
     "sha256": "0c100041ee62c068e23ad75072b22de995855c88f8cc7a3cb29d0a3ffb38a175"
+   },
+   {
+    "path": "templates/README.md",
+    "purpose": "Structure spec and how-to for the commercial document templates (optional extra, D28).",
+    "source": "the owner's old quotation and proforma invoice: structure only, every data value withheld",
+    "bytes": 20628,
+    "sha256": "6bfa45c59735326d4037187e5e03c82c6c24e37d24f57c2ee7d15d7aba313712"
+   },
+   {
+    "path": "templates/document.css",
+    "purpose": "Shared A4 document styles for the templates, built on tokens.css (optional extra, D28).",
+    "source": "tokens.css; print values documented as --doc-* properties",
+    "bytes": 29724,
+    "sha256": "69b0458d746ee2cc86fcf10d8b951c736d7f27f1615fb24e176e2ba001b78c57"
+   },
+   {
+    "path": "templates/quotation.html",
+    "purpose": "Quotation template with sample content (optional extra, D28).",
+    "source": "structure of the owner's old quotation; sample content only",
+    "bytes": 25972,
+    "sha256": "4357cfdc0a6f280efae888dde7c5021c8a72d09150918a36cdb42d7823dd9989"
+   },
+   {
+    "path": "templates/proforma-invoice.html",
+    "purpose": "Proforma-invoice template with sample content (optional extra, D28).",
+    "source": "structure of the owner's old proforma invoice; sample content only",
+    "bytes": 21109,
+    "sha256": "8ed62f0a25be4ad8da83cf69ae8ac1cfe0620c003b3fae0696d815a0a75a06c3"
+   },
+   {
+    "path": "templates/.gitignore",
+    "purpose": "Keeps filled copies (*.filled.html), printed PDFs and a filled/ folder out of git: the privacy safeguard for real client and banking data (optional extra, D28).",
+    "source": "written for this repository",
+    "bytes": 218,
+    "sha256": "2002f167e34d61fa602c0fee29aa974f4455a968c8b2275962ecfbc87a4c01d9"
    }
   ],
   "colour_mode_tokens": "tokens.json $extensions.color_mode and the tokens.css header label the existing set as the dark mode; light mode recorded as absent (D21).",
@@ -16663,33 +16705,33 @@
   },
   {
    "event": "token.inferred",
-   "at": "2026-10-02T11:12:37Z",
+   "at": "2026-10-03T03:58:50Z",
    "detail": "0 inferred tokens (see decision D13)"
   },
   {
    "event": "token.absent",
-   "at": "2026-10-02T11:12:37Z",
+   "at": "2026-10-03T03:58:50Z",
    "detail": "color.success"
   },
   {
    "event": "token.absent",
-   "at": "2026-10-02T11:12:37Z",
+   "at": "2026-10-03T03:58:50Z",
    "detail": "color.warning"
   },
   {
    "event": "token.absent",
-   "at": "2026-10-02T11:12:37Z",
+   "at": "2026-10-03T03:58:50Z",
    "detail": "color.info"
   },
   {
    "event": "write.done",
-   "at": "2026-10-02T11:13:00Z",
+   "at": "2026-10-03T03:58:50Z",
    "detail": "evidence.json, tokens.json, tokens.css, DESIGN.md"
   },
   {
    "event": "write.done",
-   "at": "2026-10-02T11:13:00Z",
-   "detail": "optional extras: preview.html, assets/logo-horiz-ON-DARK.png, assets/favicon.png"
+   "at": "2026-10-03T03:58:50Z",
+   "detail": "optional extras: preview.html, assets/logo-horiz-ON-DARK.png, assets/favicon.png, templates/README.md, templates/document.css, templates/quotation.html, templates/proforma-invoice.html, templates/.gitignore"
   }
  ]
 }

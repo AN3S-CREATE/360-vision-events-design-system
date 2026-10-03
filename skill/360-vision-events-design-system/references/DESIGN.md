@@ -1,6 +1,6 @@
 # 360 Vision Events — Design System (evidence-locked)
 
-Generated 2026-10-02T11:12:37Z from the live public site. 113 tokens: 3 absent, 0 inferred, all others observed. They trace to 738 verified observations in `evidence.json`.
+Generated 2026-10-03T03:58:50Z from the live public site. 113 tokens: 3 absent, 0 inferred, all others observed. They trace to 738 verified observations in `evidence.json`.
 
 ---
 
@@ -70,6 +70,7 @@ Generated 2026-10-02T11:12:37Z from the live public site. 113 tokens: 3 absent, 
 | `evidence.json` | Fetch log, redirect chain, page list, observations, decisions, flags, token trace, quality assurance, events |
 | `DESIGN.md` | This spec |
 | `preview.html` | Optional extra: a one-page component preview built only from `tokens.css` variables (see Optional extras) |
+| `templates/` | Optional extra: A4 quotation and proforma-invoice templates in this system's look, with a structure README *(D28)* |
 | `assets/` | Byte-identical copies of the site's logo PNG and favicon (optional extra), plus `logo-pack-2026/`: the official logo files supplied by the brand owner, with a README mapping each to its official name, background and orange |
 
 **How values are written:**
@@ -597,6 +598,7 @@ These are things the site does not show, or shows inconsistently. None of them h
 
   By CSS font-matching rules, those requests fall back to the nearest loaded face: 400 → 500, 600 → 700, and Inter Tight 700 → 600. This is inferred, not observed: the Google Fonts stylesheet was not fetched and no browser rendered the pages.
 - **Three heading voices.** Hero h1s split between Space Grotesk (3 pages) and Inter `.font-clean` (6 pages). Case-card titles differ between home (`text-xl font-semibold`) and /work (`text-2xl font-bold`). There are two competing eyebrow systems and seven tracking values *(typ-85, typ-90, typ-91, typ-94, typ-95)*.
+- **Print and light media.** The site has no light theme or print styles. The templates' paper mode therefore uses proposed values: ink `#0b0b0c`, muted `#5f5f64` (at least 4.5:1 on white), and orange only for rules, bars and large figures, because `#ff4000` on white is 3.5:1. Confirm them with the brand owner *(D28)*.
 - **Accessibility signals:**
   - There is no `prefers-reduced-motion` rule.
   - Reveal wrappers ship `opacity-0` in the SSR HTML, so content depends on JS to appear.
@@ -634,13 +636,13 @@ Criteria 1–7 make up the definition of done. Each was re-checked mechanically 
 
 | # | Criterion (brief wording) | Result | How verified | Detail |
 |---|---|---|---|---|
-| 1 | `./design-system/DESIGN.md`, `tokens.json`, `tokens.css`, and `evidence.json` all exist. | PASS | listed ./design-system/ | required files present: DESIGN.md, tokens.json, tokens.css, evidence.json; optional extras: assets, preview.html |
+| 1 | `./design-system/DESIGN.md`, `tokens.json`, `tokens.css`, and `evidence.json` all exist. | PASS | listed ./design-system/ | required files present: DESIGN.md, tokens.json, tokens.css, evidence.json; optional extras: assets, preview.html, templates |
 | 2 | Every non-null color and font token has `$extensions.mode` of `observed` or `inferred`, and observed tokens have a `source_url`. | PASS | scanned every non-null color.* and font.* token in tokens.json | 62 tokens checked; problems: none |
 | 3 | No token value appears that is missing from `evidence.json` observations or from an `inferred` decision. | PASS | cross-checked every token against evidence.json token_trace and the cited observations | 113 tokens (110 observed, 0 inferred, 3 absent). 55 values appear verbatim in their evidence; 29 are the evidence's declaration with var() resolved or calc(var(--spacing) * N) computed (decision D08); 26 numeric/bezier values equal their evidence numerically. Problems: none |
 | 4 | `tokens.css` custom properties match `tokens.json` names one-for-one. | PASS | diffed custom-property names (and values) in tokens.css against tokens.json paths | 113 properties vs 113 tokens; names only in JSON: none; only in CSS: none; value mismatches: none |
 | 5 | `evidence.json` contains the start URL, final URL, and page list. | PASS | checked the keys in evidence.json | start_url https://360visionevents.co.za; final_url https://360-vision-events.co.za/; pages 9 |
-| 6 | No secrets or form tokens appear in the four files. | PASS | searched the four files (and preview.html) for the brief's literal secret patterns, secret-like token/csrf/bearer assignments, the site-verification value, cookie / request-id / deployment-id values (hash-matched), phone digits, the bucket host and the withheld personal name | 0 secret or personal-data hits. The word 'token' occurs 269 times, all design-token vocabulary (file names, token paths); 30 mentions of csrf/bearer/secret are type labels or statements with no value attached. |
-| 7 | No git commit, push, or deploy was performed by the extraction run; any later operation required explicit user confirmation. | PASS | ran git status and git log in the working directory, and checked decisions D24–D25 | the extraction run made no commit, push, or deploy. The repository was committed and pushed afterwards at the user's explicit request (D25): 1bf0e37 2026-10-02T12:29:05+02:00 Add owner's ON-LIGHT SVG logos and record what they contain; bcf8a21 2026-10-02T11:52:54+02:00 Merge pull request #2 from AN3S-CREATE/fix-decision-log-order; 94a0b48 2026-10-02T11:50:50+02:00 Fix decision log range and order; 85955e2 2026-10-02T11:47:11+02:00 Merge pull request #1 from AN3S-CREATE/add-official-logo-pack-2026; 4487fa3 2026-10-02T09:46:02Z Refresh evidence inventory summary |
+| 6 | No secrets or form tokens appear in the four files. | PASS | searched the four files (and preview.html and templates/) for the brief's literal secret patterns, secret-like token/csrf/bearer assignments, the site-verification value, cookie / request-id / deployment-id values (hash-matched), phone digits, account-like digit runs and SWIFT-like codes in templates/, the bucket host and the withheld personal name | 0 secret or personal-data hits. The word 'token' occurs 284 times, all design-token vocabulary (file names, token paths); 30 mentions of csrf/bearer/secret are type labels or statements with no value attached. |
+| 7 | No git commit, push, or deploy was performed by the extraction run; any later operation required explicit user confirmation. | PASS | ran git status and git log in the working directory, and checked decisions D24–D25 | the extraction run made no commit, push, or deploy. The repository was committed and pushed afterwards at the user's explicit request (D25): 5feb8f3 2026-10-03T05:43:53+02:00 Add quotation and proforma-invoice templates in the brand's look; a7817bd 2026-10-02T13:29:03+02:00 Fix stale "no SVG" wording and the SVG divider labels; 1bf0e37 2026-10-02T12:29:05+02:00 Add owner's ON-LIGHT SVG logos and record what they contain; bcf8a21 2026-10-02T11:52:54+02:00 Merge pull request #2 from AN3S-CREATE/fix-decision-log-order; 94a0b48 2026-10-02T11:50:50+02:00 Fix decision log range and order |
 
 **Overall: PASS — definition of done met.**
 
@@ -656,4 +658,9 @@ The user asked for these on 2026-10-02, after the package existed *(D21–D24)*:
   - **To view it:** open it directly from disk in any desktop browser. The Claude Code in-app browser pane renders `file://` pages without styles, so there use the static server in `.claude/launch.json`, or run `python -m http.server 8765 --bind 127.0.0.1 --directory design-system` and visit `http://127.0.0.1:8765/preview.html`.
 - **Dark-mode tokens: labelled, no new file.** The existing set is the dark mode, the only mode the site declares; `tokens.json` `$extensions.color_mode` and the `tokens.css` header say so. A light mode is absent and was not invented.
 - **Logo copy: PNG copied byte-for-byte** to `assets/logo-horiz-ON-DARK.png`, with `assets/favicon.png` alongside. The owner's official pack is in `assets/logo-pack-2026/` *(D26)*. The owner later supplied five ON-LIGHT SVGs (`logo-pack-2026/svg/`, D27). Only the P09 wordmark is fully vector. No logo was redrawn or traced here.
+- **Commercial document templates: added** *(D28)*, in `templates/`.
+  - `quotation.html` and `proforma-invoice.html` rebuild the structure of the owner's old documents in this system's look: running header and footer, a title block with a reference list, prepared-for/by or bill-to/from panels, an amount hero, numbered sections, a grouped line-item schedule with subtotals and a totals box, client acceptance, and payment and banking panels.
+  - Both use `tokens.css`, the site's fonts and the ON-DARK logo, on A4. An inline script recalculates totals from each row's quantity and rate, and the VAT basis can be switched.
+  - Dark is the default. A paper mode (ink-saving print) swaps in the ON-LIGHT P09 SVG.
+  - Every client, personal, banking and pricing value from the source documents is left out. Fields are `[placeholders]`, line items are labelled sample content, and `templates/README.md` explains how to fill them in and save a PDF.
 - **Distribution, on your explicit request *(D25)*.** The system is also packaged as a Claude skill (`dist/360-vision-events-design-system.skill`, installed for Claude Code), set up as a private design system in Claude Design, and pushed to your GitHub repository (AN3S-CREATE/360-vision-events-design-system). The extraction run itself published nothing *(D24)*.

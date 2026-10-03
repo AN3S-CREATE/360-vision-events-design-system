@@ -46,6 +46,25 @@
         "Does not invent a light-mode brand palette (dark-only, or explicitly flags light mode as not part of the brand)",
         "Outline button hover uses the brand orange (accent = #ff4000) rather than a grey/neutral accent"
       ]
+    },
+    {
+      "id": 4,
+      "prompt": "Draft a quotation for a 300-guest product launch for a client called Northwind Mining, with sound, a stage and an LED wall. Use our quote layout and keep it on brand.",
+      "expected_output": "An A4 quotation HTML built on the bundled templates/quotation.html structure and document.css, with grouped line items and placeholders for unknown details.",
+      "files": [],
+      "assertions": [
+        "Starts from the bundled templates/quotation.html (or reproduces its structure and links document.css/tokens.css)",
+        "Keeps the quotation sections in order: title block, parties, project details with total, 01 brief and terms, 02 specification, 03 schedule, 04 client acceptance",
+        "Line items are grouped with subtotals, and every row total equals quantity x unit rate",
+        "Amounts use the South African format 'R 12 345.00'",
+        "Uses [placeholders] for unknown banking, registration and contact details rather than inventing them",
+        "Names the client 'Northwind Mining' in the parties block and the project details, instead of leaving the [Client company] placeholder",
+        "States a 300-guest product launch, not the template's 600-guest outdoor corporate function",
+        "Line items cover the requested scope: sound (PA/audio), a stage and an LED wall, each as its own priced row",
+        "Drops sample rows that don't fit the request (such as stretch tents, 600 chairs or fire extinguishers), or explains why any are kept",
+        "Dark canvas #0b0b0c by default, brand orange #ff4000, Space Grotesk headings and Inter Tight body",
+        "Section headings are sentence case and end with full stops; no exclamation marks"
+      ]
     }
   ]
 }

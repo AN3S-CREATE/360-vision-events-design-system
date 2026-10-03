@@ -1,0 +1,5 @@
+# Filled-in documents carry real client, personal and banking details. This repository is public:
+# keep filled copies and every printed PDF out of version control (see README.md, Privacy).
+*.filled.html
+*.pdf
+filled/
