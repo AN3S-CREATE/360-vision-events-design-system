@@ -1,6 +1,6 @@
 # File inventory
 
-Last verified: 2026-10-02, against the files on disk after the package rebuild stamped 14:11:01Z (D28 document templates). Status values: `Active`, `Generated`, `Experimental`, `Deprecated`, `Dead`.
+Last verified: 2026-10-03, against the files on disk after the package rebuild stamped 03:58:50Z (PR #4 review fixes). Status values: `Active`, `Generated`, `Experimental`, `Deprecated`, `Dead`.
 
 | Path | Purpose | Key symbols / contents | Status |
 |---|---|---|---|
@@ -15,12 +15,12 @@ Last verified: 2026-10-02, against the files on disk after the package rebuild s
 | `design-system/assets/logo-pack-2026/svg/` (5 SVG) | Owner-supplied ON-LIGHT SVGs (2026-10-02, D27) | P03/P05 horizontal, P06 stacked, P07 mark, P09 wordmark. Transparent, script-free; vector lettering `#ff4000`/`#000000`/grey (`#737373`, P09 `#828282`). P09 fully vector; others embed a masked bitmap ring (400–850 px, ≈#ff4e23–#ff5636). Analysis in evidence.json `brand_files.svg_files` | Active (owner asset) |
 | `design-system/templates/` (5 files) | Commercial document templates (D28): `quotation.html`, `proforma-invoice.html`, shared `document.css`, a structure/how-to `README.md`, and a `.gitignore` that keeps filled copies (`*.filled.html`) and PDFs out of git | A4 page model (frame table with repeating header/footer spacers, `@page` A4 margin 0); classes prefixed `doc-`; modes `doc-mode-dark` (default) and `doc-mode-paper` (`?mode=paper`, proposed values); inline totals script reads `data-qty`/`data-rate`, `data-vat` on `<html>`; sample content and `[placeholders]` only — no data from the source documents | Active (optional extra; hand-built, not generated) |
 | `README.md` | Repository front page: what the system is, contents, how to use it in CSS, Tailwind/shadcn and Claude | — | Active |
-| `skill/360-vision-events-design-system/` (30 files) | Claude skill source: `SKILL.md` (brand rules, voice, gaps, working method), `assets/design-system/` (copies of tokens, preview, logo, favicon, and the 17-file `logo-pack-2026/`: 11 PNG, the 5 SVG in `svg/` and the README, and `templates/` without its `.gitignore`), `assets/shadcn-theme.css` (the site's `:root` vars + a Tailwind v4 adapter), `references/DESIGN.md`, `evals/evals.json` (4 test prompts) | Installed copy (without evals) at `~/.claude/skills/360-vision-events-design-system/` | Active |
+| `skill/360-vision-events-design-system/` (31 files) | Claude skill source: `SKILL.md` (brand rules, voice, gaps, working method), `assets/design-system/` (copies of tokens, preview, logo, favicon, and the 17-file `logo-pack-2026/`: 11 PNG, the 5 SVG in `svg/` and the README, and `templates/` with its `.gitignore`), `assets/shadcn-theme.css` (the site's `:root` vars + a Tailwind v4 adapter), `references/DESIGN.md`, `evals/evals.json` (4 test prompts) | Installed copy (without evals) at `~/.claude/skills/360-vision-events-design-system/` | Active |
 | `.claude/launch.json` | Dev tooling: static server for the preview | Config `design-system-preview`: `python -m http.server 8765 --bind 127.0.0.1 --directory design-system` (run from the repository root) | Active |
 | `dist/360-vision-events-design-system.skill` | Packaged Claude skill (zip) of the design system, for claude.ai "Save skill" / upload | SKILL.md + assets/design-system (tokens.css, tokens.json, preview.html, logo, favicon, logo-pack-2026 with `svg/`, templates/) + assets/shadcn-theme.css + references/DESIGN.md. Same content is installed for Claude Code at `~/.claude/skills/360-vision-events-design-system/` | Generated |
 | `.index/*` (6 files) | This context index | README, file-inventory, architecture, key-decisions, dead-code, context-refresh-log | Active |
 
-Plus `README.md`, the logo pack (17 files: 11 PNG, 5 SVG, README), the templates (5 files) and the skill source (30 files, including its own copies of the logo pack and the templates): 68 files in all, tracked in git (remote `origin` = https://github.com/AN3S-CREATE/360-vision-events-design-system, public, created by the user).
+Plus `README.md`, the logo pack (17 files: 11 PNG, 5 SVG, README), the templates (5 files) and the skill source (31 files, including its own copies of the logo pack and the templates): 69 files in all, tracked in git (remote `origin` = https://github.com/AN3S-CREATE/360-vision-events-design-system, public, created by the user).
 
 ## Not in this repository
 

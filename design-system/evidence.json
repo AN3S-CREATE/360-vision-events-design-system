@@ -1,6 +1,6 @@
 {
  "schema": "360ve-design-evidence/1.0",
- "stamp": "2026-10-02T14:11:01Z",
+ "stamp": "2026-10-03T03:58:50Z",
  "status": "ok",
  "operator": "Claude Code (claude-opus-5-5), Workflow-orchestrated extraction",
  "start_url": "https://360visionevents.co.za",
@@ -16628,8 +16628,8 @@
     "path": "templates/README.md",
     "purpose": "Structure spec and how-to for the commercial document templates (optional extra, D28).",
     "source": "the owner's old quotation and proforma invoice: structure only, every data value withheld",
-    "bytes": 20402,
-    "sha256": "d206ce27a5d89c8f726720471b491b0dcba97a14aa9050ae25855808c4f43699"
+    "bytes": 20628,
+    "sha256": "6bfa45c59735326d4037187e5e03c82c6c24e37d24f57c2ee7d15d7aba313712"
    },
    {
     "path": "templates/document.css",
@@ -16651,6 +16651,13 @@
     "source": "structure of the owner's old proforma invoice; sample content only",
     "bytes": 21109,
     "sha256": "8ed62f0a25be4ad8da83cf69ae8ac1cfe0620c003b3fae0696d815a0a75a06c3"
+   },
+   {
+    "path": "templates/.gitignore",
+    "purpose": "Keeps filled copies (*.filled.html), printed PDFs and a filled/ folder out of git: the privacy safeguard for real client and banking data (optional extra, D28).",
+    "source": "written for this repository",
+    "bytes": 218,
+    "sha256": "2002f167e34d61fa602c0fee29aa974f4455a968c8b2275962ecfbc87a4c01d9"
    }
   ],
   "colour_mode_tokens": "tokens.json $extensions.color_mode and the tokens.css header label the existing set as the dark mode; light mode recorded as absent (D21).",
@@ -16698,33 +16705,33 @@
   },
   {
    "event": "token.inferred",
-   "at": "2026-10-02T14:11:01Z",
+   "at": "2026-10-03T03:58:50Z",
    "detail": "0 inferred tokens (see decision D13)"
   },
   {
    "event": "token.absent",
-   "at": "2026-10-02T14:11:01Z",
+   "at": "2026-10-03T03:58:50Z",
    "detail": "color.success"
   },
   {
    "event": "token.absent",
-   "at": "2026-10-02T14:11:01Z",
+   "at": "2026-10-03T03:58:50Z",
    "detail": "color.warning"
   },
   {
    "event": "token.absent",
-   "at": "2026-10-02T14:11:01Z",
+   "at": "2026-10-03T03:58:50Z",
    "detail": "color.info"
   },
   {
    "event": "write.done",
-   "at": "2026-10-02T14:11:06Z",
+   "at": "2026-10-03T03:58:50Z",
    "detail": "evidence.json, tokens.json, tokens.css, DESIGN.md"
   },
   {
    "event": "write.done",
-   "at": "2026-10-02T14:11:06Z",
-   "detail": "optional extras: preview.html, assets/logo-horiz-ON-DARK.png, assets/favicon.png, templates/README.md, templates/document.css, templates/quotation.html, templates/proforma-invoice.html"
+   "at": "2026-10-03T03:58:50Z",
+   "detail": "optional extras: preview.html, assets/logo-horiz-ON-DARK.png, assets/favicon.png, templates/README.md, templates/document.css, templates/quotation.html, templates/proforma-invoice.html, templates/.gitignore"
   }
  ]
 }
