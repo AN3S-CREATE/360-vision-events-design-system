@@ -27,7 +27,7 @@ An evidence-locked design system for **360 Vision Events**, read from the live p
 
 - **Write from the real files.** Every entry comes from reading the actual files; never write from memory.
 - **Regenerated files.** `design-system/*` is regenerated as a set. After a re-run, refresh the inventory and log the refresh.
-- **Tracing.** `design-system/evidence.json` is the audit trail for every token value. Look decisions up there by ID (D01–D27).
+- **Tracing.** `design-system/evidence.json` is the audit trail for every token value. Look decisions up there by ID (D01–D28).
 - **Write scope.** The original brief limited writes to `design-system/`. On 2026-10-02 the user accepted this index and `.claude/launch.json` as additions. Ask before adding anything else outside `design-system/`.
 - **No secrets or personal data.** Never store secrets or personal data here. The package withholds phone digits, addresses and personal names (decision D16).
 - **Git.** This folder is a git repository (`origin` = github.com/AN3S-CREATE/360-vision-events-design-system, public). Commit `.index/` with the package. Commits and pushes happen only when the user asks.

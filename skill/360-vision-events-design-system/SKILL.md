@@ -21,6 +21,7 @@ That's the most important thing to carry into your work. **Build with what is he
 | Official logo pack (print, social, decks, light backgrounds) | `assets/design-system/assets/logo-pack-2026/`: 11 PNGs, with ON-DARK and ON-LIGHT versions of P03/P05/P12 horizontal (P12 is ON-DARK only), P06 stacked, P07 mark and P09 360VISION wordmark. Its `README.md` maps the files |
 | Scalable / vector logo (light backgrounds) | `assets/design-system/assets/logo-pack-2026/svg/`: transparent SVGs in ON-LIGHT only. `p09-wordmark-360vision-on-light.svg` is fully vector, with "360" exactly `#ff4000`. P03/P05/P06/P07 have vector lettering but a bitmap aperture ring (400–850 px), so keep them at or below roughly that size |
 | Favicon / app icon | `assets/design-system/assets/favicon.png` (ring + "360"), or `p07-mark-360-*` from the pack |
+| Quotation or proforma invoice (A4, print to PDF) | `assets/design-system/templates/`: `quotation.html` and `proforma-invoice.html` on the shared `document.css`. Copy a template, fill in its `[placeholders]` and line items, and keep its structure. `templates/README.md` lists every section and field |
 | Full rationale, class strings, quotes, gaps | `references/DESIGN.md`. Read the relevant section when you need more than the summary below |
 
 ## Quick reference
@@ -115,6 +116,17 @@ The site's voice is short, confident and production-floor practical:
   - Claims visible on the site (15+ years, Level 2 BEE) may be reused as stated there, but suggest the user confirm they are current.
   - Client names appear as text pills, not logos.
 
+## Commercial documents
+
+Quotations and proforma invoices share one structure, rebuilt from the brand owner's own documents. `assets/design-system/templates/README.md` lists every field.
+
+- **Every A4 page** has a running header (logo, "Corporate & brand event production", the services line, a 2px brand bar) and a footer (legal line, contact placeholders, domain).
+- **Quotation:** title block with the reference list → event title → prepared for / prepared by → project details beside the total → 01 Brief and commercial terms → 02 Service and infrastructure specification → 03 Quotation schedule (grouped line items, subtotals, totals box) → 04 Client acceptance (signature lines, service provider details).
+- **Proforma invoice:** title block → bill to / from → RE line → event details beside the amount due → what it covers and excludes → line items and totals → payment and banking details. It states that it is not a tax invoice.
+- **Amounts** use the South African format "R 12 345.00". The inline script recalculates totals from each row's `data-qty` and `data-rate`. Set `data-vat` on `<html>` to charge VAT.
+- **Modes:** dark is the default. `?mode=paper` gives the ink-saving print version; its light values are proposals (see Known gaps).
+- **Real details:** never invent client, banking, registration or contact details. Put the real ones only in the user's own filled-in copy, never in a shared or public file. Leave a `[placeholder]` when you don't have a value.
+
 ## Contact details
 
 - **Generic channels:** use `info@360-vision-events.co.za` and the domain `360-vision-events.co.za`.
@@ -129,6 +141,7 @@ The site's voice is short, confident and production-floor practical:
 - **Logo:** only the P09 wordmark is fully vector. The P03/P05/P06/P07 SVGs use a bitmap ring that is slightly lighter (about `#ff4e23`–`#ff5636`) than their `#ff4000` lettering. "EVENTS" grey is `#737373` in those four and `#828282` in P09. There are no ON-DARK or P12 SVGs.
 - **Pack orange varies by file:** `#e22500` to `#ff3e00`, and the P09 wordmark is `#f14624`. The UI brand colour stays the site's `#ff4000`. When a design must match the orange in the logo, P12 (`#ff3e00`) is closest. Mention the inconsistency if it matters for the task.
 - **Font loading:** Space Grotesk 400/600 are used but not loaded (the browser substitutes 500/700). If you control font loading, requesting `Space+Grotesk:wght@400;500;600;700` is a reasonable fix to suggest, not something the site does today.
+- **Print and light media:** the site has no light theme. The document templates' paper mode uses proposed values (ink `#0b0b0c`, muted `#5f5f64`, orange only for rules, bars and large figures, because `#ff4000` on white is 3.5:1). Flag them as proposals.
 - **Reduced motion:** no `prefers-reduced-motion` handling. Adding it in new work is fine; say you added it.
 
 ## Working method

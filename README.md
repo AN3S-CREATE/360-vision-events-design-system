@@ -13,6 +13,7 @@ An evidence-locked design system for **360 Vision Events**, read from the live s
 | [`design-system/evidence.json`](design-system/evidence.json) | Audit trail: fetch log, 738 observations, decisions, and the source of every token |
 | [`design-system/assets/`](design-system/assets/) | The site's logo PNG and favicon, unchanged |
 | [`design-system/assets/logo-pack-2026/`](design-system/assets/logo-pack-2026/) | The official 2026 logo pack: 11 PNGs (horizontal, stacked, mark, wordmark; on-dark and on-light) plus 5 on-light SVGs in `svg/` (P09 wordmark fully vector), with a README on backgrounds, vector vs bitmap parts, and orange values |
+| [`design-system/templates/`](design-system/templates/) | A4 quotation and proforma-invoice templates in the brand's look (dark, plus an ink-saving paper mode), with a structure README. Fill in a copy and save as PDF |
 | [`skill/360-vision-events-design-system/`](skill/360-vision-events-design-system/) | Claude skill source: brand rules, voice and the bundled files |
 | [`dist/360-vision-events-design-system.skill`](dist/360-vision-events-design-system.skill) | The packaged skill, ready to upload |
 | [`.index/`](.index/) | Project context index (file inventory, architecture, decisions, tech debt) |
@@ -34,6 +35,8 @@ An evidence-locked design system for **360 Vision Events**, read from the live s
 **In Claude:**
 - **Claude Code:** copy `skill/360-vision-events-design-system/` into `~/.claude/skills/`. Claude then applies the brand whenever you ask for 360 Vision Events work.
 - **Claude app (claude.ai or desktop):** Settings → Capabilities → Skills → upload `dist/360-vision-events-design-system.skill`.
+
+**Quotes and proforma invoices:** copy `design-system/templates/quotation.html` or `proforma-invoice.html` to a `*.filled.html` name (ignored by git), fill in the `[placeholders]` and line items, then print to PDF from Chrome or Edge (A4, margins none, background graphics on). Add `?mode=paper` to the address for the ink-saving version. See [`design-system/templates/README.md`](design-system/templates/README.md).
 
 **Preview:** open `design-system/preview.html` in any desktop browser. Or serve the folder with `python -m http.server 8765 --bind 127.0.0.1 --directory design-system` and visit <http://127.0.0.1:8765/preview.html>.
 

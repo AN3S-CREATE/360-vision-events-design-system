@@ -1,6 +1,6 @@
 # Key decisions
 
-A lightweight ADR log. The full text, with rule and evidence URL, is in `design-system/evidence.json`, `decisions` (D01–D27).
+A lightweight ADR log. The full text, with rule and evidence URL, is in `design-system/evidence.json`, `decisions` (D01–D28).
 
 | ID | Date | Decision | Why |
 |---|---|---|---|
@@ -22,3 +22,4 @@ A lightweight ADR log. The full text, with rule and evidence URL, is in `design-
 | D25 | 2026-10-02 | At the user's explicit request: Claude skill (installed + packaged), private Claude Design design system, git repo pushed to the user's public GitHub repo AN3S-CREATE/360-vision-events-design-system | The user's own messages gave the confirmation the brief requires |
 | D26 | 2026-10-02 | Owner-supplied 2026 logo pack stored as-is and recorded with hashes and sampled colours; `--color-brand` stays #ff4000 | Site CSS + served logo are #ff4000; the pack's orange varies by file, so it's flagged as an owner decision, not folded into tokens |
 | D27 | 2026-10-02 | Owner-supplied ON-LIGHT SVGs (P03/P05/P06/P07/P09) stored as-is in `logo-pack-2026/svg/` | Vector lettering is exactly #ff4000; only P09 is fully vector (the others use a masked bitmap ring ≈#ff4e23–#ff5636); recorded as gaps, tokens unchanged |
+| D28 | 2026-10-02 | Commercial document templates (quotation + proforma invoice) in `design-system/templates/`: the owner's old structure rebuilt on tokens.css, A4, dark by default with a proposed paper mode | The user supplied two old documents and asked for their layout in the new look; every client, personal, banking and pricing value withheld (D16, public repo) |

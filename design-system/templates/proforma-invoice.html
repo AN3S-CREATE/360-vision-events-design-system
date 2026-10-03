@@ -1,0 +1,291 @@
+<!doctype html>
+<!--
+  360 Vision Events — proforma invoice template (SAMPLE content, matched to quotation.html).
+  Fill in: replace every [Bracket placeholder]; edit line items through data-qty / data-rate;
+  delete rows marked data-optional when they do not apply. See README.md in this folder.
+  Modes: class="doc-mode-dark" (default) or "doc-mode-paper", or open with ?mode=paper.
+  VAT:   data-vat="none" (all-inclusive, non-VAT) or data-vat="15" (adds 15% VAT).
+  Never commit a filled copy: real client and banking details stay out of version control.
+-->
+<html lang="en-ZA" class="doc-mode-dark" data-vat="none">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proforma Invoice — 360 Vision Events</title>
+<script>
+  /* Mode from the URL (?mode=paper, #mode=paper or #paper), applied before first paint. */
+  (function (root) {
+    var m = /(?:[?&#]mode=|#)(paper|dark)\b/.exec(location.search + location.hash);
+    if (m) root.className = root.className.replace(/\bdoc-mode-\w+\b/g, '').trim() + ' doc-mode-' + m[1];
+  })(document.documentElement);
+</script>
+<link rel="stylesheet" href="../tokens.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<!-- The site's own font request (DESIGN.md §4, typ-15) -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;700&amp;family=Inter+Tight:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="document.css">
+</head>
+<body>
+
+<div class="doc-toolbar" role="group" aria-label="Document tools">
+  <div class="doc-toolbar-modes" role="group" aria-label="Colour mode">
+    <button type="button" class="doc-toolbar-chip" data-set-mode="dark" aria-pressed="true">Dark</button>
+    <button type="button" class="doc-toolbar-chip" data-set-mode="paper" aria-pressed="false">Paper</button>
+  </div>
+  <button type="button" class="doc-toolbar-print" data-print>Print / Save as PDF</button>
+  <p class="doc-toolbar-note">Print settings: A4 · margins none · background graphics on</p>
+</div>
+
+<div class="doc-sheet">
+
+  <header class="doc-header">
+    <div class="doc-header-row">
+      <img class="doc-logo doc-logo--dark" src="../assets/logo-horiz-ON-DARK.png" alt="360 Vision Events">
+      <img class="doc-logo doc-logo--paper" src="../assets/logo-pack-2026/svg/p09-wordmark-360vision-on-light.svg" alt="360 Vision Events">
+      <div class="doc-header-tagline">
+        <p class="doc-eyebrow-display">Corporate &amp; brand event production</p>
+        <p class="doc-header-subline">Audio · Lighting · Visual · Digital experience</p>
+      </div>
+    </div>
+    <div class="doc-accent-rule" aria-hidden="true"></div>
+  </header>
+
+  <table class="doc-frame" role="presentation">
+    <thead><tr><td><div class="doc-header-space"></div></td></tr></thead>
+    <tfoot><tr><td><div class="doc-footer-space"></div></td></tr></tfoot>
+    <tbody><tr><td>
+      <main>
+
+        <!-- 1 · Title block -->
+        <section class="doc-title-block" aria-label="Proforma invoice details">
+          <div>
+            <span class="doc-badge">Sample · Template</span>
+            <p class="doc-eyebrow">Issued for PO processing &amp; payment authorisation</p>
+            <h1 class="doc-title">Proforma invoice.</h1>
+          </div>
+          <dl class="doc-meta">
+            <div class="doc-meta-row"><dt>Proforma no.</dt><dd>[Proforma number]</dd></div>
+            <div class="doc-meta-row"><dt>Date of issue</dt><dd>[Date of issue]</dd></div>
+            <div class="doc-meta-row"><dt>Quotation ref.</dt><dd>[Quote reference]</dd></div>
+            <div class="doc-meta-row" data-optional><dt>Client vendor no.</dt><dd>[Vendor number]</dd></div>
+            <div class="doc-meta-row"><dt>Client PO no.</dt><dd class="doc-muted">To be inserted on receipt</dd></div>
+            <div class="doc-meta-row"><dt>Payment terms</dt><dd>100% before the event</dd></div>
+          </dl>
+        </section>
+
+        <!-- 2 · Parties -->
+        <section class="doc-grid-2 doc-block" aria-label="Parties">
+          <div class="doc-panel">
+            <h2 class="doc-eyebrow">Bill to</h2>
+            <p class="doc-party-name">[Client company]</p>
+            <div class="doc-party-lines">
+              <p data-optional>Client vendor no. [Vendor number]</p>
+              <p>Tax basis · <span data-vat-text data-vat-none="all-inclusive, non-VAT" data-vat-rated="VAT at {rate}% added">all-inclusive, non-VAT</span></p>
+              <p>[Region]</p>
+            </div>
+          </div>
+          <div class="doc-panel">
+            <h2 class="doc-eyebrow">From</h2>
+            <p class="doc-party-name">360 Vision Events (PTY) Ltd</p>
+            <div class="doc-party-lines">
+              <p>[Contact name] · [Role]</p>
+              <p>[Phone] · [E-mail]</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3 · RE line -->
+        <p class="doc-re">RE: [Client company] · 600-guest outdoor corporate function — [Date of event] · Turnkey event production as per quotation [Quote reference]</p>
+        <hr class="doc-rule">
+
+        <!-- 4 · Event details and amount due -->
+        <section class="doc-grid-2 doc-block" aria-label="Event details and amount due">
+          <div class="doc-keep">
+            <h2 class="doc-eyebrow">Event details</h2>
+            <dl class="doc-kv">
+              <div class="doc-kv-row"><dt>Project title</dt><dd>[Client company] · 600-guest outdoor corporate function</dd></div>
+              <div class="doc-kv-row"><dt>Date of event</dt><dd>[Date of event]</dd></div>
+              <div class="doc-kv-row"><dt>Venue</dt><dd>[Venue] · [Town], [Province]</dd></div>
+              <div class="doc-kv-row"><dt>Guests</dt><dd>600</dd></div>
+              <div class="doc-kv-row"><dt>Production cycle</dt><dd>3 days · build, show and strike</dd></div>
+              <div class="doc-kv-row"><dt>Power</dt><dd>Venue grid supply · distribution boards and cabling supplied</dd></div>
+              <div class="doc-kv-row"><dt>Tax basis</dt><dd data-vat-text data-vat-none="All-inclusive · non-VAT, no VAT charged" data-vat-rated="VAT at {rate}% added">All-inclusive · non-VAT, no VAT charged</dd></div>
+            </dl>
+          </div>
+          <div class="doc-amount">
+            <h2 class="doc-eyebrow">Amount due</h2>
+            <p class="doc-amount-value" data-grand-total>R&nbsp;220&nbsp;000.00</p>
+            <p class="doc-amount-note">Payable in full before the event. Use [Proforma number] and your PO number as payment reference.</p>
+          </div>
+        </section>
+
+        <!-- 5 · Coverage -->
+        <section class="doc-grid-2 doc-block" aria-label="Coverage">
+          <div class="doc-keep">
+            <h2 class="doc-eyebrow">This proforma covers</h2>
+            <div class="doc-prose"><p>Turnkey production as quoted: stretch tent structure and seating for 600 guests, fire safety equipment, line-array PA, digital mixing console, wireless microphones, presentation stage and lectern, power distribution, technical crew, freight and on-site production management.</p></div>
+          </div>
+          <div class="doc-keep">
+            <h2 class="doc-eyebrow">Excluded · venue provisions</h2>
+            <div class="doc-prose"><p class="doc-note">Grid power at the distribution point, guest ablutions, catering, décor and lighting are provided by the client or the venue, as set out in the quotation.</p></div>
+          </div>
+        </section>
+
+        <!-- 6 · Line items. Each item row: data-qty and data-rate (rand, no spaces). -->
+        <section class="doc-block">
+          <h2 class="doc-eyebrow doc-subhead" id="line-items-title">Line items</h2>
+          <div class="doc-lines-wrap">
+          <table class="doc-lines" aria-labelledby="line-items-title">
+            <colgroup><col class="doc-col-ref"><col class="doc-col-qty"><col><col class="doc-col-money"><col class="doc-col-money"></colgroup>
+            <thead>
+              <tr><th scope="col"><span aria-hidden="true">#</span><span class="doc-sr-only">Item number</span></th><th scope="col" class="doc-num doc-qty">Qty</th><th scope="col">Description</th><th scope="col" class="doc-num">Unit rate</th><th scope="col" class="doc-num">Total</th></tr>
+            </thead>
+            <tbody class="doc-line-group" data-group="1">
+              <tr class="doc-line-group-head"><th scope="rowgroup" colspan="5">1 · Tentage &amp; seating</th></tr>
+              <tr class="doc-line-item" data-qty="2" data-rate="25000"><td class="doc-line-ref">1.1</td><td class="doc-num doc-qty" data-line-qty>2</td><th scope="row">Stretch tent structure, rigged</th><td class="doc-num doc-line-rate" data-line-rate>R&nbsp;25&nbsp;000.00</td><td class="doc-num" data-line-total>R&nbsp;50&nbsp;000.00</td></tr>
+              <tr class="doc-line-item" data-qty="600" data-rate="20"><td class="doc-line-ref">1.2</td><td class="doc-num doc-qty" data-line-qty>600</td><th scope="row">Conference chairs</th><td class="doc-num doc-line-rate" data-line-rate>R&nbsp;20.00</td><td class="doc-num" data-line-total>R&nbsp;12&nbsp;000.00</td></tr>
+              <tr class="doc-line-item" data-qty="6" data-rate="500"><td class="doc-line-ref">1.3</td><td class="doc-num doc-qty" data-line-qty>6</td><th scope="row">Fire extinguishers, serviced and tagged</th><td class="doc-num doc-line-rate" data-line-rate>R&nbsp;500.00</td><td class="doc-num" data-line-total>R&nbsp;3&nbsp;000.00</td></tr>
+              <tr class="doc-line-item" data-qty="1" data-rate="22000"><td class="doc-line-ref">1.4</td><td class="doc-num doc-qty" data-line-qty>1</td><th scope="row">Rigging labour — build, standby and strike</th><td class="doc-num doc-line-rate" data-line-rate>R&nbsp;22&nbsp;000.00</td><td class="doc-num" data-line-total>R&nbsp;22&nbsp;000.00</td></tr>
+              <tr class="doc-line-item" data-qty="2" data-rate="6500"><td class="doc-line-ref">1.5</td><td class="doc-num doc-qty" data-line-qty>2</td><th scope="row">Freight — delivery and collection</th><td class="doc-num doc-line-rate" data-line-rate>R&nbsp;6&nbsp;500.00</td><td class="doc-num" data-line-total>R&nbsp;13&nbsp;000.00</td></tr>
+              <tr class="doc-line-subtotal"><td colspan="4">Subtotal · Tentage &amp; seating</td><td class="doc-num" data-group-subtotal="1">R&nbsp;100&nbsp;000.00</td></tr>
+            </tbody>
+            <tbody class="doc-line-group" data-group="2">
+              <tr class="doc-line-group-head"><th scope="rowgroup" colspan="5">2 · Technical production, audio &amp; staging</th></tr>
+              <tr class="doc-line-item" data-qty="1" data-rate="35000"><td class="doc-line-ref">2.1</td><td class="doc-num doc-qty" data-line-qty>1</td><th scope="row">Line-array PA with subwoofers</th><td class="doc-num doc-line-rate" data-line-rate>R&nbsp;35&nbsp;000.00</td><td class="doc-num" data-line-total>R&nbsp;35&nbsp;000.00</td></tr>
+              <tr class="doc-line-item" data-qty="1" data-rate="6000"><td class="doc-line-ref">2.2</td><td class="doc-num doc-qty" data-line-qty>1</td><th scope="row">Digital mixing console and stage box</th><td class="doc-num doc-line-rate" data-line-rate>R&nbsp;6&nbsp;000.00</td><td class="doc-num" data-line-total>R&nbsp;6&nbsp;000.00</td></tr>
+              <tr class="doc-line-item" data-qty="4" data-rate="1250"><td class="doc-line-ref">2.3</td><td class="doc-num doc-qty" data-line-qty>4</td><th scope="row">Wireless microphones — handheld and lapel</th><td class="doc-num doc-line-rate" data-line-rate>R&nbsp;1&nbsp;250.00</td><td class="doc-num" data-line-total>R&nbsp;5&nbsp;000.00</td></tr>
+              <tr class="doc-line-item" data-qty="1" data-rate="12000"><td class="doc-line-ref">2.4</td><td class="doc-num doc-qty" data-line-qty>1</td><th scope="row">Presentation stage with stairs and skirting</th><td class="doc-num doc-line-rate" data-line-rate>R&nbsp;12&nbsp;000.00</td><td class="doc-num" data-line-total>R&nbsp;12&nbsp;000.00</td></tr>
+              <tr class="doc-line-item" data-qty="1" data-rate="1500"><td class="doc-line-ref">2.5</td><td class="doc-num doc-qty" data-line-qty>1</td><th scope="row">Presenter lectern</th><td class="doc-num doc-line-rate" data-line-rate>R&nbsp;1&nbsp;500.00</td><td class="doc-num" data-line-total>R&nbsp;1&nbsp;500.00</td></tr>
+              <tr class="doc-line-item" data-qty="1" data-rate="6500"><td class="doc-line-ref">2.6</td><td class="doc-num doc-qty" data-line-qty>1</td><th scope="row">Power distribution boards and cabling</th><td class="doc-num doc-line-rate" data-line-rate>R&nbsp;6&nbsp;500.00</td><td class="doc-num" data-line-total>R&nbsp;6&nbsp;500.00</td></tr>
+              <tr class="doc-line-item" data-qty="1" data-rate="14000"><td class="doc-line-ref">2.7</td><td class="doc-num doc-qty" data-line-qty>1</td><th scope="row">Technical crew — full production cycle</th><td class="doc-num doc-line-rate" data-line-rate>R&nbsp;14&nbsp;000.00</td><td class="doc-num" data-line-total>R&nbsp;14&nbsp;000.00</td></tr>
+              <tr class="doc-line-subtotal"><td colspan="4">Subtotal · Technical production, audio &amp; staging</td><td class="doc-num" data-group-subtotal="2">R&nbsp;80&nbsp;000.00</td></tr>
+            </tbody>
+            <tbody class="doc-line-group" data-group="3">
+              <tr class="doc-line-group-head"><th scope="rowgroup" colspan="5">3 · Production staff &amp; event management</th></tr>
+              <tr class="doc-line-item" data-qty="1" data-rate="7000"><td class="doc-line-ref">3.1</td><td class="doc-num doc-qty" data-line-qty>1</td><th scope="row">Production manager — 3 days on site</th><td class="doc-num doc-line-rate" data-line-rate>R&nbsp;7&nbsp;000.00</td><td class="doc-num" data-line-total>R&nbsp;7&nbsp;000.00</td></tr>
+              <tr class="doc-line-item" data-qty="1" data-rate="6000"><td class="doc-line-ref">3.2</td><td class="doc-num doc-qty" data-line-qty>1</td><th scope="row">Operations manager — 3 days on site</th><td class="doc-num doc-line-rate" data-line-rate>R&nbsp;6&nbsp;000.00</td><td class="doc-num" data-line-total>R&nbsp;6&nbsp;000.00</td></tr>
+              <tr class="doc-line-item" data-qty="2" data-rate="3500"><td class="doc-line-ref">3.3</td><td class="doc-num doc-qty" data-line-qty>2</td><th scope="row">Logistics vehicles</th><td class="doc-num doc-line-rate" data-line-rate>R&nbsp;3&nbsp;500.00</td><td class="doc-num" data-line-total>R&nbsp;7&nbsp;000.00</td></tr>
+              <tr class="doc-line-item" data-qty="1" data-rate="20000"><td class="doc-line-ref">3.4</td><td class="doc-num doc-qty" data-line-qty>1</td><th scope="row">Event management fee</th><td class="doc-num doc-line-rate" data-line-rate>R&nbsp;20&nbsp;000.00</td><td class="doc-num" data-line-total>R&nbsp;20&nbsp;000.00</td></tr>
+              <tr class="doc-line-subtotal"><td colspan="4">Subtotal · Production staff &amp; event management</td><td class="doc-num" data-group-subtotal="3">R&nbsp;40&nbsp;000.00</td></tr>
+            </tbody>
+          </table>
+          </div>
+
+          <!-- 7 · Totals -->
+          <dl class="doc-totals" aria-label="Totals">
+            <div class="doc-totals-row"><dt>Subtotal</dt><dd data-subtotal>R&nbsp;220&nbsp;000.00</dd></div>
+            <div class="doc-totals-row"><dt data-vat-text data-vat-none="VAT" data-vat-rated="VAT at {rate}%">VAT</dt><dd data-vat-amount data-vat-none="Not applicable · all-inclusive, non-VAT">Not applicable · all-inclusive, non-VAT</dd></div>
+            <div class="doc-totals-row doc-totals-row--grand"><dt>Total due</dt><dd data-grand-total>R&nbsp;220&nbsp;000.00</dd></div>
+          </dl>
+        </section>
+
+        <!-- 8 · Payment and banking -->
+        <section class="doc-grid-2 doc-block doc-keep" aria-label="Payment and banking">
+          <div class="doc-panel">
+            <h2 class="doc-eyebrow">Payment</h2>
+            <div class="doc-prose">
+              <p>Pay <strong data-grand-total>R&nbsp;220&nbsp;000.00</strong> by EFT into the account in the banking details. Use [Proforma number] and your PO number as payment reference.</p>
+              <p>Payment terms · 100% before the event.</p>
+              <p>Send proof of payment and the official purchase order to [E-mail].</p>
+              <p class="doc-note">This proforma invoice is issued for purchase order processing and payment authorisation. It is not a tax invoice; a final invoice is issued on receipt of payment.</p>
+            </div>
+          </div>
+          <div>
+            <div class="doc-panel">
+              <h2 class="doc-eyebrow">Banking details</h2>
+              <dl class="doc-kv">
+                <div class="doc-kv-row"><dt>Account name</dt><dd>[Account name]</dd></div>
+                <div class="doc-kv-row"><dt>Bank</dt><dd>[Bank]</dd></div>
+                <div class="doc-kv-row"><dt>Branch code</dt><dd>[Branch code]</dd></div>
+                <div class="doc-kv-row"><dt>Account no.</dt><dd>[Account number]</dd></div>
+                <div class="doc-kv-row"><dt>Account type</dt><dd>[Account type]</dd></div>
+                <div class="doc-kv-row"><dt>SWIFT</dt><dd>[SWIFT code]</dd></div>
+                <div class="doc-kv-row"><dt>Reference</dt><dd>[Proforma number]</dd></div>
+                <div class="doc-kv-row" data-optional><dt>Client vendor no.</dt><dd>[Vendor number]</dd></div>
+              </dl>
+            </div>
+            <p class="doc-eyebrow-display doc-closing">Thank you for your business.</p>
+          </div>
+        </section>
+
+      </main>
+    </td></tr></tbody>
+  </table>
+
+  <footer class="doc-footer">
+    <div class="doc-footer-row">
+      <p>360 Vision Events (PTY) Ltd · Reg. No. [Registration number] · [Business address]</p>
+      <p>[Phone] · [E-mail] · 360-vision-events.co.za</p>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+/* Document script: no dependencies. (1) Dark / paper toggle and print. (2) Totals.
+   The HTML already carries the correct pre-rendered values, so it reads correctly without JS. */
+(function () {
+  'use strict';
+  var root = document.documentElement;
+  var each = function (selector, fn) { Array.prototype.forEach.call(document.querySelectorAll(selector), fn); };
+
+  /* 1 · Toolbar */
+  function syncButtons() {
+    var mode = root.classList.contains('doc-mode-paper') ? 'paper' : 'dark';
+    each('[data-set-mode]', function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-set-mode') === mode)); });
+  }
+  function setMode(mode) {
+    root.classList.remove('doc-mode-dark', 'doc-mode-paper');
+    root.classList.add('doc-mode-' + mode);
+    syncButtons();
+    try { history.replaceState(null, '', location.pathname + '?mode=' + mode); } catch (e) { /* file:// may refuse; the class still applies */ }
+  }
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-set-mode], [data-print]');
+    if (!t) return;
+    if (t.hasAttribute('data-print')) window.print(); else setMode(t.getAttribute('data-set-mode'));
+  });
+  syncButtons();
+
+  /* 2 · Totals, in cents. Format: South African, "R 12 345.00" (non-breaking spaces). */
+  var NBSP = ' ';
+  function toCents(v) { return Math.round(parseFloat(v) * 100) || 0; }
+  function money(c) {
+    var sign = c < 0 ? '−' : '';
+    c = Math.abs(c);
+    var whole = String(Math.floor(c / 100)).replace(/\B(?=(\d{3})+(?!\d))/g, NBSP);
+    var part = String(c % 100);
+    return sign + 'R' + NBSP + whole + '.' + (part.length < 2 ? '0' + part : part);
+  }
+  function fill(selector, text) { each(selector, function (el) { el.textContent = text; }); }
+
+  var vatAttr = (root.getAttribute('data-vat') || 'none').trim();
+  var rate = vatAttr === 'none' ? 0 : (parseFloat(vatAttr) || 0);
+  var subtotal = 0;
+  each('[data-group]', function (group) {
+    var sum = 0;
+    Array.prototype.forEach.call(group.querySelectorAll('[data-qty][data-rate]'), function (row) {
+      var qty = parseFloat(row.getAttribute('data-qty')) || 0;
+      var unit = toCents(row.getAttribute('data-rate'));
+      var line = Math.round(qty * unit);
+      sum += line;
+      var q = row.querySelector('[data-line-qty]'); if (q) q.textContent = String(qty);
+      var r = row.querySelector('[data-line-rate]'); if (r) r.textContent = money(unit);
+      var t = row.querySelector('[data-line-total]'); if (t) t.textContent = money(line);
+    });
+    fill('[data-group-subtotal="' + group.getAttribute('data-group') + '"]', money(sum));
+    subtotal += sum;
+  });
+  var vat = Math.round(subtotal * rate / 100);
+  fill('[data-subtotal]', money(subtotal));
+  fill('[data-grand-total]', money(subtotal + vat));
+  each('[data-vat-amount]', function (el) { el.textContent = rate ? money(vat) : (el.getAttribute('data-vat-none') || 'Not applicable'); });
+  each('[data-vat-text]', function (el) {
+    var text = el.getAttribute(rate ? 'data-vat-rated' : 'data-vat-none');
+    if (text !== null) el.textContent = text.replace(/\{rate\}/g, String(rate));
+  });
+})();
+</script>
+</body>
+</html>

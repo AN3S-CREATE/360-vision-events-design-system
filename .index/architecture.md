@@ -18,6 +18,8 @@ token list (single source)  ──►  tokens.json  (DTCG-style)
                             ──►  DESIGN.md    (token tables + spec)
                             ──►  evidence.json (observations, decisions, token_trace, events)
                             ──►  preview.html (optional extra, uses tokens.css)
+tokens.css + logos  ──►  templates/ (D28: quotation + proforma invoice, A4, hand-built on tokens.css;
+                         structure from the owner's old documents, every data value withheld)
         │
         ▼
 mechanical acceptance check (criteria 1–7) + independent 6-agent audit + 2-agent re-audit
