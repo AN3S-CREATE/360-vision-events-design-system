@@ -48,3 +48,7 @@ mechanical acceptance check (criteria 1–7) + independent 6-agent audit + 2-age
 - **Original brief:** write only under `design-system/`; never publish, commit or deploy without explicit confirmation; GET-only egress to the user URL, its redirect host and same-site assets.
 - **Privacy:** POPIA minimisation. No phone digits, addresses or personal names in any artefact (D16).
 - **Idempotency:** a re-run overwrites `design-system/` only after a new `evidence.json` stamp is written.
+- **Hand corrections:** until the generator is versioned (TD-01), any change to a generated file is a hand correction, logged as a decision plus an `events` entry in `evidence.json` (D29, D30).
+- **Line endings:** text is stored and checked out as LF everywhere (`.gitattributes`, D30). Hash files from an LF checkout or from `git show HEAD:<path>`, never from a CRLF working tree.
+- **Copies:** the package exists in five places: `design-system/`, `skill/…/assets/design-system/` (+ `references/DESIGN.md`), `dist/*.skill`, the installed `~/.claude/skills/` copy and the Claude Design artifact. All are synced by hand, so check parity after every change (TD-04).
+- **Owner binaries:** strip personal metadata before committing (D29), and keep the supplied sha256 for traceability.
