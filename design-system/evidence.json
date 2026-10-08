@@ -14078,6 +14078,13 @@
    "choice": "On 2026-10-02 the user supplied two old commercial documents (a quotation and a proforma invoice) and asked for their layout and structure in the new look. design-system/templates/ holds document.css, quotation.html, proforma-invoice.html and README.md. They rebuild the old structure: running header and footer, title block with a reference list, party panels, an amount hero, numbered sections, a grouped line-item schedule with subtotals and a totals box, and acceptance and payment panels. They use tokens.css, the site's fonts and the ON-DARK logo, on A4. Dark is the default. An optional paper mode for ink-saving print uses the ON-LIGHT P09 SVG and proposed (not observed) light values. Every client, personal, banking and pricing value from the source documents was left out: fields are placeholders and line items are sample content. Tokens are unchanged.",
    "rule": "D21: extras only on the user's request after the package exists. D16 / POPIA: no names, phone digits, addresses or bank details in the public repository.",
    "evidence_url": "https://360-vision-events.co.za/"
+  },
+  {
+   "id": "D29",
+   "topic": "logo file metadata and provenance",
+   "choice": "On 2026-10-08, at the user's request, the 11 owner PNGs in design-system/assets/logo-pack-2026/ (and the skill copies) were stripped to the chunks that affect rendering. As supplied, each carried an XMP block with a personal author name and Canva account, brand and design IDs, and an eXIf block; 10 also carried a Canva-signed C2PA credential marking them as AI-assisted composites (Canva AI, compositeWithTrainedAlgorithmicMedia). The C2PA signature hashes the whole file, so it could not stay valid once the personal XMP was removed, and it was removed with it; the provenance is recorded in brand_files and the logo-pack README instead. Decoded pixels are identical to the supplied files, and the supplied hashes are kept as sha256_as_supplied. The five SVGs hold no personal data or account IDs and are unchanged; four keep their Canva C2PA credential. This amends D26's byte-identical storage for the PNGs only. The original acceptance check (criterion 6) scanned text files, not binary metadata. Git history still holds the supplied PNGs; it was not rewritten (the name in them is already public as the commit author).",
+   "rule": "D16 / POPIA: no personal names in any artefact. Brief input 3 and D26: owner files are recorded as supplied, so the supplied hashes and provenance stay in the record.",
+   "evidence_url": "https://360-vision-events.co.za/"
   }
  ],
  "assumptions": [
@@ -16391,101 +16398,233 @@
    {
     "file": "p03-primary-horizontal-divider-on-dark.png",
     "official_name": "360 Vision Events - Logo P03 Primary Horiz 360 Divider ON-DARK.png",
-    "sha256": "11aaf5a7bff1420e9794c40d05bddd236f8661d65b0ff94ba970c1d50c1bb85d",
-    "bytes": 114694,
+    "sha256": "3d38429010996004b09fd1aa2922d354ed8f70e2a952644ee43cca62d7a49fa6",
+    "bytes": 95529,
+    "sha256_as_supplied": "11aaf5a7bff1420e9794c40d05bddd236f8661d65b0ff94ba970c1d50c1bb85d",
+    "bytes_as_supplied": 114694,
     "size": "2000x2000",
     "background": "#000000",
-    "orange_dominant": "#fb1c00"
+    "orange_dominant": "#fb1c00",
+    "metadata": {
+     "as_supplied": "XMP (personal author name, Canva account/brand/design IDs, creator tool, title, ContainsAiGeneratedContent=Yes, IPTC DigitalSourceType compositeWithTrainedAlgorithmicMedia), eXIf (orientation 1, resolution), caBX: Canva-signed C2PA credential (c2pa.created, softwareAgent Canva AI)",
+     "kept_chunks": [
+      "IHDR",
+      "pHYs",
+      "IDAT",
+      "IEND"
+     ],
+     "removed": "iTXt, eXIf, caBX (D29); decoded pixels verified identical to the supplied file"
+    }
    },
    {
     "file": "p03-primary-horizontal-divider-on-light.png",
     "official_name": "360 Vision Events - Logo P03 Primary Horiz 360 Divider ON-LIGHT.png",
-    "sha256": "e55a0fa36b7ee7fe9a99c1a3e7f0eba61c84abd12c21689991c09e924eb23110",
-    "bytes": 199575,
+    "sha256": "046d4e8aaac3d0d7e81c972e4379b0c233b52ba281017197a73d5bc03b8aa1fb",
+    "bytes": 180409,
+    "sha256_as_supplied": "e55a0fa36b7ee7fe9a99c1a3e7f0eba61c84abd12c21689991c09e924eb23110",
+    "bytes_as_supplied": 199575,
     "size": "2000x2000",
     "background": "#ffffff",
-    "orange_dominant": "#fb1c00"
+    "orange_dominant": "#fb1c00",
+    "metadata": {
+     "as_supplied": "XMP (personal author name, Canva account/brand/design IDs, creator tool, title, ContainsAiGeneratedContent=Yes, IPTC DigitalSourceType compositeWithTrainedAlgorithmicMedia), eXIf (orientation 1, resolution), caBX: Canva-signed C2PA credential (c2pa.created, softwareAgent Canva AI)",
+     "kept_chunks": [
+      "IHDR",
+      "pHYs",
+      "IDAT",
+      "IEND"
+     ],
+     "removed": "iTXt, eXIf, caBX (D29); decoded pixels verified identical to the supplied file"
+    }
    },
    {
     "file": "p05-primary-horizontal-divider-on-dark.png",
     "official_name": "360 Vision Events - Logo P05 Primary Horiz 360 Divider ON-DARK.png",
-    "sha256": "106e38a247f7a5be5e78cbc6ea4ac5530dba9dbbb9fcd789126aa45c9231ae17",
-    "bytes": 127977,
+    "sha256": "b5f5741262c798b7b747862fdd09d4b027daca66c8aeeda47d86b9e8a4f41a0d",
+    "bytes": 108812,
+    "sha256_as_supplied": "106e38a247f7a5be5e78cbc6ea4ac5530dba9dbbb9fcd789126aa45c9231ae17",
+    "bytes_as_supplied": 127977,
     "size": "2000x2000",
     "background": "#000000",
-    "orange_dominant": "#e22500"
+    "orange_dominant": "#e22500",
+    "metadata": {
+     "as_supplied": "XMP (personal author name, Canva account/brand/design IDs, creator tool, title, ContainsAiGeneratedContent=Yes, IPTC DigitalSourceType compositeWithTrainedAlgorithmicMedia), eXIf (orientation 1, resolution), caBX: Canva-signed C2PA credential (c2pa.created, softwareAgent Canva AI)",
+     "kept_chunks": [
+      "IHDR",
+      "pHYs",
+      "IDAT",
+      "IEND"
+     ],
+     "removed": "iTXt, eXIf, caBX (D29); decoded pixels verified identical to the supplied file"
+    }
    },
    {
     "file": "p05-primary-horizontal-divider-on-light.png",
     "official_name": "360 Vision Events - Logo P05 Primary Horiz 360 Divider ON-LIGHT.png",
-    "sha256": "df47887009d549850044d2bd507924b43984cb5c34bcbe91547505fa2be57e20",
-    "bytes": 235500,
+    "sha256": "b055f8c71ff2b78bba6bab5aff4fdb36babba0a89e39718c04c7a21e9dfe108a",
+    "bytes": 216334,
+    "sha256_as_supplied": "df47887009d549850044d2bd507924b43984cb5c34bcbe91547505fa2be57e20",
+    "bytes_as_supplied": 235500,
     "size": "2000x2000",
     "background": "#ffffff",
-    "orange_dominant": "#e22500"
+    "orange_dominant": "#e22500",
+    "metadata": {
+     "as_supplied": "XMP (personal author name, Canva account/brand/design IDs, creator tool, title, ContainsAiGeneratedContent=Yes, IPTC DigitalSourceType compositeWithTrainedAlgorithmicMedia), eXIf (orientation 1, resolution), caBX: Canva-signed C2PA credential (c2pa.created, softwareAgent Canva AI)",
+     "kept_chunks": [
+      "IHDR",
+      "pHYs",
+      "IDAT",
+      "IEND"
+     ],
+     "removed": "iTXt, eXIf, caBX (D29); decoded pixels verified identical to the supplied file"
+    }
    },
    {
     "file": "p06-stacked-full-colour-on-dark.png",
     "official_name": "360 Vision Events - Logo P06 Stacked Full Colour ON-DARK.png",
-    "sha256": "83cb4da6d7b01f68916aae442276cb808f498d332033780e5d52186a60ed932f",
-    "bytes": 167348,
+    "sha256": "6e3392c63dbf06f3d012ffa21313ea98c692fff6c20f1207b1ae5b5ab273eadf",
+    "bytes": 148189,
+    "sha256_as_supplied": "83cb4da6d7b01f68916aae442276cb808f498d332033780e5d52186a60ed932f",
+    "bytes_as_supplied": 167348,
     "size": "2000x2000",
     "background": "#000000",
-    "orange_dominant": "#f51900"
+    "orange_dominant": "#f51900",
+    "metadata": {
+     "as_supplied": "XMP (personal author name, Canva account/brand/design IDs, creator tool, title, ContainsAiGeneratedContent=Yes, IPTC DigitalSourceType compositeWithTrainedAlgorithmicMedia), eXIf (orientation 1, resolution), caBX: Canva-signed C2PA credential (c2pa.created, softwareAgent Canva AI)",
+     "kept_chunks": [
+      "IHDR",
+      "pHYs",
+      "IDAT",
+      "IEND"
+     ],
+     "removed": "iTXt, eXIf, caBX (D29); decoded pixels verified identical to the supplied file"
+    }
    },
    {
     "file": "p06-stacked-full-colour-on-light.png",
     "official_name": "360 Vision Events - Logo P06 Stacked Full Colour ON-LIGHT.png",
-    "sha256": "db347f32c65787e48bc2a272b51cdda831b22b65c8f8a8b2541509929f332090",
-    "bytes": 255796,
+    "sha256": "eb7138dde2e1506001dfa7662fc55ba45d7ea36482cb26d396a9ac2e3d1b466d",
+    "bytes": 236636,
+    "sha256_as_supplied": "db347f32c65787e48bc2a272b51cdda831b22b65c8f8a8b2541509929f332090",
+    "bytes_as_supplied": 255796,
     "size": "2000x2000",
     "background": "#ffffff",
-    "orange_dominant": "#f51900"
+    "orange_dominant": "#f51900",
+    "metadata": {
+     "as_supplied": "XMP (personal author name, Canva account/brand/design IDs, creator tool, title, ContainsAiGeneratedContent=Yes, IPTC DigitalSourceType compositeWithTrainedAlgorithmicMedia), eXIf (orientation 1, resolution), caBX: Canva-signed C2PA credential (c2pa.created, softwareAgent Canva AI)",
+     "kept_chunks": [
+      "IHDR",
+      "pHYs",
+      "IDAT",
+      "IEND"
+     ],
+     "removed": "iTXt, eXIf, caBX (D29); decoded pixels verified identical to the supplied file"
+    }
    },
    {
     "file": "p07-mark-360-on-dark.png",
     "official_name": "360 Vision Events - Logo P07 Mark 360 ON-DARK.png",
-    "sha256": "64853211a851d164c2b697dd69036163e9965f8698134ce7ac88d27b270fb12f",
-    "bytes": 168770,
+    "sha256": "bb8b3b6a5fe7dbb34762517a2a36159cd4946f610103787882f778461ce31bc5",
+    "bytes": 149622,
+    "sha256_as_supplied": "64853211a851d164c2b697dd69036163e9965f8698134ce7ac88d27b270fb12f",
+    "bytes_as_supplied": 168770,
     "size": "2000x2000",
     "background": "#000000",
-    "orange_dominant": "#ff3500"
+    "orange_dominant": "#ff3500",
+    "metadata": {
+     "as_supplied": "XMP (personal author name, Canva account/brand/design IDs, creator tool, title, ContainsAiGeneratedContent=Yes, IPTC DigitalSourceType compositeWithTrainedAlgorithmicMedia), eXIf (orientation 1, resolution), caBX: Canva-signed C2PA credential (c2pa.created, softwareAgent Canva AI)",
+     "kept_chunks": [
+      "IHDR",
+      "pHYs",
+      "IDAT",
+      "IEND"
+     ],
+     "removed": "iTXt, eXIf, caBX (D29); decoded pixels verified identical to the supplied file"
+    }
    },
    {
     "file": "p07-mark-360-on-light.png",
     "official_name": "360 Vision Events - Logo P07 Mark 360 ON-LIGHT.png",
-    "sha256": "16a372cfbffcf6d4181a7c86de9838cc7eafeb86997bb6009c696186235a526f",
-    "bytes": 254596,
+    "sha256": "c456dbd7432df7419c4e4a545127e33ecd79a1f986a09df565d1c6fd70a281f4",
+    "bytes": 235447,
+    "sha256_as_supplied": "16a372cfbffcf6d4181a7c86de9838cc7eafeb86997bb6009c696186235a526f",
+    "bytes_as_supplied": 254596,
     "size": "2000x2000",
     "background": "#ffffff",
-    "orange_dominant": "#ff3500"
+    "orange_dominant": "#ff3500",
+    "metadata": {
+     "as_supplied": "XMP (personal author name, Canva account/brand/design IDs, creator tool, title, ContainsAiGeneratedContent=Yes, IPTC DigitalSourceType compositeWithTrainedAlgorithmicMedia), eXIf (orientation 1, resolution), caBX: Canva-signed C2PA credential (c2pa.created, softwareAgent Canva AI)",
+     "kept_chunks": [
+      "IHDR",
+      "pHYs",
+      "IDAT",
+      "IEND"
+     ],
+     "removed": "iTXt, eXIf, caBX (D29); decoded pixels verified identical to the supplied file"
+    }
    },
    {
     "file": "p09-wordmark-360vision-on-dark.png",
     "official_name": "360 Vision Events - Logo P09 Wordmark 360VISION ON-DARK.png",
-    "sha256": "d7dddb9493cb3d31c7cadb5526d27132e380e95747184cc7a583db7799b19366",
-    "bytes": 42163,
+    "sha256": "60d5380fdedce76ac3bf7bfa6c9d48315205a3048283ce1a09e85426352e0337",
+    "bytes": 40444,
+    "sha256_as_supplied": "d7dddb9493cb3d31c7cadb5526d27132e380e95747184cc7a583db7799b19366",
+    "bytes_as_supplied": 42163,
     "size": "2000x2000",
     "background": "#000000",
-    "orange_dominant": "#f14624"
+    "orange_dominant": "#f14624",
+    "metadata": {
+     "as_supplied": "XMP (personal author name, Canva account/brand/design IDs, creator tool, title), eXIf (orientation 1, resolution)",
+     "kept_chunks": [
+      "IHDR",
+      "pHYs",
+      "IDAT",
+      "IEND"
+     ],
+     "removed": "iTXt, eXIf (D29); decoded pixels verified identical to the supplied file"
+    }
    },
    {
     "file": "p09-wordmark-360vision-on-light.png",
     "official_name": "360 Vision Events - Logo P09 Wordmark 360VISION ON-LIGHT.png",
-    "sha256": "5316d3c13df82c431eb06801716bd4bf0b2f8137560c730a429cc379970748d7",
-    "bytes": 124252,
+    "sha256": "96a88a17e5979d2f45f5bdaf3bf877917c45edeb15b38147fc347aebba7951f8",
+    "bytes": 105093,
+    "sha256_as_supplied": "5316d3c13df82c431eb06801716bd4bf0b2f8137560c730a429cc379970748d7",
+    "bytes_as_supplied": 124252,
     "size": "2000x2000",
     "background": "#ffffff",
-    "orange_dominant": "#f14624"
+    "orange_dominant": "#f14624",
+    "metadata": {
+     "as_supplied": "XMP (personal author name, Canva account/brand/design IDs, creator tool, title, ContainsAiGeneratedContent=Yes, IPTC DigitalSourceType compositeWithTrainedAlgorithmicMedia), eXIf (orientation 1, resolution), caBX: Canva-signed C2PA credential (c2pa.created, softwareAgent Canva AI)",
+     "kept_chunks": [
+      "IHDR",
+      "pHYs",
+      "IDAT",
+      "IEND"
+     ],
+     "removed": "iTXt, eXIf, caBX (D29); decoded pixels verified identical to the supplied file"
+    }
    },
    {
     "file": "p12-primary-horizontal-divider-on-dark.png",
     "official_name": "360 Vision Events - Logo P12 Primary Horiz 360 Divider ON-DARK.png",
-    "sha256": "29e0125f5b6feed632e19f63cdc0ac4eb2baf962aef6ff93cc7c940f45ea4fad",
-    "bytes": 156539,
+    "sha256": "8006dbf11d487fe4c292b648714e2513ec3ebc5166c2c2d68949d3f28acf1a30",
+    "bytes": 137374,
+    "sha256_as_supplied": "29e0125f5b6feed632e19f63cdc0ac4eb2baf962aef6ff93cc7c940f45ea4fad",
+    "bytes_as_supplied": 156539,
     "size": "2000x2000",
     "background": "#000000",
-    "orange_dominant": "#ff3e00"
+    "orange_dominant": "#ff3e00",
+    "metadata": {
+     "as_supplied": "XMP (personal author name, Canva account/brand/design IDs, creator tool, title, ContainsAiGeneratedContent=Yes, IPTC DigitalSourceType compositeWithTrainedAlgorithmicMedia), eXIf (orientation 1, resolution), caBX: Canva-signed C2PA credential (c2pa.created, softwareAgent Canva AI)",
+     "kept_chunks": [
+      "IHDR",
+      "pHYs",
+      "IDAT",
+      "IEND"
+     ],
+     "removed": "iTXt, eXIf, caBX (D29); decoded pixels verified identical to the supplied file"
+    }
    }
   ],
   "sampling": "Pillow, image downscaled to 500x500; dominant saturated orange/red pixel colour and the most common (background) colour",
@@ -16514,7 +16653,10 @@
      }
     ],
     "type": "hybrid: vector lettering + masked bitmap ring/divider",
-    "background": "transparent"
+    "background": "transparent",
+    "metadata": {
+     "content_credentials": "Canva-signed C2PA manifest in <metadata> (c2pa.created, softwareAgent Canva AI, IPTC DigitalSourceType compositeWithTrainedAlgorithmicMedia, ContainsAiGeneratedContent). No personal data or account IDs; kept unchanged (D29)."
+    }
    },
    {
     "file": "svg/p05-primary-horizontal-divider-on-light.svg",
@@ -16540,7 +16682,10 @@
      }
     ],
     "type": "hybrid: vector lettering + masked bitmap ring/divider",
-    "background": "transparent"
+    "background": "transparent",
+    "metadata": {
+     "content_credentials": "Canva-signed C2PA manifest in <metadata> (c2pa.created, softwareAgent Canva AI, IPTC DigitalSourceType compositeWithTrainedAlgorithmicMedia, ContainsAiGeneratedContent). No personal data or account IDs; kept unchanged (D29)."
+    }
    },
    {
     "file": "svg/p06-stacked-full-colour-on-light.svg",
@@ -16561,7 +16706,10 @@
      }
     ],
     "type": "hybrid: vector lettering + masked bitmap ring",
-    "background": "transparent"
+    "background": "transparent",
+    "metadata": {
+     "content_credentials": "Canva-signed C2PA manifest in <metadata> (c2pa.created, softwareAgent Canva AI, IPTC DigitalSourceType compositeWithTrainedAlgorithmicMedia, ContainsAiGeneratedContent). No personal data or account IDs; kept unchanged (D29)."
+    }
    },
    {
     "file": "svg/p07-mark-360-on-light.svg",
@@ -16580,7 +16728,10 @@
      }
     ],
     "type": "hybrid: vector lettering + masked bitmap ring",
-    "background": "transparent"
+    "background": "transparent",
+    "metadata": {
+     "content_credentials": "Canva-signed C2PA manifest in <metadata> (c2pa.created, softwareAgent Canva AI, IPTC DigitalSourceType compositeWithTrainedAlgorithmicMedia, ContainsAiGeneratedContent). No personal data or account IDs; kept unchanged (D29)."
+    }
    },
    {
     "file": "svg/p09-wordmark-360vision-on-light.svg",
@@ -16595,10 +16746,14 @@
     ],
     "embedded_bitmaps": [],
     "type": "fully vector",
-    "background": "transparent"
+    "background": "transparent",
+    "metadata": {
+     "content_credentials": "none; the file has no <metadata>"
+    }
    }
   ],
-  "svg_analysis": "fill attributes read from the SVG source; embedded PNG layers decoded and paired (L mask + RGB colour), dominant colour sampled where the mask is opaque"
+  "svg_analysis": "fill attributes read from the SVG source; embedded PNG layers decoded and paired (L mask + RGB colour), dominant colour sampled where the mask is opaque",
+  "metadata_policy": "D29: owner PNGs are stored with only the chunks that affect rendering (IHDR, pHYs, IDAT, IEND). sha256/bytes describe the stored files; sha256_as_supplied/bytes_as_supplied identify the files as received. SVGs are stored byte-identical. No personal names or account IDs are stored here (D16)."
  },
  "extras": {
   "requested": "2026-10-02 — the user asked, after the package existed (as the brief requires), to add the optional extras and the recommended setup",
@@ -16732,6 +16887,11 @@
    "event": "write.done",
    "at": "2026-10-03T03:58:50Z",
    "detail": "optional extras: preview.html, assets/logo-horiz-ON-DARK.png, assets/favicon.png, templates/README.md, templates/document.css, templates/quotation.html, templates/proforma-invoice.html, templates/.gitignore"
+  },
+  {
+   "event": "assets.metadata_stripped",
+   "at": "2026-10-08T18:48:54Z",
+   "detail": "logo-pack-2026: 11 PNGs stripped to IHDR/pHYs/IDAT/IEND, pixels verified identical; brand_files hashes updated, supplied hashes kept (D29). Hand correction: the generator is not versioned (TD-01)."
   }
  ]
 }
