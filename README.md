@@ -34,7 +34,9 @@ An evidence-locked design system for **360 Vision Events**, read from the live s
 **In Tailwind v4 or shadcn/ui:** copy [`skill/360-vision-events-design-system/assets/shadcn-theme.css`](skill/360-vision-events-design-system/assets/shadcn-theme.css). It holds the site's own `:root` variables plus a Tailwind `@theme inline` mapping, so import it after `@import "tailwindcss";`. The mapping covers colours, radii and the body and display font families. Add the three site rules it leaves out (literal values, because the adapter doesn't define the `tokens.css` variables):
 
 ```css
-h1, h2, h3 { font-family: "Space Grotesk", "Helvetica Neue", sans-serif; letter-spacing: -.03em; }
+@layer base {
+  h1, h2, h3 { font-family: "Space Grotesk", "Helvetica Neue", sans-serif; letter-spacing: -.03em; }
+}
 .font-clean { font-family: Inter, system-ui, sans-serif; }
 .card-lift { transition: transform .3s, box-shadow .3s, border-color .3s; transition-timing-function: cubic-bezier(.22, 1, .36, 1); }
 .card-lift:hover { transform: translateY(-6px); box-shadow: var(--shadow-lift); border-color: color-mix(in oklab, #ff4000 45%, transparent); }
