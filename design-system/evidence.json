@@ -14085,6 +14085,13 @@
    "choice": "On 2026-10-08, at the user's request, the 11 owner PNGs in design-system/assets/logo-pack-2026/ (and the skill copies) were stripped to the chunks that affect rendering. As supplied, each carried an XMP block with a personal author name and Canva account, brand and design IDs, and an eXIf block; 10 also carried a Canva-signed C2PA credential marking them as AI-assisted composites (Canva AI, compositeWithTrainedAlgorithmicMedia). The C2PA signature hashes the whole file, so it could not stay valid once the personal XMP was removed, and it was removed with it; the provenance is recorded in brand_files and the logo-pack README instead. Decoded pixels are identical to the supplied files, and the supplied hashes are kept as sha256_as_supplied. The five SVGs hold no personal data or account IDs and are unchanged; four keep their Canva C2PA credential. This amends D26's byte-identical storage for the PNGs only. The original acceptance check (criterion 6) scanned text files, not binary metadata. Git history still holds the supplied PNGs; it was not rewritten (the name in them is already public as the commit author).",
    "rule": "D16 / POPIA: no personal names in any artefact. Brief input 3 and D26: owner files are recorded as supplied, so the supplied hashes and provenance stay in the record.",
    "evidence_url": "https://360-vision-events.co.za/"
+  },
+  {
+   "id": "D30",
+   "topic": "line endings and repository hygiene",
+   "choice": "On 2026-10-08, at the user's request, the repository gained a root .gitattributes (text=auto eol=lf; PNG, .skill and zip binary; SVG -text) and a root .gitignore (filled documents and PDFs anywhere in the tree, local tool and OS files). The build had hashed a Windows working tree with mixed line endings, so the recorded sha256 for templates/README.md and templates/document.css described CRLF copies and failed against the committed LF files; no checkout mode reproduced all 24 recorded hashes. Both are now recomputed from the committed blobs, and every recorded hash matches an LF checkout on any OS.",
+   "rule": "Evidence-locked package: every recorded hash must verify from a clean clone. Write scope: files outside design-system/ only on the user's request (D22).",
+   "evidence_url": "https://360-vision-events.co.za/"
   }
  ],
  "assumptions": [
@@ -16783,15 +16790,15 @@
     "path": "templates/README.md",
     "purpose": "Structure spec and how-to for the commercial document templates (optional extra, D28).",
     "source": "the owner's old quotation and proforma invoice: structure only, every data value withheld",
-    "bytes": 20628,
-    "sha256": "6bfa45c59735326d4037187e5e03c82c6c24e37d24f57c2ee7d15d7aba313712"
+    "bytes": 20437,
+    "sha256": "aa8bf12c8a82269409eb7a390d7535b7572c5590f9379613479b3664c218c2e4"
    },
    {
     "path": "templates/document.css",
     "purpose": "Shared A4 document styles for the templates, built on tokens.css (optional extra, D28).",
     "source": "tokens.css; print values documented as --doc-* properties",
-    "bytes": 29724,
-    "sha256": "69b0458d746ee2cc86fcf10d8b951c736d7f27f1615fb24e176e2ba001b78c57"
+    "bytes": 29057,
+    "sha256": "3c15bff1a49bff9d173b1f03cd333c8ab24c126421886603f903a80154081e97"
    },
    {
     "path": "templates/quotation.html",
@@ -16834,6 +16841,14 @@
    {
     "path": ".claude/launch.json",
     "reason": "local static-server config (python -m http.server, 127.0.0.1:8765) used to view preview.html (D22)"
+   },
+   {
+    "path": ".gitattributes",
+    "reason": "stores and checks out every text file as LF so the sha256 values in this file match any clone; PNG and .skill binary, SVG byte-exact (D30)"
+   },
+   {
+    "path": ".gitignore",
+    "reason": "keeps filled-in documents (*.filled.html, *.pdf, filled/) out of git anywhere in the public repository, plus local tool and OS files (D30)"
    }
   ]
  },
@@ -16892,6 +16907,11 @@
    "event": "assets.metadata_stripped",
    "at": "2026-10-08T18:48:54Z",
    "detail": "logo-pack-2026: 11 PNGs stripped to IHDR/pHYs/IDAT/IEND, pixels verified identical; brand_files hashes updated, supplied hashes kept (D29). Hand correction: the generator is not versioned (TD-01)."
+  },
+  {
+   "event": "hash.corrected",
+   "at": "2026-10-08T18:49:55Z",
+   "detail": "extras.files: templates/README.md and templates/document.css re-hashed from the committed LF blobs (D30). Hand correction: the generator is not versioned (TD-01)."
   }
  ]
 }

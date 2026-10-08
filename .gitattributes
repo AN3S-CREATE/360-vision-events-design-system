@@ -1,0 +1,11 @@
+# Line endings: store and check out every text file as LF on every OS, so the
+# sha256 values in design-system/evidence.json match any clone (D30).
+* text=auto eol=lf
+
+# Binary assets: never convert.
+*.png binary
+*.skill binary
+*.zip binary
+
+# The owner's SVGs stay byte-exact (D27): no line-ending conversion.
+*.svg -text
