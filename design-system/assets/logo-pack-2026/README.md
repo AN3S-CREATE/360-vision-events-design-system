@@ -1,6 +1,6 @@
 # Logo pack 2026
 
-Official 360 Vision Events logo files, supplied by the brand owner on 2026-10-02. They keep the original names below. Their pixels are identical to the supplied files, but the PNGs have had their embedded metadata removed (see [File metadata and provenance](#file-metadata-and-provenance)). The "360 Vision Events Logo 2026" pack in Claude Design still holds the unstripped originals until it is re-uploaded.
+Official 360 Vision Events logo files, supplied by the brand owner on 2026-10-02. The table below maps each file to its original (official) name. Their pixels are identical to the supplied files, but the PNGs have had their embedded metadata removed (see [File metadata and provenance](#file-metadata-and-provenance)). The "360 Vision Events Logo 2026" pack in Claude Design still holds the unstripped originals until it is re-uploaded.
 
 Every file is a 2000×2000 RGB PNG on a solid background (**not transparent**): white `#ffffff` for ON-LIGHT, pure black `#000000` for ON-DARK. On the site canvas (`#0b0b0c`) an ON-DARK square shows as a faint darker box. Crop the file or place it on a matching ground.
 
@@ -44,7 +44,7 @@ For web UI on the dark canvas, the transparent `../logo-horiz-ON-DARK.png` (exac
 
 ## File metadata and provenance
 
-The files were exported from Canva. As supplied, every PNG carried an XMP block with a personal author name and Canva account, brand and design IDs, plus an EXIF block. That breaks the package's rule of no personal names in any artefact (D16), so on 2026-10-08 the PNGs were stripped down to the chunks that affect rendering (`IHDR`, `pHYs`, `IDAT`, `IEND`). The decoded pixels are identical to the supplied files. Their original sha256 values stay in `evidence.json` (`brand_files.files[].sha256_as_supplied`), so the files can still be matched to the owner's originals (decision D29).
+The files were exported from Canva. As supplied, every PNG carried an XMP block with a personal author name and Canva account, brand and design IDs, plus an EXIF block. That breaks the package's rule of no personal names in any artefact (D16), so on 2026-10-08 the PNGs were stripped down to the chunks that affect rendering (`IHDR`, `pHYs`, `IDAT`, `IEND`). The decoded pixels are identical to the supplied files. Their original sha256 values stay in `evidence.json` (`brand_files.files[].sha256_as_supplied`), so the files can still be matched to the owner's originals (decision D29). Git history from before D29 still holds the PNGs as supplied.
 
 Canva's content credentials recorded these logos as AI-assisted composites (IPTC digital source type `compositeWithTrainedAlgorithmicMedia`, created with "Canva AI"):
 

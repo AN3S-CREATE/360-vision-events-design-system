@@ -31,7 +31,14 @@ An evidence-locked design system for **360 Vision Events**, read from the live s
 </style>
 ```
 
-**In Tailwind v4 or shadcn/ui:** copy [`skill/360-vision-events-design-system/assets/shadcn-theme.css`](skill/360-vision-events-design-system/assets/shadcn-theme.css). It holds the site's own `:root` variables plus a Tailwind `@theme inline` mapping, so import it after `@import "tailwindcss";`. The mapping covers colours, radii and the body and display font families. It leaves out the site's heading rule (h1–h3 in Space Grotesk with `-.03em` tracking), `.font-clean` and `.card-lift`; copy those from `preview.html` if you need them.
+**In Tailwind v4 or shadcn/ui:** copy [`skill/360-vision-events-design-system/assets/shadcn-theme.css`](skill/360-vision-events-design-system/assets/shadcn-theme.css). It holds the site's own `:root` variables plus a Tailwind `@theme inline` mapping, so import it after `@import "tailwindcss";`. The mapping covers colours, radii and the body and display font families. Add the three site rules it leaves out (literal values, because the adapter doesn't define the `tokens.css` variables):
+
+```css
+h1, h2, h3 { font-family: "Space Grotesk", "Helvetica Neue", sans-serif; letter-spacing: -.03em; }
+.font-clean { font-family: Inter, system-ui, sans-serif; }
+.card-lift { transition: transform .3s, box-shadow .3s, border-color .3s; transition-timing-function: cubic-bezier(.22, 1, .36, 1); }
+.card-lift:hover { transform: translateY(-6px); box-shadow: var(--shadow-lift); border-color: color-mix(in oklab, #ff4000 45%, transparent); }
+```
 
 **In Claude:**
 - **Claude Code:** copy `skill/360-vision-events-design-system/` into `~/.claude/skills/` (or a project's `.claude/skills/`) without its `evals/` folder. You can also unzip `dist/360-vision-events-design-system.skill` there. Claude then applies the brand whenever you ask for 360 Vision Events work. Copy it again after pulling updates.
@@ -48,4 +55,4 @@ An evidence-locked design system for **360 Vision Events**, read from the live s
 3. **Audit:** the finished package was audited twice more against the raw pages.
 4. **Accept:** all seven acceptance criteria pass; see the Definition of done in `DESIGN.md`.
 
-Phone numbers, addresses and personal names are withheld throughout, including in image metadata (decision D29).
+Phone numbers, addresses and personal names are withheld in every current file, including image metadata (decision D29). Commits before D29 still hold the logo PNGs as supplied.

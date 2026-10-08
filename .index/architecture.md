@@ -2,7 +2,7 @@
 
 ## Overview
 
-A static, evidence-locked design-system package. There is no application code. The repository holds generated artefacts plus two observed brand assets.
+A static, evidence-locked design-system package. There is no application code. The repository holds generated artefacts, two observed brand assets, the owner's logo pack, hand-built document templates and the Claude skill built from them.
 
 ```
 live site (GET only)
