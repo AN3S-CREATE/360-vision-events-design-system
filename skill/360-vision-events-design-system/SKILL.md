@@ -1,6 +1,7 @@
 ---
 name: 360-vision-events-design-system
-description: The 360 Vision Events brand design system. It was read from the live site 360-vision-events.co.za and records only what the site actually uses. Dark canvas #0b0b0c, brand orange #ff4000, Space Grotesk headings and Inter Tight body, plus ready-made CSS tokens, component patterns, the logo and the brand's copy voice. Use this skill whenever you create, style, write or review anything for 360 Vision Events (also written 360VE or "360 Vision"). That includes web pages, landing sections, HTML emails, proposals, slides, social posts, UI components, Tailwind/shadcn themes, event one-pagers, and on-brand copy or CTAs. Use it even when the user only says "use our brand", "make it look like our site" or "match our style" while working on 360 Vision Events material.
+description: >-
+  The 360 Vision Events brand design system. It was read from the live site 360-vision-events.co.za and records only what the site actually uses. Dark canvas #0b0b0c, brand orange #ff4000, Space Grotesk headings and Inter Tight body, plus ready-made CSS tokens, component patterns, the logo and the brand's copy voice. Use this skill whenever you create, style, write or review anything for 360 Vision Events (also written 360VE or "360 Vision"). That includes web pages, landing sections, HTML emails, proposals, quotations, proforma invoices and other A4 commercial documents, slides, social posts, UI components, Tailwind/shadcn themes, event one-pagers, and on-brand copy or CTAs. Use it even when the user only says "use our brand", "make it look like our site" or "match our style" while working on 360 Vision Events material.
 ---
 
 # 360 Vision Events design system
@@ -16,7 +17,7 @@ That's the most important thing to carry into your work. **Build with what is he
 | Any visual output (HTML, email, slides, UI) | `assets/design-system/tokens.css` — CSS custom properties. Link it or inline the variables you use |
 | Exact component markup and styling | `assets/design-system/preview.html` — every component styled only with the tokens. Copy patterns from it |
 | Tailwind / shadcn projects | `assets/shadcn-theme.css` — the site's own `:root` variables (it is a Tailwind v4 + shadcn build) |
-| Design-token tooling (Figma Tokens, Style Dictionary) | `assets/design-system/tokens.json` (DTCG format) |
+| Design-token tooling (Figma Tokens, Style Dictionary) | `assets/design-system/tokens.json` (DTCG-style: values are the site's CSS strings and absent tokens are `null`, so adapt them before strict DTCG tools) |
 | Logo for web UI on the dark canvas | `assets/design-system/assets/logo-horiz-ON-DARK.png`: the site's own header logo. It is 1176×452, transparent, and its orange is exactly `#ff4000` |
 | Official logo pack (print, social, decks, light backgrounds) | `assets/design-system/assets/logo-pack-2026/`: 11 PNGs, with ON-DARK and ON-LIGHT versions of P03/P05/P12 horizontal (P12 is ON-DARK only), P06 stacked, P07 mark and P09 360VISION wordmark. Its `README.md` maps the files |
 | Scalable / vector logo (light backgrounds) | `assets/design-system/assets/logo-pack-2026/svg/`: transparent SVGs in ON-LIGHT only. `p09-wordmark-360vision-on-light.svg` is fully vector, with "360" exactly `#ff4000`. P03/P05/P06/P07 have vector lettering but a bitmap aperture ring (400–850 px), so keep them at or below roughly that size |
@@ -41,7 +42,7 @@ That's the most important thing to carry into your work. **Build with what is he
 | `--color-border` | `oklch(100% 0 0/.12)` | 1px hairline on cards, chips, dividers |
 | `--color-input` | `oklch(100% 0 0/.16)` | Form fields, outline buttons |
 | `--color-brand-border` | `color-mix(in oklab, #ff4000 35%, transparent)` | CTA-band outline |
-| `--color-destructive` | `oklch(60% .22 25)` | Declared by the site but never shown; only for error states |
+| `--color-destructive` | `oklch(60% .22 25)` | Declared by the site but never shown; only for error states, and see the failing pairs below |
 
 **Contrast:**
 - text on bg: 18:1
@@ -50,15 +51,21 @@ That's the most important thing to carry into your work. **Build with what is he
 - dark text on orange: 5.6:1
 - white on orange: only 3.5:1, which is why the site uses dark text there
 
+**Pairs below WCAG AA** (4.5:1 for normal text, 3:1 for UI boundaries):
+- **Destructive** (≈`#e62b34`): white on it 4.41:1; as text on bg 4.46:1 and on surface 3.94:1. Use it only for large text, icons and borders, where 3:1 is enough. Keep small error text in `--color-text` with a destructive icon or border beside it, and never let colour be the only signal. This applies to shadcn's destructive variant too.
+- **Muted text on the CTA tint:** at the orange end of `--gradient-cta-tint` (≈`#372320`) muted text is 4.29:1. Keep muted copy off the first ~15% of the band, or use `--color-text`.
+- **Orange on `--color-surface-2`:** 4.42:1. The site never puts orange text there; don't start.
+- **Input border:** `--color-input` is 1.54:1 on bg (1.64:1 on surface) and is a transparent field's only edge. Whether that fails WCAG 1.4.11 is a judgement call; a label above every field helps.
+
 ### Typography
 
 - **Display:** `--font-family-display` = `"Space Grotesk", "Helvetica Neue", sans-serif`. Used for h1–h3, with letter-spacing `-.03em`.
 - **Body:** `--font-family-body` = `"Inter Tight", system-ui, sans-serif`.
-- **Clean:** `--font-family-clean` = `Inter`. Some inner-page heroes use it; prefer display for new work unless you're matching those pages.
+- **Clean:** `--font-family-clean` = `Inter, system-ui, sans-serif`. Some inner-page heroes use it; prefer display for new work unless you're matching those pages.
 - **Load:** use the site's Google Fonts request: `https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&family=Inter+Tight:wght@400;500;600&display=swap`
 - **Scale:** Tailwind steps: xs .75rem, sm .875rem, base 1rem, lg 1.125rem, xl 1.25rem, 2xl 1.5rem, 3xl 1.875rem, 4xl 2.25rem, 5xl 3rem, 6xl 3.75rem, 7xl 4.5rem.
 - **Hero h1:** 5xl, rising to 7xl from 40rem, bold, line-height .95.
-- **Section h2:** 3xl bold (4xl from 40rem in some heroes).
+- **Section h2:** 3xl bold. Some sections rise to 4xl or 5xl from 40rem, CTA-band and form h2s stay 3xl, and a few use 4xl at every width.
 - **Body copy:** sm or base, muted.
 - **Eyebrows / kickers:** `text-xs`, uppercase, wide tracking (.18–.35em), brand orange. Write their source text in sentence case and let CSS uppercase it.
 
@@ -71,7 +78,7 @@ That's the most important thing to carry into your work. **Build with what is he
 | Breakpoints | 40rem, 48rem, 64rem |
 | Radius | `.5rem` base: sm 4px (badges), md 6px (buttons, inputs, service cards), lg 8px (image cards, panels, CTA bands), xl 12px (teaser cards), full (pills) |
 | Shadow | `--shadow-sm` (subtle black) on buttons and inputs. `--shadow-lift`, `0 24px 60px -24px` orange at 35%, on hover-lifted cards and the floating button |
-| Focus | 1px orange ring (`--shadow-focus-ring`) |
+| Focus | The site's value: a 1px orange ring with no offset (`--shadow-focus-ring`), drawn as a box-shadow with `outline: none`. On orange buttons it barely shows, and in Windows forced-colours mode there is no indicator at all. **Proposal for new work** (say you used it): on filled orange controls use the site's floating-button ring, `box-shadow: 0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-ring)`, and swap `outline: none` for `outline: 2px solid transparent` so forced-colours mode still draws an outline |
 | Motion | colour changes .15s; card lift .3s `cubic-bezier(.22,1,.36,1)` with a 6px rise; image zoom .5s at scale 1.02; scroll reveal .7s ease-out over a 24px rise |
 
 ## Core rules (and why)
@@ -138,7 +145,8 @@ Quotations and proforma invoices share one structure, rebuilt from the brand own
 - **No light theme**, and no success, warning or info colours.
 - **Form states not observed:** no error, helper, required or success styling was seen.
 - **No visible active nav state:** on the live site the active link renders muted because of CSS order. If the user wants one, propose it as a new decision.
-- **Logo:** only the P09 wordmark is fully vector. The P03/P05/P06/P07 SVGs use a bitmap ring that is slightly lighter (about `#ff4e23`–`#ff5636`) than their `#ff4000` lettering. "EVENTS" grey is `#737373` in those four and `#828282` in P09. There are no ON-DARK or P12 SVGs.
+- **Logo:** only the P09 wordmark is fully vector. The P03/P05/P06/P07 SVGs use a bitmap ring that is slightly lighter (about `#ff4e23`–`#ff5636`) than their `#ff4000` lettering. "EVENTS" grey is `#737373` in P03/P05/P06 (P07 is the mark only) and `#828282` in P09. There are no ON-DARK or P12 SVGs.
+- **Logo provenance:** Canva's content credentials record the pack as AI-assisted composites made with "Canva AI". The PNGs were stripped of their metadata, including a personal author name; only the pHYs resolution chunk is kept (D29). The P03/P05/P06/P07 SVGs still carry the signed credential, so platforms that read it may label posts that use them as AI-generated. Mention this if the user is choosing files for social media.
 - **Pack orange varies by file:** `#e22500` to `#ff3e00`, and the P09 wordmark is `#f14624`. The UI brand colour stays the site's `#ff4000`. When a design must match the orange in the logo, P12 (`#ff3e00`) is closest. Mention the inconsistency if it matters for the task.
 - **Font loading:** Space Grotesk 400/600 are used but not loaded (the browser substitutes 500/700). If you control font loading, requesting `Space+Grotesk:wght@400;500;600;700` is a reasonable fix to suggest, not something the site does today.
 - **Print and light media:** the site has no light theme. The document templates' paper mode uses proposed values (ink `#0b0b0c`, muted `#5f5f64`, orange only for rules, bars and large figures, because `#ff4000` on white is 3.5:1). Flag them as proposals.

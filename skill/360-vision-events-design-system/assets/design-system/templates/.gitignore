@@ -1,5 +1,6 @@
 # Filled-in documents carry real client, personal and banking details. This repository is public:
 # keep filled copies and every printed PDF out of version control (see README.md, Privacy).
-*.filled.html
-*.pdf
-filled/
+# Bracket patterns keep the rules case-insensitive on case-sensitive checkouts.
+*.[fF][iI][lL][lL][eE][dD].[hH][tT][mM][lL]
+*.[pP][dD][fF]
+[fF][iI][lL][lL][eE][dD]/

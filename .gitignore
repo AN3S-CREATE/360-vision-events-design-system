@@ -1,0 +1,15 @@
+# This repository is public. Filled-in commercial documents carry real client,
+# personal and banking details (D16, D28), so keep them out of git anywhere in
+# the tree, not only inside design-system/templates/. Bracket patterns keep
+# the rules case-insensitive on case-sensitive checkouts (Linux, CI).
+*.[fF][iI][lL][lL][eE][dD].[hH][tT][mM][lL]
+*.[pP][dD][fF]
+**/[fF][iI][lL][lL][eE][dD]/
+
+# Local tooling and OS files
+.claude/settings.local.json
+.agents/
+__pycache__/
+.DS_Store
+Thumbs.db
+desktop.ini

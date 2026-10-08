@@ -1,6 +1,6 @@
 # Key decisions
 
-A lightweight ADR log. The full text, with rule and evidence URL, is in `design-system/evidence.json`, `decisions` (D01–D28).
+A lightweight ADR log. The full text, with rule and evidence URL, is in `design-system/evidence.json`, `decisions` (D01–D30).
 
 | ID | Date | Decision | Why |
 |---|---|---|---|
@@ -23,3 +23,5 @@ A lightweight ADR log. The full text, with rule and evidence URL, is in `design-
 | D26 | 2026-10-02 | Owner-supplied 2026 logo pack stored as-is and recorded with hashes and sampled colours; `--color-brand` stays #ff4000 | Site CSS + served logo are #ff4000; the pack's orange varies by file, so it's flagged as an owner decision, not folded into tokens |
 | D27 | 2026-10-02 | Owner-supplied ON-LIGHT SVGs (P03/P05/P06/P07/P09) stored as-is in `logo-pack-2026/svg/` | Vector lettering is exactly #ff4000; only P09 is fully vector (the others use a masked bitmap ring ≈#ff4e23–#ff5636); recorded as gaps, tokens unchanged |
 | D28 | 2026-10-02 | Commercial document templates (quotation + proforma invoice) in `design-system/templates/`: the owner's old structure rebuilt on tokens.css, A4, dark by default with a proposed paper mode | The user supplied two old documents and asked for their layout in the new look; every client, personal, banking and pricing value withheld (D16, public repo) |
+| D29 | 2026-10-08 | The 11 owner PNGs are stored stripped to IHDR/pHYs/IDAT/IEND (pixels verified identical); supplied hashes kept as `sha256_as_supplied`; Canva AI provenance recorded in `brand_files` and the logo-pack README; SVGs unchanged; git history not rewritten (TD-09) | As supplied, the PNGs' XMP held a personal author name and Canva account, brand and design IDs (D16); history before D29 still holds them. Their C2PA signature hashes the whole file, so it could not survive the strip. The SVGs hold no personal data |
+| D30 | 2026-10-08 | Root `.gitattributes` (LF for text; PNG/.skill/zip binary; SVG `-text`) and root `.gitignore` (filled documents and PDFs repo-wide, matched case-insensitively, plus tool and OS files); the two CRLF template hashes in `extras.files` recomputed from the committed blobs | The build hashed a mixed-line-ending Windows tree, so no checkout reproduced all 24 recorded hashes; now every hash verifies from a clean LF checkout. Added outside `design-system/` at the user's request |
